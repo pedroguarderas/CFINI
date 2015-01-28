@@ -18,7 +18,7 @@ using namespace std;
 
 
 /*__________________________________________________________________________________________________
- * Brownian motion simulation
+ * Cox-Ross-Rubenstein
  */
 int main( int argc, char* argv[] ) {
   default_random_engine engine;

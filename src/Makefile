@@ -23,3 +23,10 @@ exo_2:
 	
 cl_exo_2:
 	$(RM) exo_2.o exo_2
+	
+exo_3:
+	$(GCC) $(FFLAGS) exo_3.cpp 
+	$(GCC) -o exo_3 exo_3.o
+	
+cl_exo_3:
+	$(RM) exo_3.o exo_3
