@@ -25,16 +25,21 @@ int main( int argc, char* argv[] ) {
   normal_distribution< double > distribution( 0.0, 1.0 );
   vector< double > v;
   size_t n = 200;
+  ofstream file;
   
   v.push_back( 0.0 );
   for ( size_t i = 1; i < n; i++ ) {
     v.push_back( distribution( engine ) + v[i-1]);
   }
   
+  // writing in external file
+  cout << "Generating Brownian motion" << endl;
+  cout << "Output in file exo_2.txt" << endl;
+  file.open ("exo_2.txt");
   for ( size_t i = 0; i < n; i++ ) {
-    cout << v[i] << " ";
+    file << v[i] << endl;
   }
-  cout << endl;
-  
+  file.close();
+ 
   return 0;
 }
