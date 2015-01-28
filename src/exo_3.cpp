@@ -2,7 +2,7 @@
   autor: Pedro Guarderas
   email: ajusworkopensource@gmail.com
   date: 28-01-2014
-  file: exo_2.cpp
+  file: exo_3.cpp
   This program is free software; you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software Foundation;
   either version 2 of the License, or (at your option) any later version.
@@ -58,16 +58,16 @@ double PriceCRR( double S0, double u, double d, double r, int T, double K ) {
 int main( int argc, char* argv[] ) {
   double S0, u, d, r, K;
   int T;
-  S0 = 10;
-  u = 1.2;
-  d = 0.75;
-  r = 0.1;
-  K = 8.3;
-  T = 15;
+  S0 = 8.0;
+  u = 0.05;
+  d = -0.06;
+  r = 0.01;
+  K = 8.1;
+  T = 1;
   
   // writing in external file
-  cout << "Pricing Binomial option" << endl;
-  cout << PriceCRR( S0, u, d, r, T, K ) << endl;
+  cout << "Risk Neutral Probability = " << RiskNeutralProb( u, d, r ) << endl;
+  cout << "European call option price = " << PriceCRR( S0, u, d, r, T, K ) << endl;
  
   return 0;
 }
