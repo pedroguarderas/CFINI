@@ -19,7 +19,7 @@ using namespace std;
 
 
 /*__________________________________________________________________________________________________
- * Brownian motion simulation
+ * CRR model
  */
 double CallPayoff( double S, double K ) {
   double X = 0.0;
