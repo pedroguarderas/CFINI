@@ -1,7 +1,7 @@
 /*__________________________________________________________________________________________________
   autor: Pedro Guarderas
   email: ajusworkopensource@gmail.com
-  date: 28-01-2014
+  date: 28-01-2015
   file: exo_2.cpp
   This program is free software; you can redistribute it and/or modify it under the 
   terms of the GNU General Public License as published by the Free Software Foundation; 
