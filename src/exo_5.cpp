@@ -1,7 +1,7 @@
 /*__________________________________________________________________________________________________
 
-  autor: Andrés Lopez
-  email:
+  autor: Andrés López
+  email: andrelo1d@hotmail.com
   date: 23-02-2015
   file: exo_5.cpp
   This program is free software; you can redistribute it and/or modify it under the
