@@ -37,3 +37,10 @@ exo_4:
 	
 cl_exo_4:
 	$(RM) exo_4.o exo_4
+	
+exo_5:
+	$(GCC) $(FFLAGS) exo_5.cpp 
+	$(GCC) -o exo_5 exo_5.o
+	
+cl_exo_5:
+	$(RM) exo_5.o exo_5
