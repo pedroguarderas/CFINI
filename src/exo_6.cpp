@@ -20,14 +20,14 @@
 using namespace std;
 
 double f( double t ) {
-  return( sin(3.14159 * t ) * cos( 20 * 3.14159 * t )  ); 
+   return( sin(3.14159 * t ) * cos( 20 * 3.14159 * t )  ); 
 }
 
 int main() {
 	double n = 1000;
-	double T = 20.0, h;
+	double T = 2.0, h;
 	vector< double > t( n ), F( n ), a( n ), b( n ), c( n ); 
-	h = T / n;
+	h = T / ( n - 1 );
 	
 	for ( size_t i = 0; i < n; i++ ) {
 	  t[i] = i * h;
