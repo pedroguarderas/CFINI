@@ -67,3 +67,21 @@ int main() {
 
   return 0;
 }
+
+/*
+s<-read.table( '[path]/CFINI/src/solution.txt')
+s<-as.matrix( s )
+
+t<-seq(0,2,length.out = nrow(s))
+x<-seq(0,100,length.out = ncol(s))
+
+X11()
+plot( x, as.numeric( s[1,] ), col = 'red', cex = 0.5, type = 'l' )
+for ( i in 2:nrow(s) ) {
+  points( x, as.numeric( s[i,] ), col = 'red', cex = 0.5, type = 'l' )  
+}
+rm(i)
+
+library(rgl)
+persp3d( t, x, s, color = 'red' )
+*/
