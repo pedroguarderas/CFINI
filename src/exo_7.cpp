@@ -16,10 +16,15 @@
 
 #include "solver.hpp"
 
+using namespace std;
 
 double f( double x ) {
   return( max( x - 20.0, 0.0 ) );
 //   return( sin( sx ) );
+}
+
+double bd( double t ) {
+  return( 80.0 - 25 *  t );
 }
 
 int main() {
@@ -53,6 +58,7 @@ int main() {
     t[i] = i * h;
     S.push_back( s );
     solveTDSnd( a, b, c, s );
+    s[m-1] = bd( t[i] ); // Including boundary condition
   } 
 
   ofstream file;
@@ -76,9 +82,10 @@ t<-seq(0,2,length.out = nrow(s))
 x<-seq(0,100,length.out = ncol(s))
 
 X11()
-plot( x, as.numeric( s[1,] ), col = 'red', cex = 0.5, type = 'l' )
-for ( i in 2:nrow(s) ) {
-  points( x, as.numeric( s[i,] ), col = 'red', cex = 0.5, type = 'l' )  
+plot( x, as.numeric( s[1,] ), col = 'red', cex = 0.5, type = 'l', ylim = c(0,90) )
+k<-seq(2,nrow(s),1)
+for ( i in k ) {
+  plot( x, as.numeric( s[i,] ), col = 'red', cex = 0.5, type = 'l', ylim = c(0,90) )  
 }
 rm(i)
 
