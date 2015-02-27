@@ -28,7 +28,7 @@ double f( double x ) {
 }
 
 double bd( double t ) {
-  return( 80.0 - 25 *  t );
+  return( 80.0 );
 }
 
 int main() {
@@ -38,7 +38,8 @@ int main() {
   double h, k;
   double sigma, mu, r;
   
-  vector< double > t( n ), a( n ), b( n ), c( n ); 
+  vector< double > t( n );
+  vector< double > a( m-1 ), b( m ), baux, c( m-1 ); 
   vector< double > x( m ), s( m );
   vector< vector< double > > S;
   
@@ -49,20 +50,26 @@ int main() {
   mu = 2.0;
   r = 1.05;
   
-  for ( size_t j = 0; j < m; j++ ) {
+  
+  for ( size_t j = 0; j < m-1; j++ ) {
     x[j] = j * k;
     s[j] = f( x[j] );
     a[j] = 0.5 * h * ( mu / k - pow( sigma / k, 2.0 ) ); 
     b[j] = 1 + h * ( r + pow( sigma / k, 2.0 ) );
     c[j] = -0.5 * h * ( mu / k + pow( sigma / k, 2.0 ) );
   }
+  x[m-1] = (m-1) * k;
+  s[m-1] = f( x[m-1] );
+  b[m-1] = 1 + h * ( r + pow( sigma / k, 2.0 ) );
+  baux = b;
   
- 
-  for ( size_t i = 0; i < n; i++ ) {
+  n--;
+  for ( int i = n; i >= 0; i-- ) {
     t[i] = i * h;
     S.push_back( s );
     solveTDS( a, b, c, s );
-    s[m-1] = bd( t[i] ); // Including boundary condition
+    s[m-1] = s[m-1] -  h * ( mu / k - pow( sigma / k, 2.0 ) ) * bd( t[i] ); // Including boundary condition     
+    b = baux;
   } 
 
   ofstream file;
