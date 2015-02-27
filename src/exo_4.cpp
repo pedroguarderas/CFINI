@@ -26,7 +26,7 @@ double pnorm( double x ) {
   double b3 = 1.781477937;
   double b4 = -1.821255978;
   double b5 = 1.330274429;
-  double t = 1/(1 + p*x);
+  double t = 1.0/(1.0 + p*x);
   
   double N = 1.0 - ( 1.0 / sqrt( 2.0 * 3.1415926535897932384626433 ) ) * exp( -x * x / 2.0 ) * 
   ( b1 * t + b2 * pow( t, 2 ) + b3 * pow( t, 3 ) + b4 * pow( t, 4 ) + b5 * pow( t, 5 ) );
@@ -42,5 +42,6 @@ int main( int argc, char* argv[] ) {
   cout << pnorm( 1.0, 1.0, 1.0 ) << endl;
   cout << pnorm( 3.0 ) << endl;
   cout << pnorm( 2.5, 1.0, 0.5 ) << endl;
+  
   return 0;
 }
