@@ -20,14 +20,14 @@ using namespace std;
 
 
 int main() {
-	vector< double > a = { 0, -1, -1, -1 };
+	vector< double > a = { -1, -1, -1 };
 	vector< double > b = { 4,  4,  4,  4 };
-	vector< double > c = { -1, -1, -1,  0 };
+	vector< double > c = { -1, -1, -1 };
 	vector< double > d = { 5,  5, 10, 23 };
 	
 	solveTDS( a, b, c, d );
 
-	for( size_t i = 0; i < a.size(); i++ ) {
+	for( size_t i = 0; i < d.size(); i++ ) {
 		cout << d[i] << endl;
 	}
 

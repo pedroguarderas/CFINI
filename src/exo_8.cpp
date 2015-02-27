@@ -24,15 +24,15 @@ double f( double x ) {
 }
 
 double bd( double t ) {
-  return( 80.0 );
+  return( 80 );
 }
 
 double sigma( double t, double x ) {
-  return( 1.0 );
+  return( 0.001 * pow( x, 2 ) );
 }
 
 double mu( double t, double x ) {
-  return( 2.0 );
+  return( 0.5 * x );
 }
 
 int main() {
@@ -66,7 +66,8 @@ int main() {
     }
     solveTDS( a, b, c, s );
     s[m-1] = bd( t[i] ); // Including boundary condition
-  } 
+    s[m-2] = s[m-2] - bd( t[i] ) * h;
+  }
 
   ofstream file;
   file.open ("solution.txt");

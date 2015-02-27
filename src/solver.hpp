@@ -11,47 +11,29 @@
 */
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
-void solveTDS( const vector< double > a, const vector< double > b,
-            vector< double >& c, vector< double >& d ) {
+// Based in Thomas algorithm
+void solveTDS( vector< double >& a, vector< double >& b, vector< double >& c, 
+                 vector< double >& d ) {
 
-	size_t n = a.size();
-	c[0] /= b[0];
-	d[0] /= b[0];
-	n--;
-
-	for( size_t i = 1; i < n; i++ ) {
-		c[i] /= b[i] - a[i] * c[i - 1];
-		d[i] = ( d[i] - a[i] * d[i - 1] ) / ( b[i] - a[i] * c[i - 1] );
-	}
-
-	d[n] = ( d[n] - a[n] * d[n - 1] ) / ( b[n] - a[n] * c[n - 1] );
-
-	for( size_t i = n; i-- > 0; ) {
-		d[i] -= c[i] * d[i + 1];
-	}
-}
-
-void solveTDSnd( const vector< double > a, const vector< double > b,
-            vector< double >& C, vector< double >& d ) {
-
-  vector< double > c = C;
-  size_t n = a.size();
-  c[0] /= b[0];
-  d[0] /= b[0];
-  n--;
+  size_t n = b.size();
+  double m;
 
   for( size_t i = 1; i < n; i++ ) {
-    c[i] /= b[i] - a[i] * c[i - 1];
-    d[i] = ( d[i] - a[i] * d[i - 1] ) / ( b[i] - a[i] * c[i - 1] );
+    m = a[i-1] / b[i-1];
+    b[i] = b[i] - m * c[i-1];
+    d[i] = d[i] - m * d[i-1];
   }
 
-  d[n] = ( d[n] - a[n] * d[n - 1] ) / ( b[n] - a[n] * c[n - 1] );
+  n--;
+  d[n] = d[n] / b[n];
 
-  for( size_t i = n; i-- > 0; ) {
-    d[i] -= c[i] * d[i + 1];
+  n--;
+  for( int i = n; i >= 0; i--  ) {
+    d[i] = ( d[i] - c[i] * d[i+1] ) / b[i];
   }
 }
 

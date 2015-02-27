@@ -18,6 +18,10 @@
 
 using namespace std;
 
+
+/*__________________________________________________________________________________________________
+ * Black-Scholes model
+ */
 double f( double x ) {
   return( max( x - 20.0, 0.0 ) );
 //   return( sin( sx ) );
@@ -57,7 +61,7 @@ int main() {
   for ( size_t i = 0; i < n; i++ ) {
     t[i] = i * h;
     S.push_back( s );
-    solveTDSnd( a, b, c, s );
+    solveTDS( a, b, c, s );
     s[m-1] = bd( t[i] ); // Including boundary condition
   } 
 
