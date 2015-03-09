@@ -28,7 +28,7 @@ public:
   Vector< Field > add( const size_t i, const Field& x ) const {
     Vector< Field > z( this->size() );
 
-    #pragma omp parallel for
+//     #pragma omp parallel for
     for ( size_t j = 0; j < this->size(); j++ ) {
       z[j] = this->at(j);
     }
@@ -296,7 +296,7 @@ Matrix< Field > operator+ ( const Matrix< Field >& x, const Matrix< Field >& y )
   if ( x.size() == y.size() ) {
     z.resize( x.size() );
     
-    #pragma omp parallel shared(x,y,z) for
+//     #pragma omp parallel shared(x,y,z) for
     for ( size_t i = 0; i < x.size(); i++ ) {
       z[i] = x[i] + y[i];
     }
@@ -312,7 +312,7 @@ Matrix< Field > operator- ( const Matrix< Field >& x, const Matrix< Field >& y )
   if ( x.size() == y.size() ) {
     z.resize( x.size() );
 
-    #pragma omp parallel shared(x,y,z) for
+//     #pragma omp parallel shared(x,y,z) for
     for ( size_t i = 0; i < x.size(); i++ ) {
       z[i] = x[i] - y[i];
     }
@@ -330,7 +330,7 @@ Matrix< Field > operator* ( Matrix< Field >& x, Matrix< Field >& y ) {
     z.resize( x.dim(0) * y.dim(1) );
     z.set_dim( { x.dim(0), y.dim(1) } );
     
-    #pragma omp parallel shared(x,y,z) for collapse(2)
+//     #pragma omp parallel shared(x,y,z) for collapse(2)
     for ( size_t i = 0; i < x.dim(0); i++ ) {
       for ( size_t k = 0; k < y.dim(1); k++ ) {
         for ( size_t j = 0; j < x.dim(1); j++ ) {

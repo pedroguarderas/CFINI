@@ -2,7 +2,7 @@ GCC = g++
 RM = rm
 LN = ln
 FLIBS = -llapack -lblas
-FFLAGS = -c -g -Wall -std=c++0x -m64 -fopenmp -fPIC 
+FFLAGS = -c -g -Wall -std=c++11
 FFLAGSOPT = -O3 -fopenmp
 DISLIN_INC = /usr/local/dislin/df/real64
 
@@ -65,3 +65,10 @@ exo_8:
 	
 cl_exo_8:
 	$(RM) exo_8.o exo_8
+	
+exo_9:
+	$(GCC) $(FFLAGS) -fopenmp exo_9.cpp 
+	$(GCC) -fopenmp -o exo_9 exo_9.o
+	
+cl_exo_9:
+	$(RM) exo_9.o exo_9
