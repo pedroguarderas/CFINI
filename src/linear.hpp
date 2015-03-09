@@ -66,18 +66,18 @@ Vector< Field > operator+ ( const Vector< Field >& x, const Vector< Field >& y )
   
   Vector< Field > z(M);
   
-  #pragma omp parallel for private(i)
+  #pragma omp parallel for shared(x,y,z,m,M) private(i)
   for ( i = 0; i < m; i++ ) {
     z[i] = x[i] + y[i];
   }
   
   if ( x.size() > y.size() ) {
-    #pragma omp parallel for private(i)
+    #pragma omp parallel for shared(y,z,m,M) private(i)
     for ( i = m; i < M; i++ ) {
       z[i] = y[i];
     }
   } else if ( x.size() < y.size() ) {
-    #pragma omp parallel for private(i)
+    #pragma omp parallel for shared(x,z,m,M) private(i)
     for ( i = m; i < M; i++ ) {
       z[i] = x[i];
     }
@@ -93,18 +93,18 @@ Vector< Field > operator- ( const Vector< Field >& x, const Vector< Field >& y )
   
   Vector< Field > z(M);
   
-  #pragma omp parallel for private(i)
+  #pragma omp parallel for shared(x,y,z,m,M) private(i)
   for ( i = 0; i < m; i++ ) {
     z[i] = x[i] - y[i];
   }
   
   if ( x.size() > y.size() ) {
-    #pragma omp parallel for private(i)
+    #pragma omp parallel for shared(y,z,m,M) private(i)
     for ( i = m; i < M; i++ ) {
       z[i] = y[i];
     }
   } else if ( x.size() < y.size() ) {
-    #pragma omp parallel for private(i)
+    #pragma omp parallel for shared(x,z,m,M) private(i)
     for ( i = m; i < M; i++ ) {
       z[i] = x[i];
     }
@@ -117,7 +117,7 @@ Vector< Field > operator+ ( const Field a, const Vector< Field >& x ) {
   size_t i;
   Vector< Field > z( x.size() );
   
-  #pragma omp parallel for private(i)
+  #pragma omp parallel for shared(x,z) private(i)
   for ( i = 0; i < x.size(); i++ ) {
     z[i] = a + x[i];
   }
