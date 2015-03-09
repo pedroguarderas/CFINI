@@ -18,6 +18,7 @@
 
 #include "linear.hpp"
 
+using namespace std;
 
 double u( double x, double t ) {
   return sin( 3.14159 * x );
@@ -34,7 +35,7 @@ int main( int argc, char* argv[] ) {
   default_random_engine engine;
   normal_distribution< double > distribution( 0.0, 1.0 );
   
-  typedef std::chrono::high_resolution_clock clock;
+  typedef chrono::high_resolution_clock clock;
   clock::time_point beginning = clock::now();
   clock::duration duration;
   
