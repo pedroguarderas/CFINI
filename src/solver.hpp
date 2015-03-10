@@ -10,6 +10,9 @@
   __________________________________________________________________________________________________
 */
 
+#ifndef LINEARSOLVER
+#define LINEARSOLVER
+
 #include <vector>
 #include <iostream>
 
@@ -46,3 +49,5 @@ void multTDS( const vector< double >& a, const vector< double >& b,
   }
   d[n] = a[n] * d[n-1] + c[n] * d[n];
 }
+
+#endif

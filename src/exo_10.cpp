@@ -17,44 +17,31 @@
 #include <random>
 
 #include "linear.hpp"
+#include "stosolver.hpp"
+
 
 using namespace std;
+
 
 double u( double x, double t ) {
   return sin( 3.14159 * x );
 }
 
 double s( double x, double t ) {
-  return 0.25;
+  return 0.5*sqrt(x);
 }
 
 int main( int argc, char* argv[] ) {
   size_t N;
-  double t0, t1, dt, x;
+  double t0, t1, x;
   Vector< double > t, X;
-  default_random_engine engine;
-  normal_distribution< double > distribution( 0.0, 1.0 );
-  
-  typedef chrono::high_resolution_clock clock;
-  clock::time_point beginning = clock::now();
-  clock::duration duration;
-  
+ 
   N = 10000;
   t0 = 0.0;
   t1 = 1.0;
   x = 1.0;
   
-  dt = ( t1 - t0 ) / ( N - 1.0 );
-  X.push_back( x );
-  t.push_back( t0 );
-  
-  for ( size_t i = 1; i < N; i++ ) {
-    t.push_back( t0 + i * dt );
-    duration = clock::now() - beginning;
-    engine.seed( duration.count() );
-    X.push_back( X[i-1] + u( X[i-1], t[i-1] ) * dt + 
-      sqrt( dt ) * s( X[i-1], t[i-1] ) * distribution( engine ) );
-  }
+  solveSTOCH( X, t, t0, t1, x, N, &u, &s );
 
   ofstream file;
   file.open ("ito_process.txt");

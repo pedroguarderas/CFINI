@@ -1,5 +1,8 @@
 //__________________________________________________________________________________________________
 
+#ifndef LINEAR
+#define LINEAR
+
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -483,3 +486,5 @@ Field scalar( const Matrix< Field >& x, const Matrix< Field >& y ) {
     }
     return n;
 }
+
+#endif
