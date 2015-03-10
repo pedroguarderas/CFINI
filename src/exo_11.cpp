@@ -36,7 +36,7 @@ double psi( double x ) {
   return max( 0.0, x-K );
 }
 
-double r( double x, double t ) {
+double V( double x, double t ) {
   return 1.1;
 }
 
@@ -44,14 +44,14 @@ double g( Vector< double > X, Vector< double > t ) {
   double I = 0.0;
   size_t N = X.size()-1;
   for ( size_t i = 0; i < N; i++ ) {
-    I += exp( r( X[i], t[i] ) ) * ( t[i+1] - t[i] );
+    I += V( X[i], t[i] ) * ( t[i+1] - t[i] );
   }
-  return I * psi( X[N] );
+  return exp( -I ) * psi( X[N] );
 }
 
 int main( int argc, char* argv[] ) {
   size_t M = 100;
-  size_t N = 1000;
+  size_t N = 10000;
   double t0, t1, x;
   Vector< double > t, G( M );
   Vector< Vector< double > > X( M );
