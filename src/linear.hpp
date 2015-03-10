@@ -62,6 +62,19 @@ Field norm( const Vector< Field >& x ) {
 }
 
 template< typename Field = double >
+Field sum( const Vector< Field >& x ) {
+  size_t i;
+  Field n;
+  
+  n = Field(0.0);
+  #pragma omp parallel for private( i ) reduction (+:n)
+  for ( i = 0; i < x.size(); i++ ) {
+    n = n + x[i];
+  }
+  return n;
+}
+
+template< typename Field = double >
 Vector< Field > operator+ ( const Vector< Field >& x, const Vector< Field >& y ) {
   size_t m, M, i;
   m = min( x.size(), y.size() );

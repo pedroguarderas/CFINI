@@ -2,8 +2,8 @@
 
   autor: Pedro Guarderas
   email: ajusworkopensource@gmail.com
-  date: 09-03-2015
-  file: exo_10.cpp
+  date: 10-03-2015
+  file: exo_11.cpp
   This program is free software; you can redistribute it and/or modify it under the
   terms of the GNU General Public License as published by the Free Software Foundation;
   either version 2 of the License, or (at your option) any later version.
@@ -28,27 +28,44 @@ double u( double x, double t ) {
 }
 
 double s( double x, double t ) {
-  return 0.5 * sqrt(x);
+  return 0.5*sqrt(x);
+}
+
+double psi( double x ) {
+  double K = 1.0;
+  return max( 0.0, x-K );
+}
+
+double r( double x, double t ) {
+  return 1.1;
+}
+
+double g( Vector< double > X, Vector< double > t ) {
+  double I = 0.0;
+  size_t N = X.size()-1;
+  for ( size_t i = 0; i < N; i++ ) {
+    I += exp( r( X[i], t[i] ) ) * ( t[i+1] - t[i] );
+  }
+  return I * psi( X[N] );
 }
 
 int main( int argc, char* argv[] ) {
-  size_t N;
+  size_t M = 100;
+  size_t N = 1000;
   double t0, t1, x;
-  Vector< double > t, X;
+  Vector< double > t, G( M );
+  Vector< Vector< double > > X( M );
  
-  N = 10000;
   t0 = 0.0;
   t1 = 1.0;
   x = 1.0;
   
-  solveSTOCH( X, t, t0, t1, x, N, &u, &s );
-
-  ofstream file;
-  file.open ("ito_process.txt");
-  for ( size_t i = 0; i < N; i++ ) {
-    file << t[i] << "\t" << X[i] << endl;
+  for ( size_t i = 0; i < M; i++ ) {
+    solveSTOCH( X[i], t, t0, t1, x, N, &u, &s );
+    G.push_back( g( X[i], t ) );
   }
-  file.close();
+  
+  cout << "E[g(X,t)|X_t = x] = " << sum( G ) / M << endl;
   
   return 0;
     

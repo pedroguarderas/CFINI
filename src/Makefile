@@ -79,3 +79,10 @@ exo_10:
 	
 cl_exo_10:
 	$(RM) exo_10.o exo_10
+
+exo_11:
+	$(GCC) $(FFLAGS) -fopenmp exo_11.cpp 
+	$(GCC) -fopenmp -o exo_11 exo_11.o
+	
+cl_exo_11:
+	$(RM) exo_11.o exo_11
