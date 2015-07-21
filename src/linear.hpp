@@ -256,7 +256,11 @@ public:
   
   ~Matrix() {}
   
-  Field get( size_t i, size_t j ) const {
+  Field& get( size_t i, size_t j ) {
+    return this->at( j + i * _dim[1] );
+  }
+  
+  Field& operator ()( size_t i, size_t j ) {
     return this->at( j + i * _dim[1] );
   }
   
