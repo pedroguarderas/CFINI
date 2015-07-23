@@ -9,6 +9,7 @@
   __________________________________________________________________________________________________
 */
 
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <random>
@@ -23,21 +24,34 @@ double Ue( double x, double y ) {
     return( ( 1.0 - x*x - y*y ) / 4.0 );
 }
 
+double g( double x, double y ) {
+    return( cos(y)*x );
+}
+
+double f( double x, double y ) {
+    return( cos(x) * sin(y) );
+}
+
 
 /*__________________________________________________________________________________________________
  * Normal random number generation
  */
 int main( int argc, char* argv[] ) {
+  typedef chrono::high_resolution_clock clock;
+  
   default_random_engine engine;
   normal_distribution< double > distribution( 0.0, 1.0 );
   Vector< double > X, Y;
   Vector< double > x(2), B(2), W(2);
-  size_t n = 20;
+  size_t n = 25;
   Matrix< double > u( n, n );
   Matrix< double > ue( n, n );
   double dt = 0.001, d;
   double E, M = 100, tau;
+  double G;
   size_t i, j, k;
+  clock::time_point beginning = clock::now();
+  clock::duration duration;
   
   d = ( 1.0 + 1.0 ) / ( n - 1 );
   for ( size_t i = 0; i < n; i++ ) {
@@ -45,35 +59,39 @@ int main( int argc, char* argv[] ) {
     Y.push_back( -1.0 + d * i );
   }
   // shared(dt,u,ue,M,n,X,Y)
-//   #pragma omp parallel for shared(X,Y,u,ue,n,M,dt) private(k,B,E,tau) collapse(2)
+  // #pragma omp parallel for shared(u,ue,n,M,dt,beginning) private(X,Y,x,i,j,k,B,E,tau,duration,engine,W) collapse(2)
   for (  i = 0; i < n; i++ ) {
-      for (  j = 0; j < n; j++ ) {
+    for (  j = 0; j < n; j++ ) {
 
-          x[0] = X[i]; x[1] = Y[j];
+        x[0] = X[i]; x[1] = Y[j];
 
-          if ( norm( x ) <  1.0 ) {
-              
-            E = 0.0;
-            for ( k = 0; k < M; k++ ) {
-              B = x;
-              tau = 0;
-              while ( norm( B ) < 1 ) {
-                  W[0] = distribution( engine );
-                  W[1] = distribution( engine );
-                  B = B + sqrt( dt ) * W;
-                  tau++;
-              }
-             
-              E = E + dt * tau;
-            }
+        if ( norm( x ) <  1.0 ) {
             
-            u(i,j) = 0.5 * E / M;
+            E = 0.0;
+
+            for ( k = 0; k < M; k++ ) {
+                B = x;
+                tau = 0;
+                G = 0;
+                duration = clock::now() - beginning;
+                engine.seed( duration.count() );
+                while ( norm( B ) < 1 ) {
+                    G = G + g( B[0], B[1] );
+                    W[0] = distribution( engine );
+                    W[1] = distribution( engine );
+                    B = B + sqrt( dt ) * W;
+                    tau++;
+                }
+                E = E + dt * G + f( B[0], B[1] );
+            }
+        
+            u(i,j) = E / M;
             ue(i,j) = Ue( x[0], x[1] );
-          } else {
+        } else {
             u(i,j) = 0.0;
             ue(i,j) = 0.0;
-          }
-      }
+        }
+    }
   }
   
   ofstream file;

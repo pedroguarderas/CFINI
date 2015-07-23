@@ -89,8 +89,8 @@ cl_exo_11:
 	
 
 exo_12:
-	$(GCC) $(FFLAGS) -fopenmp exo_12.cpp 
-	$(GCC) -fopenmp -o exo_12 exo_12.o
+	$(GCC) $(FFLAGS) exo_12.cpp 
+	$(GCC) -o exo_12 exo_12.o
 	
 cl_exo_12:
 	$(RM) exo_12.o exo_12
