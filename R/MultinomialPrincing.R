@@ -17,7 +17,7 @@
 #' T<-0.25
 #' N<-15
 #' c<-0.01
-#' u<-exp( s * sqrt( T/N))
+#' u<-exp( s * sqrt( T / N ) )
 #' d<-1/u
 #' r<-0.02
 #' S0<-100
@@ -44,10 +44,10 @@
 #' S<-MLattice( N, U, S0 )
 #' 
 #' # Pricing american call
-#' Ca<-MPrice( S, call, EQ, R, Q, Type = 'A' )
+#' Ca<-MPricing( S, call, EQ, R, Q, Type = 'A' )
 #' 
 #' # Pricing american put
-#' Pa<-MPrice( S, put, EQ, R, Q, Type = 'A' )
+#' Pa<-MPricing( S, put, EQ, R, Q, Type = 'A' )
 #' @export
 MPricing<-function( S, option, EQ, R, Q, Type = 'E' ) {
   C<-S

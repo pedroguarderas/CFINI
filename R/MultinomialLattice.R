@@ -2,7 +2,7 @@
 #' @title Multinomial lattice
 #' @description The option pricing can be made with a multinomial lattice, this functions can 
 #' generate such a lattice with aid of some give parameters.
-#' @param N size of the multinomial model 
+#' @param N number of periods for the multinomial model 
 #' @param U vector of probabilities
 #' @param S0 initial price
 #' @return A list with a tree structure of the asset evolution
