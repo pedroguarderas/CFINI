@@ -49,7 +49,7 @@
 #' # Pricing american put
 #' Pa<-MPrice( S, put, EQ, R, Q, Type = 'A' )
 #' @export
-MultPrice<-function( S, option, EQ, R, Q, Type = 'E' ) {
+MPricing<-function( S, option, EQ, R, Q, Type = 'E' ) {
   C<-S
   N<-length(S)
   n<-length(Q)
