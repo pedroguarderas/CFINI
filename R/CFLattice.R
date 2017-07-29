@@ -3,12 +3,11 @@
 #' @description The option pricing can be made with a multinomial lattice, this functions can 
 #' generate such a lattice with aid of some give parameters.
 #' @param N number of periods for the multinomial model 
-#' @param U vector of probabilities
+#' @param U vector of changes
 #' @param S0 initial price
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
 #' @examples
-#' library( CFINI )
 #' s<-0.3
 #' T<-0.25
 #' N<-15
@@ -21,7 +20,7 @@
 #' U<-c( d, u )
 #' S<-MLattice( N, U, S0 )
 #' @export
-MLattice<-function( N, U, S0 ) {
+CFLattice<-function( N, U, S0 ) {
   S<-list( S0, U * S0 )
   n<-length( U )
   

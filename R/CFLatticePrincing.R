@@ -12,7 +12,6 @@
 #' @author Pedro Guarderas
 #' @seealso \code{\link{MLattice}}
 #' @examples
-#' library( CFINI )
 #' s<-0.3
 #' T<-0.25
 #' N<-15
@@ -41,15 +40,15 @@
 #'   return( sum( R * Q * C ) )
 #' }
 #' 
-#' S<-MLattice( N, U, S0 )
+#' S<-CFLattice( N, U, S0 )
 #' 
 #' # Pricing american call
-#' Ca<-MPricing( S, call, EQ, R, Q, Type = 'A' )
+#' Ca<-CFLatticePricing( S, call, EQ, R, Q, Type = 'A' )
 #' 
 #' # Pricing american put
-#' Pa<-MPricing( S, put, EQ, R, Q, Type = 'A' )
+#' Pa<-CFLatticePricing( S, put, EQ, R, Q, Type = 'A' )
 #' @export
-MPricing<-function( S, option, EQ, R, Q, Type = 'E' ) {
+CFLatticePricing<-function( S, option, EQ, R, Q, Type = 'E' ) {
   C<-S
   N<-length(S)
   n<-length(Q)
