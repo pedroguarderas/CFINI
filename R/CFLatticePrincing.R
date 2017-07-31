@@ -1,11 +1,11 @@
 # Option pricing with the multinomial model --------------------------------------------------------
 #' @title Option pricing with the multinomial model
 #' @description Function for pricing an option with a multinomial model
-#' @param S multinomial lattice
-#' @param option function defining the option over S
+#' @param Q equivalent discrete martingale measure
 #' @param EQ discrete version of the equivalent discrete martingale average
 #' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
-#' @param Q equivalent discrete martingale measure
+#' @param S multinomial lattice
+#' @param option function defining the option over S
 #' @param type option type a character that specifies the king of option, by default 'E' european
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @return A list with a tree structure of the asset evolution
@@ -48,7 +48,7 @@
 #' # Pricing american put
 #' Pa<-CFLatticePricing( S, put, EQ, R, Q, Type = 'A' )
 #' @export
-CFLatticePricing<-function( S, option, EQ, R, Q, Type = 'E' ) {
+CFLatticePricing<-function( Q, EQ, R, S, option, Type = 'E' ) {
   C<-S
   N<-length(S)
   n<-length(Q)

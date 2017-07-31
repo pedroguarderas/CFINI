@@ -4,18 +4,18 @@
 \alias{CFLatticePricing}
 \title{Option pricing with the multinomial model}
 \usage{
-CFLatticePricing(S, option, EQ, R, Q, Type = "E")
+CFLatticePricing(Q, EQ, R, S, option, Type = "E")
 }
 \arguments{
-\item{S}{multinomial lattice}
-
-\item{option}{function defining the option over S}
+\item{Q}{equivalent discrete martingale measure}
 
 \item{EQ}{discrete version of the equivalent discrete martingale average}
 
 \item{R}{term structure of the interest rate, could be a fixed value or a multinomial lattice}
 
-\item{Q}{equivalent discrete martingale measure}
+\item{S}{multinomial lattice}
+
+\item{option}{function defining the option over S}
 
 \item{type}{option type a character that specifies the king of option, by default 'E' european
 option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...}

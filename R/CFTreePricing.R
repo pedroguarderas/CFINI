@@ -3,8 +3,8 @@
 #' @description The option pricing can be made with a multinomial tree, this functions can 
 #' price different types of options
 #' @param Q equivalent discrete martingale measure
-#' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
 #' @param EQ discrete version of the equivalent discrete martingale average
+#' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
 #' @param S multinomial lattice
 #' @param option function defining the option over S
 #' @param type option type a character that specifies the king of option, by default 'E' european
@@ -40,7 +40,7 @@
 #' R<-MTree( 6, u, 0.03 )
 #' Cts<-MTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 #' @export
-CFTreePricing<-function( Q, R, EQ, S, option, Type = 'E', option.par ) {
+CFTreePricing<-function( Q, EQ, R, S, option, Type = 'E', option.par ) {
   C<-S
   N<-length( C )
   n<-length( Q )

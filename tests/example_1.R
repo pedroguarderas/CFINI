@@ -1,13 +1,26 @@
-Z<-MLattice( 4, c(1,1), 100 )
-R<-MLattice( 5, c( 0.9, 1.25 ), 0.06 )
+library( CFINI )
+
+Z<-CFLattice( 4, c(1,1), 100 )
+R<-CFLattice( 5, c( 0.9, 1.25 ), 0.06 )
 
 # Zero coupon bond
-identity<-function( S ) return( S )
-EQ<-function(R,Q,C) {
+option<-function( S ) return( S )
+EQ<-function( R, Q, C ) {
   return( sum( R * Q * C ) )
 }
 Q<-c( 0.5, 0.5 )
-ZCB<-MPricing( Z, identity, EQ, R, Q, Type = 'E' )
+ZCBlt<-CFLatticePricing( Q, EQ, R, Z, identity, Type = 'E' )
+
+
+EQ<-function( Q, C ) {
+  return( sum( Q * C ) )
+}
+Z<-CFTree( 4, c(1,1), 100 )
+R<-CFTree( 5, c( 0.9, 1.25 ), 0.06 )
+ZCBtr<-CFTreePricing( Q, EQ, R, Z, identity, Type = 'E', option.par = list() )
+
+ZCBlt
+ZCBtr
 
 # Put call
 K<-84
@@ -30,4 +43,3 @@ n<-n+1
 R<-MLattice( 5, c( 0.9, 1.25 ), 0.06 )
 Z<-lapply( R, FUN = function( r ) sapply( r, FUN = function( S ) call( S ) / ( 1 + S ) ) )
 CR<-MPricing( Z, identity, EQ, R, Q, Type = 'E' )
-

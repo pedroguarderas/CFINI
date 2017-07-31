@@ -4,14 +4,14 @@
 \alias{CFTreePricing}
 \title{Pricing options with a multinomial tree}
 \usage{
-CFTreePricing(Q, R, EQ, S, option, Type = "E", option.par)
+CFTreePricing(Q, EQ, R, S, option, Type = "E", option.par)
 }
 \arguments{
 \item{Q}{equivalent discrete martingale measure}
 
-\item{R}{term structure of the interest rate, could be a fixed value or a multinomial lattice}
-
 \item{EQ}{discrete version of the equivalent discrete martingale average}
+
+\item{R}{term structure of the interest rate, could be a fixed value or a multinomial lattice}
 
 \item{S}{multinomial lattice}
 
