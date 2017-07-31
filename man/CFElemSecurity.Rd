@@ -21,14 +21,6 @@ A list with a tree structure of the asset evolution
 \description{
 Computes the elementary securities for a multinomial model
 }
-\examples{
-n<-2
-q<-c(0.5, 0.5)
-u<-c(0.9,1.25)
-r0<-0.03
-S0<-100
-P<-ElementarySecurity( n, q, u, r0 )
-}
 \author{
 Pedro Guarderas
 }

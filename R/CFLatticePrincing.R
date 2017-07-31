@@ -6,11 +6,11 @@
 #' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
 #' @param S multinomial lattice
 #' @param option function defining the option over S
-#' @param type option type a character that specifies the king of option, by default 'E' european
+#' @param Type option type a character that specifies the king of option, by default 'E' european
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
-#' @seealso \code{\link{MLattice}}
+#' @seealso \code{\link{CFLattice}}
 #' @examples
 #' s<-0.3
 #' T<-0.25
@@ -43,10 +43,10 @@
 #' S<-CFLattice( N, U, S0 )
 #' 
 #' # Pricing american call
-#' Ca<-CFLatticePricing( S, call, EQ, R, Q, Type = 'A' )
+#' Ca<-CFLatticePricing( Q, EQ, R, S, call, Type = 'A' )
 #' 
 #' # Pricing american put
-#' Pa<-CFLatticePricing( S, put, EQ, R, Q, Type = 'A' )
+#' Pa<-CFLatticePricing( Q, EQ, R, S, put, Type = 'A' )
 #' @export
 CFLatticePricing<-function( Q, EQ, R, S, option, Type = 'E' ) {
   C<-S

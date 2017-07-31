@@ -17,10 +17,10 @@ CFTreePricing(Q, EQ, R, S, option, Type = "E", option.par)
 
 \item{option}{function defining the option over S}
 
-\item{option.par}{list of parameter for the option}
-
-\item{type}{option type a character that specifies the king of option, by default 'E' european
+\item{Type}{option type a character that specifies the king of option, by default 'E' european
 option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...}
+
+\item{option.par}{list of parameter for the option}
 }
 \value{
 A list with a tree structure of the asset evolution
@@ -53,10 +53,10 @@ Q<-c( 0.1, 0.7, 0.2 )
 R<-0.03
 
 S<-MTree( 5, u, S0 )
-C<-MPricing(  Q, R, EQ, S, call, Type = 'E', call.par )
+C<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 
 R<-MTree( 6, u, 0.03 )
-Cts<-MTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
+Cts<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 }
 \author{
 Pedro Guarderas

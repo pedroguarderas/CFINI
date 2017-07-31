@@ -17,7 +17,7 @@ CFLatticePricing(Q, EQ, R, S, option, Type = "E")
 
 \item{option}{function defining the option over S}
 
-\item{type}{option type a character that specifies the king of option, by default 'E' european
+\item{Type}{option type a character that specifies the king of option, by default 'E' european
 option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...}
 }
 \value{
@@ -58,13 +58,13 @@ EQ<-function(R,Q,C) {
 S<-CFLattice( N, U, S0 )
 
 # Pricing american call
-Ca<-CFLatticePricing( S, call, EQ, R, Q, Type = 'A' )
+Ca<-CFLatticePricing( Q, EQ, R, S, call, Type = 'A' )
 
 # Pricing american put
-Pa<-CFLatticePricing( S, put, EQ, R, Q, Type = 'A' )
+Pa<-CFLatticePricing( Q, EQ, R, S, put, Type = 'A' )
 }
 \seealso{
-\code{\link{MLattice}}
+\code{\link{CFLattice}}
 }
 \author{
 Pedro Guarderas

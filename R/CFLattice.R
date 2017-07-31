@@ -18,7 +18,7 @@
 #' R<-exp( r * T / N )
 #' q<-( R - d ) / ( u - d )
 #' U<-c( d, u )
-#' S<-MLattice( N, U, S0 )
+#' S<-CFLattice( N, U, S0 )
 #' @export
 CFLattice<-function( N, U, S0 ) {
   S<-list( S0, U * S0 )

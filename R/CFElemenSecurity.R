@@ -8,13 +8,7 @@
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
-#' @examples
-#' n<-2
-#' q<-c(0.5, 0.5)
-#' u<-c(0.9,1.25)
-#' r0<-0.03
-#' S0<-100
-#' P<-ElementarySecurity( n, q, u, r0 )
+#' @importFrom stats, dmultinom
 #' @export
 CFElemSecurity<-function( n, q, u, r ) {
   m<-length( q )

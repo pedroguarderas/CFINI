@@ -7,7 +7,7 @@
 #' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
 #' @param S multinomial lattice
 #' @param option function defining the option over S
-#' @param type option type a character that specifies the king of option, by default 'E' european
+#' @param Type option type a character that specifies the king of option, by default 'E' european
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @param option.par list of parameter for the option
 #' @return A list with a tree structure of the asset evolution
@@ -35,10 +35,10 @@
 #' R<-0.03
 #' 
 #' S<-MTree( 5, u, S0 )
-#' C<-MPricing(  Q, R, EQ, S, call, Type = 'E', call.par )
+#' C<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 #' 
 #' R<-MTree( 6, u, 0.03 )
-#' Cts<-MTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
+#' Cts<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 #' @export
 CFTreePricing<-function( Q, EQ, R, S, option, Type = 'E', option.par ) {
   C<-S

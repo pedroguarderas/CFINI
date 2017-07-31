@@ -31,7 +31,7 @@ S0<-100
 R<-exp( r * T / N )
 q<-( R - d ) / ( u - d )
 U<-c( d, u )
-S<-MLattice( N, U, S0 )
+S<-CFLattice( N, U, S0 )
 }
 \author{
 Pedro Guarderas
