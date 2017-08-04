@@ -52,7 +52,7 @@ S0<-100
 Q<-c( 0.1, 0.7, 0.2 )
 R<-0.03
 
-S<-MTree( 5, u, S0 )
+S<-CFTree( 5, u, S0 )
 C<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 
 R<-MTree( 6, u, 0.03 )
@@ -61,3 +61,4 @@ Cts<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 \author{
 Pedro Guarderas
 }
+

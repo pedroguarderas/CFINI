@@ -63,9 +63,10 @@ Ca<-CFLatticePricing( Q, EQ, R, S, call, Type = 'A' )
 # Pricing american put
 Pa<-CFLatticePricing( Q, EQ, R, S, put, Type = 'A' )
 }
-\seealso{
-\code{\link{CFLattice}}
-}
 \author{
 Pedro Guarderas
 }
+\seealso{
+\code{\link{CFLattice}}
+}
+
