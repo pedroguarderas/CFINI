@@ -18,3 +18,21 @@ arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
   }
   return X;
 }
+
+// [[Rcpp::export]]
+arma::colvec GridExpAddapt( const double& l, const double& a, const double& b, const double& N ) {
+  double i;
+  arma::colvec X( N );
+  double x, y, D, h;
+  
+  h = 1.0 / ( N - 1.0 );
+  
+  D = exp( l ) - 1.0;
+  x = ( a * exp( l ) - b ) / D;
+  y = ( b - a ) / D;
+  
+  for ( i = 0; i < N; i++ ) {
+    X(i) = x + y * exp( i * h * l );
+  }
+  return X;
+}

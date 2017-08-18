@@ -52,6 +52,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// GridExpAddapt
+arma::colvec GridExpAddapt(const double& l, const double& a, const double& b, const double& N);
+RcppExport SEXP _CFINI_GridExpAddapt(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const double& >::type l(lSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
+    Rcpp::traits::input_parameter< const double& >::type N(NSEXP);
+    rcpp_result_gen = Rcpp::wrap(GridExpAddapt(l, a, b, N));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TriDiagSolver
 void TriDiagSolver(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
 RcppExport SEXP _CFINI_TriDiagSolver(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
@@ -72,6 +86,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_CFINI_DiffusionSolverES", (DL_FUNC) &_CFINI_DiffusionSolverES, 6},
     {"_CFINI_DiffusionSolverCNS", (DL_FUNC) &_CFINI_DiffusionSolverCNS, 7},
     {"_CFINI_GridUniform", (DL_FUNC) &_CFINI_GridUniform, 3},
+    {"_CFINI_GridExpAddapt", (DL_FUNC) &_CFINI_GridExpAddapt, 4},
     {"_CFINI_TriDiagSolver", (DL_FUNC) &_CFINI_TriDiagSolver, 4},
     {"_rcpp_module_boot_PointMod", (DL_FUNC) &_rcpp_module_boot_PointMod, 0},
     {NULL, NULL, 0}
