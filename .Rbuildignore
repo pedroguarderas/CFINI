@@ -6,3 +6,5 @@
 ^README-.*\.png$
 ^cran-comments\.md$
 ^tests$
+^srcs$
+^anRpackage$
