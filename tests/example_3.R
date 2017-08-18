@@ -4,18 +4,15 @@ library( CFINI )
 
 t0<-0
 t1<-0.3
-# t1<-0.543
 Nt<-100
 t<-GridUniform( t0, t1, Nt )
 
-x0<-0
-x1<-1
+x0<--0.5
+x1<-0.5
 Nx<-100
 x<-GridUniform( x0, x1, Nx )
 
-# I<-sapply( x, FUN = function( x ) sin( pi * x ) )
-# I<-sapply( x, FUN = function( x ) exp( -( x - 0.5 )^2 ) / sqrt( 2 * pi ) )
-I<-sapply( x, FUN = function( x ) if ( x >= 0.4 & x <= 0.6 ) return( 1 ) else return( 0 ) )
+I<-sapply( x, FUN = function( x ) if ( abs(x) <= 0.1 ) return( 1 ) else return( 0 ) )
 A<-rep( 0, Nt )
 B<-rep( 0, Nt )
 

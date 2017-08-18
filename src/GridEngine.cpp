@@ -14,7 +14,7 @@ arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
   h = ( b - a ) / ( N - 1.0 );
   
   for ( i = 0; i < N; i++ ) {
-    X(i) = i * h;
+    X(i) = a + i * h;
   }
   return X;
 }
