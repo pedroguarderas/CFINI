@@ -22,19 +22,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// TriDiagSolver
-void TriDiagSolver(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
-RcppExport SEXP _CFINI_TriDiagSolver(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::colvec& >::type a(aSEXP);
-    Rcpp::traits::input_parameter< arma::colvec& >::type b(bSEXP);
-    Rcpp::traits::input_parameter< arma::colvec& >::type c(cSEXP);
-    Rcpp::traits::input_parameter< arma::colvec& >::type d(dSEXP);
-    TriDiagSolver(a, b, c, d);
-    return R_NilValue;
-END_RCPP
-}
 // DiffusionSolverCNS
 List DiffusionSolverCNS(const double& alpha, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
 RcppExport SEXP _CFINI_DiffusionSolverCNS(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
@@ -65,14 +52,27 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// TriDiagSolver
+void TriDiagSolver(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
+RcppExport SEXP _CFINI_TriDiagSolver(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::colvec& >::type a(aSEXP);
+    Rcpp::traits::input_parameter< arma::colvec& >::type b(bSEXP);
+    Rcpp::traits::input_parameter< arma::colvec& >::type c(cSEXP);
+    Rcpp::traits::input_parameter< arma::colvec& >::type d(dSEXP);
+    TriDiagSolver(a, b, c, d);
+    return R_NilValue;
+END_RCPP
+}
 
 RcppExport SEXP _rcpp_module_boot_PointMod();
 
 static const R_CallMethodDef CallEntries[] = {
     {"_CFINI_DiffusionSolverES", (DL_FUNC) &_CFINI_DiffusionSolverES, 6},
-    {"_CFINI_TriDiagSolver", (DL_FUNC) &_CFINI_TriDiagSolver, 4},
     {"_CFINI_DiffusionSolverCNS", (DL_FUNC) &_CFINI_DiffusionSolverCNS, 7},
     {"_CFINI_GridUniform", (DL_FUNC) &_CFINI_GridUniform, 3},
+    {"_CFINI_TriDiagSolver", (DL_FUNC) &_CFINI_TriDiagSolver, 4},
     {"_rcpp_module_boot_PointMod", (DL_FUNC) &_rcpp_module_boot_PointMod, 0},
     {NULL, NULL, 0}
 };

@@ -1,5 +1,7 @@
 #include <RcppArmadillo.h>
 
+#include "TriDiagSolver.h"
+
 using namespace Rcpp;
 
 //[[Rcpp::plugins(cpp14)]]

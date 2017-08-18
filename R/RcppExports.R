@@ -5,15 +5,15 @@ DiffusionSolverES <- function(alpha, I, A, B, t, x) {
     .Call('_CFINI_DiffusionSolverES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
 }
 
-TriDiagSolver <- function(a, b, c, d) {
-    invisible(.Call('_CFINI_TriDiagSolver', PACKAGE = 'CFINI', a, b, c, d))
-}
-
 DiffusionSolverCNS <- function(alpha, theta, I, A, B, t, x) {
     .Call('_CFINI_DiffusionSolverCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
 GridUniform <- function(a, b, N) {
     .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
+}
+
+TriDiagSolver <- function(a, b, c, d) {
+    invisible(.Call('_CFINI_TriDiagSolver', PACKAGE = 'CFINI', a, b, c, d))
 }
 
