@@ -21,8 +21,8 @@ theta<-0.5
 
 hx<-(x1-x0)/(Nx-1)
 ht<-(t1-t0)/(Nt-1)
-ht / ( hx * hx )
-1/alpha
+print( ht / ( hx * hx ) )
+print( 0.5 / alpha )
 
 U<-DiffusionSolverCNS( alpha, theta, I, A, B, t, x )
 
