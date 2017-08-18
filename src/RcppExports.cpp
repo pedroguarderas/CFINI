@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // GridEngine
 double GridEngine(const double a, const double b, const double N);
-RcppExport SEXP CFINI_GridEngine(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
+RcppExport SEXP _CFINI_GridEngine(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // DiffusionSolver
 List DiffusionSolver(const double& alpha, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const double& t0, const double& t1, const double& Nt, const double& x0, const double& x1, const double& Nx);
-RcppExport SEXP CFINI_DiffusionSolver(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP t0SEXP, SEXP t1SEXP, SEXP NtSEXP, SEXP x0SEXP, SEXP x1SEXP, SEXP NxSEXP) {
+RcppExport SEXP _CFINI_DiffusionSolver(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP t0SEXP, SEXP t1SEXP, SEXP NtSEXP, SEXP x0SEXP, SEXP x1SEXP, SEXP NxSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -40,9 +40,12 @@ BEGIN_RCPP
 END_RCPP
 }
 
+RcppExport SEXP _rcpp_module_boot_PointMod();
+
 static const R_CallMethodDef CallEntries[] = {
-    {"CFINI_GridEngine", (DL_FUNC) &CFINI_GridEngine, 3},
-    {"CFINI_DiffusionSolver", (DL_FUNC) &CFINI_DiffusionSolver, 10},
+    {"_CFINI_GridEngine", (DL_FUNC) &_CFINI_GridEngine, 3},
+    {"_CFINI_DiffusionSolver", (DL_FUNC) &_CFINI_DiffusionSolver, 10},
+    {"_rcpp_module_boot_PointMod", (DL_FUNC) &_rcpp_module_boot_PointMod, 0},
     {NULL, NULL, 0}
 };
 
