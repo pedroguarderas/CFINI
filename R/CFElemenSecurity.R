@@ -8,6 +8,7 @@
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
+#' @importFrom stats dmultinom
 #' @export
 CFElemSecurity<-function( n, q, u, r ) {
   m<-length( q )

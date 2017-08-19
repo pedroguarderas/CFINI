@@ -15,30 +15,6 @@
 #' regarded as the option
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
-#' @examples
-#' library( gtools )
-#' 
-#' # Risk neutral average
-#' EQ<-function( Q, C ) {
-#'   return( sum( Q * C ) )
-#' }
-#' 
-#' # Option
-#' call<-function( S, K ) {
-#'   max( S - K, 0 )
-#' }
-#' call.par<-list( K = 99 )
-#' 
-#' u<-c( 0.9, 1, 1.1 )
-#' S0<-100
-#' Q<-c( 0.1, 0.7, 0.2 )
-#' R<-0.03
-#' 
-#' S<-CFTree( 5, u, S0 )
-#' C<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
-#' 
-#' R<-MTree( 6, u, 0.03 )
-#' Cts<-CFTreePricing(  Q, R, EQ, S, call, Type = 'E', call.par )
 #' @export
 CFTreePricing<-function( Q, EQ, R, S, option, Type = 'E', option.par ) {
   C<-S

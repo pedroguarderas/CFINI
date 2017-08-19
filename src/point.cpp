@@ -1,4 +1,4 @@
-#include "point.hpp"
+#include "point.h"
 
 Point::Point( double x, double y ) : X(x), Y(y) {
 }

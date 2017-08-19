@@ -2,22 +2,22 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 DiffusionSolverES <- function(alpha, I, A, B, t, x) {
-    .Call('_CFINI_DiffusionSolverES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
+    .Call('CFINI_DiffusionSolverES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
 }
 
 DiffusionSolverCNS <- function(alpha, theta, I, A, B, t, x) {
-    .Call('_CFINI_DiffusionSolverCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
+    .Call('CFINI_DiffusionSolverCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
 GridUniform <- function(a, b, N) {
-    .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
+    .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
 GridExpAddapt <- function(l, a, b, N) {
-    .Call('_CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N)
+    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N)
 }
 
 TriDiagSolver <- function(a, b, c, d) {
-    invisible(.Call('_CFINI_TriDiagSolver', PACKAGE = 'CFINI', a, b, c, d))
+    invisible(.Call('CFINI_TriDiagSolver', PACKAGE = 'CFINI', a, b, c, d))
 }
 
