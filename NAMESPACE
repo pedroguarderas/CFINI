@@ -9,5 +9,5 @@ export(CFLatticePricing)
 export(CFTree)
 export(CFTreePricing)
 importFrom(gtools,combinations)
-importFrom(stats,dmultinom)
+#importFrom(stats,dmultinom)
 

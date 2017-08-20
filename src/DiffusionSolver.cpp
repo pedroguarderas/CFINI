@@ -61,7 +61,7 @@ List DiffusionSolverCNS( const double& alpha,
                          const arma::colvec& x ) {
   
   int n, i;
-  double dt, dx, lambda, h;
+  double dt, dxf, dxb, lambdaf, lambdab, h;
   int Nt, Nx, nt, nx;
   Nt = t.size();
   Nx = x.size();
@@ -71,6 +71,7 @@ List DiffusionSolverCNS( const double& alpha,
   
   arma::colvec a( Nx );
   arma::colvec b( Nx );
+  arma::colvec c( Nx );
   arma::colvec d( Nx );
   arma::mat u( Nt, Nx );
   
@@ -82,7 +83,7 @@ List DiffusionSolverCNS( const double& alpha,
   // Boundary conditions
   for ( n = 0; n < Nt; n++ ) {
     u( n, 0 ) = A( n );
-    u( n, Nx-1 ) = B( n );
+    u( n, nx ) = B( n );
   }
   
   // Solver
@@ -93,26 +94,34 @@ List DiffusionSolverCNS( const double& alpha,
     d( 0 ) = A( n );
     d( nx ) = B( n );
     
-    dx = x( 1 ) - x( 0 );
-    lambda = alpha * dt / ( dx * dx );
-    a( 0 ) = -theta * lambda;
-    b( 0 ) = 1.0 + 2.0 * theta * lambda;
+    dxf = x( 1 ) - x( 0 );
+    lambdaf = alpha * dt / ( dxf * dxf );
+
+    dxb = x( nx ) - x( nx - 1 );
+    lambdab = alpha * dt / ( dxb * dxf );
     
-    dx = x( nx ) - x( nx - 1 );
-    lambda = alpha * dt / ( dx * dx );
-    a( nx ) = -theta * lambda;
-    b( nx ) = 1.0 + 2.0 * theta * lambda;
+    a( 0 ) = -theta * lambdab;
+    a( nx ) = -theta * lambdab;
+    b( 0 ) = 1.0 + theta * ( lambdaf + lambdab );
+    b( nx ) = 1.0 + theta * ( lambdaf + lambdab );
+    c( 0 ) = -theta * lambdaf;
+    c( nx ) = -theta * lambdaf;
     
     for ( i = 1; i < nx; i++ ) {
-      dx = x( i + 1 ) - x( i );
-      lambda = alpha * dt / ( dx * dx );
-      a( i ) = -theta * lambda;
-      b( i ) = 1.0 + 2.0 * theta * lambda;
+      dxf = x( i + 1 ) - x( i );
+      dxb = x( i ) - x( i - 1 );
+      lambdab = alpha * dt / ( dxb * dxf );
+      lambdaf = alpha * dt / ( dxf * dxf );
       
-      d( i ) = u( n, i ) + ( 1.0 - theta ) * lambda * ( u( n, i + 1 ) - 2.0 * u( n, i ) + u( n, i - 1 ) );
+      a( i ) = -theta * lambdab;
+      b( i ) = 1.0 + theta * ( lambdaf + lambdab );
+      c( i ) = -theta * lambdaf;
+      
+      d( i ) = u( n, i ) + ( 1.0 - theta ) * 
+        ( lambdaf * ( u( n, i + 1 ) - u( n, i ) ) - lambdab * ( u( n, i ) - u( n, i - 1 ) ) ) ;
     }
     
-    TriDiagSolver( a, b, a, d );
+    TriDiagSolver( a, b, c, d );
     d( 0 ) = A( n );
     d( nx ) = B( n );
     

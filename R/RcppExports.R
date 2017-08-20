@@ -13,8 +13,8 @@ GridUniform <- function(a, b, N) {
     .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
-GridExpAddapt <- function(l, a, b, N) {
-    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N)
+GridExpAddapt <- function(l, a, b, N, E) {
+    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
 }
 
 TriDiagSolver <- function(a, b, c, d) {

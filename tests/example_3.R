@@ -3,7 +3,7 @@ library( RcppArmadillo )
 library( CFINI )
 
 t0<-0
-t1<-0.3
+t1<-1
 Nt<-100
 t<-GridUniform( t0, t1, Nt )
 
@@ -16,7 +16,7 @@ I<-sapply( x, FUN = function( x ) if ( abs(x) <= 0.1 ) return( 1 ) else return( 
 A<-rep( 0, Nt )
 B<-rep( 0, Nt )
 
-alpha<-1e-2
+alpha<-10^(-2.3)
 theta<-0.5
 
 hx<-(x1-x0)/(Nx-1)
@@ -26,6 +26,6 @@ print( 0.5 / alpha )
 
 U<-DiffusionSolverCNS( alpha, theta, I, A, B, t, x )
 
-persp( t, x, U$u, theta = 120, phi = 20, xlab = 't', ylab = 'x', zlab = 'u', col = 'gold',
+persp( t, x, U$u, theta = 80, phi = 45, xlab = 't', ylab = 'x', zlab = 'u', col = 'gold',
        box = TRUE, axes = TRUE, main = 'Diffusion solution' )
 
