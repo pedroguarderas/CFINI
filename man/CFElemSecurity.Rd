@@ -24,3 +24,4 @@ Computes the elementary securities for a multinomial model
 \author{
 Pedro Guarderas
 }
+

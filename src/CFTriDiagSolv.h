@@ -1,3 +1,6 @@
+#ifndef __CFTRIDIAG__
+#define __CFTRIDIAG__
+
 #include <RcppArmadillo.h>
 
 using namespace Rcpp;
@@ -6,7 +9,7 @@ using namespace Rcpp;
 // [[Rcpp::depends(RcppArmadillo)]]
 
 // [[Rcpp::export]]
-void TriDiagSolver( arma::colvec& a,
+void CFTriDiagSolv( arma::colvec& a,
                     arma::colvec& b,
                     arma::colvec& c,
                     arma::colvec& d ) {
@@ -33,3 +36,5 @@ void TriDiagSolver( arma::colvec& a,
   }
   
 }
+
+#endif

@@ -1,19 +1,31 @@
 #include <RcppArmadillo.h>
 
-#include "TriDiagSolver.h"
-
-using namespace Rcpp;
-
 //[[Rcpp::plugins(cpp14)]]
 // [[Rcpp::depends(RcppArmadillo)]]
 
+#include "CFTriDiagSolv.h"
+
+using namespace Rcpp;
+
+//' @title Diffusion solver
+//' @description Solver for standard diffusion problems
+//' @param alpha
+//' @param I
+//' @param A
+//' @param B
+//' @param t
+//' @param x
+//' @return List with solution parameters
+//' @note Diffusion solver for pricing options
+//' @author Pedro Guarderas
+//' @export
 // [[Rcpp::export]]
-List DiffusionSolverES( const double& alpha,
-                      const arma::colvec& I,
-                      const arma::colvec& A,
-                      const arma::colvec& B,
-                      const arma::colvec& t,
-                      const arma::colvec& x ) {
+List CFDiffSolvES( const double& alpha,
+                   const arma::colvec& I,
+                   const arma::colvec& A,
+                   const arma::colvec& B,
+                   const arma::colvec& t,
+                   const arma::colvec& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambda, h;
@@ -51,14 +63,27 @@ List DiffusionSolverES( const double& alpha,
                        Named( "x" ) = x );
 }
 
+//' @title Diffusion solver
+//' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
+//' @param alpha
+//' @param theta
+//' @param I
+//' @param A
+//' @param B
+//' @param t
+//' @param x
+//' @return List with solution parameters
+//' @note Diffusion solver for pricing options
+//' @author Pedro Guarderas
+//' @export
 // [[Rcpp::export]]
-List DiffusionSolverCNS( const double& alpha,
-                         const double& theta,
-                         const arma::colvec& I,
-                         const arma::colvec& A,
-                         const arma::colvec& B,
-                         const arma::colvec& t,
-                         const arma::colvec& x ) {
+List CFDiffSolvCNS( const double& alpha,
+                    const double& theta,
+                    const arma::colvec& I,
+                    const arma::colvec& A,
+                    const arma::colvec& B,
+                    const arma::colvec& t,
+                    const arma::colvec& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
@@ -121,7 +146,7 @@ List DiffusionSolverCNS( const double& alpha,
         ( lambdaf * ( u( n, i + 1 ) - u( n, i ) ) - lambdab * ( u( n, i ) - u( n, i - 1 ) ) ) ;
     }
     
-    TriDiagSolver( a, b, c, d );
+    CFTriDiagSolv( a, b, c, d );
     d( 0 ) = A( n );
     d( nx ) = B( n );
     

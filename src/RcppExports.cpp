@@ -6,9 +6,9 @@
 
 using namespace Rcpp;
 
-// DiffusionSolverES
-List DiffusionSolverES(const double& alpha, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
-RcppExport SEXP CFINI_DiffusionSolverES(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+// CFDiffSolvES
+List CFDiffSolvES(const double& alpha, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
+RcppExport SEXP _CFINI_CFDiffSolvES(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,13 +18,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(DiffusionSolverES(alpha, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(CFDiffSolvES(alpha, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
-// DiffusionSolverCNS
-List DiffusionSolverCNS(const double& alpha, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
-RcppExport SEXP CFINI_DiffusionSolverCNS(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+// CFDiffSolvCNS
+List CFDiffSolvCNS(const double& alpha, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
+RcppExport SEXP _CFINI_CFDiffSolvCNS(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -35,13 +35,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(DiffusionSolverCNS(alpha, theta, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(CFDiffSolvCNS(alpha, theta, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
 // GridUniform
 arma::colvec GridUniform(const double& a, const double& b, const double& N);
-RcppExport SEXP CFINI_GridUniform(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
+RcppExport SEXP _CFINI_GridUniform(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -54,7 +54,7 @@ END_RCPP
 }
 // GridExpAddapt
 arma::colvec GridExpAddapt(const double& l, const double& a, const double& b, const double& N, const double& E);
-RcppExport SEXP CFINI_GridExpAddapt(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP, SEXP ESEXP) {
+RcppExport SEXP _CFINI_GridExpAddapt(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP, SEXP ESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -67,26 +67,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// TriDiagSolver
-void TriDiagSolver(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
-RcppExport SEXP CFINI_TriDiagSolver(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
+// CFTriDiagSolv
+void CFTriDiagSolv(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
+RcppExport SEXP _CFINI_CFTriDiagSolv(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::colvec& >::type a(aSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type b(bSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type c(cSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type d(dSEXP);
-    TriDiagSolver(a, b, c, d);
+    CFTriDiagSolv(a, b, c, d);
     return R_NilValue;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"CFINI_DiffusionSolverES", (DL_FUNC) &CFINI_DiffusionSolverES, 6},
-    {"CFINI_DiffusionSolverCNS", (DL_FUNC) &CFINI_DiffusionSolverCNS, 7},
-    {"CFINI_GridUniform", (DL_FUNC) &CFINI_GridUniform, 3},
-    {"CFINI_GridExpAddapt", (DL_FUNC) &CFINI_GridExpAddapt, 5},
-    {"CFINI_TriDiagSolver", (DL_FUNC) &CFINI_TriDiagSolver, 4},
+    {"_CFINI_CFDiffSolvES", (DL_FUNC) &_CFINI_CFDiffSolvES, 6},
+    {"_CFINI_CFDiffSolvCNS", (DL_FUNC) &_CFINI_CFDiffSolvCNS, 7},
+    {"_CFINI_GridUniform", (DL_FUNC) &_CFINI_GridUniform, 3},
+    {"_CFINI_GridExpAddapt", (DL_FUNC) &_CFINI_GridExpAddapt, 5},
+    {"_CFINI_CFTriDiagSolv", (DL_FUNC) &_CFINI_CFTriDiagSolv, 4},
     {NULL, NULL, 0}
 };
 
