@@ -160,3 +160,110 @@ List CFDiffSolvCNS( const double& alpha,
                        Named( "t" ) = t,
                        Named( "x" ) = x );
 }
+
+//' @title Black-Scholes solver
+//' @description Solver for Black-Scholes models implemented with Crank-Nicolson scheme
+//' @param sigma
+//' @param rate
+//' @param theta
+//' @param I
+//' @param A
+//' @param B
+//' @param t
+//' @param x
+//' @return List with solution parameters
+//' @note pricing options
+//' @author Pedro Guarderas
+//' @export
+// [[Rcpp::export]]
+List CFBlackScholesSolvCNS( const double& sigma,
+                            const double& rate,
+                            const double& theta,
+                            const arma::colvec& I,
+                            const arma::colvec& A,
+                            const arma::colvec& B,
+                            const arma::colvec& t,
+                            const arma::colvec& x ) {
+  
+  int n, i;
+  double dt, dxf, dxb, lambdaf, lambdab, h;
+  double alpha, beta;
+  int Nt, Nx, nt, nx;
+  Nt = t.size();
+  Nx = x.size();
+  
+  alpha = ( sigma * sigma - 2.0 * rate ) / ( 2.0 * sigma * sigma );
+  beta = ( 2.0 * rate + sigma * sigma ) / ( 2.0 * sigma * sigma );
+  beta = beta * beta;
+  
+  nx = Nx - 1;
+  nt = Nt - 1;
+  
+  arma::colvec a( Nx );
+  arma::colvec b( Nx );
+  arma::colvec c( Nx );
+  arma::colvec d( Nx );
+  
+  arma::mat u( Nt, Nx );
+  
+  // Inicial condition
+  for ( i = 0; i < Nx; i++ ) {
+    u( nt, i ) = I( i );
+  }
+  
+  // Boundary conditions
+  for ( n = 0; n < Nt; n++ ) {
+    u( n, 0 ) = A( n );
+    u( n, nx ) = B( n );
+  }
+  
+  // Solver
+  // Crank-Nicolson scheme
+  for ( n = 0; n < nt; n++ ) {
+    dt = t( n + 1 ) - t( n );
+    
+    d( 0 ) = A( n );
+    d( nx ) = B( n );
+    
+    dxf = x( 1 ) - x( 0 );
+    lambdaf = sigma * dt / ( dxf * dxf );
+    
+    dxb = x( nx ) - x( nx - 1 );
+    lambdab = sigma * dt / ( dxb * dxf );
+    
+    a( 0 ) = -theta * lambdab;
+    a( nx ) = -theta * lambdab;
+    b( 0 ) = 1.0 + theta * ( lambdaf + lambdab );
+    b( nx ) = 1.0 + theta * ( lambdaf + lambdab );
+    c( 0 ) = -theta * lambdaf;
+    c( nx ) = -theta * lambdaf;
+    
+    for ( i = 1; i < nx; i++ ) {
+      dxf = x( i + 1 ) - x( i );
+      dxb = x( i ) - x( i - 1 );
+      lambdab = sigma * dt / ( dxb * dxf );
+      lambdaf = sigma * dt / ( dxf * dxf );
+      
+      a( i ) = -theta * lambdab;
+      b( i ) = 1.0 + theta * ( lambdaf + lambdab );
+      c( i ) = -theta * lambdaf;
+      
+      d( i ) = u( nt - n , i ) + ( 1.0 - theta ) * 
+        ( lambdaf * ( u( nt - n, i + 1 ) - u( nt - n, i ) ) - lambdab * ( u( nt - n, i ) - u( nt - n, i - 1 ) ) ) ;
+    }
+    
+    CFTriDiagSolv( a, b, c, d );
+    d( 0 ) = A( n );
+    d( nx ) = B( n );
+    
+    for ( i = 0; i < Nx; i++ ) {
+      // u( nt - n - 1, i ) = std::exp( alpha * x( i ) ) * std::exp( beta * ( t( nt ) - t( nt - n ) ) ) * d( i );
+      u( nt -n - 1, i ) = d( i );
+    }
+    
+  }
+  
+  return List::create( Named( "u" ) = u,
+                       Named( "t" ) = t,
+                       Named( "x" ) = x );
+}

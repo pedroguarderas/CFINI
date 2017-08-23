@@ -34,6 +34,24 @@ CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
     .Call('_CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
+#' @title Black-Scholes solver
+#' @description Solver for Black-Scholes models implemented with Crank-Nicolson scheme
+#' @param sigma
+#' @param rate
+#' @param theta
+#' @param I
+#' @param A
+#' @param B
+#' @param t
+#' @param x
+#' @return List with solution parameters
+#' @note pricing options
+#' @author Pedro Guarderas
+#' @export
+CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
+    .Call('_CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
+}
+
 GridUniform <- function(a, b, N) {
     .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
