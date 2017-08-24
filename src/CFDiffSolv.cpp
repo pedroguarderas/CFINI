@@ -194,7 +194,7 @@ List CFBlackScholesSolvCNS( const double& sigma,
   
   alpha = ( sigma * sigma - 2.0 * rate ) / ( 2.0 * sigma * sigma );
   beta = ( 2.0 * rate + sigma * sigma ) / ( 2.0 * sigma * sigma );
-  beta = beta * beta;
+  beta = -beta * beta;
   
   nx = Nx - 1;
   nt = Nt - 1;
@@ -205,10 +205,11 @@ List CFBlackScholesSolvCNS( const double& sigma,
   arma::colvec d( Nx );
   
   arma::mat u( Nt, Nx );
+  arma::mat v( Nt, Nx );
   
   // Inicial condition
   for ( i = 0; i < Nx; i++ ) {
-    u( nt, i ) = I( i );
+    u( 0, i ) = I( i );
   }
   
   // Boundary conditions
@@ -248,8 +249,8 @@ List CFBlackScholesSolvCNS( const double& sigma,
       b( i ) = 1.0 + theta * ( lambdaf + lambdab );
       c( i ) = -theta * lambdaf;
       
-      d( i ) = u( nt - n , i ) + ( 1.0 - theta ) * 
-        ( lambdaf * ( u( nt - n, i + 1 ) - u( nt - n, i ) ) - lambdab * ( u( nt - n, i ) - u( nt - n, i - 1 ) ) ) ;
+      d( i ) = u( n, i ) + ( 1.0 - theta ) * 
+        ( lambdaf * ( u( n, i + 1 ) - u( n, i ) ) - lambdab * ( u( n, i ) - u( n, i - 1 ) ) ) ;
     }
     
     CFTriDiagSolv( a, b, c, d );
@@ -257,13 +258,19 @@ List CFBlackScholesSolvCNS( const double& sigma,
     d( nx ) = B( n );
     
     for ( i = 0; i < Nx; i++ ) {
-      // u( nt - n - 1, i ) = std::exp( alpha * x( i ) ) * std::exp( beta * ( t( nt ) - t( nt - n ) ) ) * d( i );
-      u( nt -n - 1, i ) = d( i );
+      u( n + 1, i ) = d( i );
     }
     
   }
   
-  return List::create( Named( "u" ) = u,
+  for ( i = 0; i < Nx; i++ ) {
+    for ( n = 0; n < Nt; n++ ) {
+      v( n, i ) = exp( alpha * x( i ) ) * exp( beta * ( t( nt ) - t( nt - n ) ) ) * u( nt - n, i );
+    }
+    d( i ) = exp( x(i) );
+  }
+  
+  return List::create( Named( "u" ) = v,
                        Named( "t" ) = t,
-                       Named( "x" ) = x );
+                       Named( "x" ) = d );
 }
