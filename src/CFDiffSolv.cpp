@@ -187,11 +187,12 @@ List CFBlackScholesSolvCNS( const double& sigma,
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
-  double alpha, beta;
+  double D, alpha, beta;
   int Nt, Nx, nt, nx;
   Nt = t.size();
   Nx = x.size();
   
+  D = 1.0;
   alpha = ( sigma * sigma - 2.0 * rate ) / ( 2.0 * sigma * sigma );
   beta = ( 2.0 * rate + sigma * sigma ) / ( 2.0 * sigma * sigma );
   beta = -beta * beta;
@@ -227,10 +228,10 @@ List CFBlackScholesSolvCNS( const double& sigma,
     d( nx ) = B( n );
     
     dxf = x( 1 ) - x( 0 );
-    lambdaf = sigma * dt / ( dxf * dxf );
+    lambdaf = D * dt / ( dxf * dxf );
     
     dxb = x( nx ) - x( nx - 1 );
-    lambdab = sigma * dt / ( dxb * dxf );
+    lambdab = D * dt / ( dxb * dxf );
     
     a( 0 ) = -theta * lambdab;
     a( nx ) = -theta * lambdab;
@@ -242,8 +243,8 @@ List CFBlackScholesSolvCNS( const double& sigma,
     for ( i = 1; i < nx; i++ ) {
       dxf = x( i + 1 ) - x( i );
       dxb = x( i ) - x( i - 1 );
-      lambdab = sigma * dt / ( dxb * dxf );
-      lambdaf = sigma * dt / ( dxf * dxf );
+      lambdab = D * dt / ( dxb * dxf );
+      lambdaf = D * dt / ( dxf * dxf );
       
       a( i ) = -theta * lambdab;
       b( i ) = 1.0 + theta * ( lambdaf + lambdab );
