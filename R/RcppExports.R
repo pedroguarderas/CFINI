@@ -14,7 +14,7 @@
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvES <- function(alpha, I, A, B, t, x) {
-    .Call('CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
+    .Call('_CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
 }
 
 #' @title Diffusion solver
@@ -31,7 +31,7 @@ CFDiffSolvES <- function(alpha, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
-    .Call('CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
+    .Call('_CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
 #' @title Black-Scholes solver
@@ -49,15 +49,15 @@ CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
-    .Call('CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
+    .Call('_CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
 }
 
 GridUniform <- function(a, b, N) {
-    .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
+    .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
 GridExpAddapt <- function(l, a, b, N, E) {
-    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
+    .Call('_CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
 }
 
 #' @title Thiele equations solver
@@ -72,10 +72,10 @@ GridExpAddapt <- function(l, a, b, N, E) {
 #' @author Pedro Guarderas
 #' @export
 CFThieleSolv <- function(t, V0, b, B, theta = 0.5) {
-    .Call('CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
+    .Call('_CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
 }
 
 CFTriDiagSolv <- function(a, b, c, d) {
-    invisible(.Call('CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
+    invisible(.Call('_CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
 }
 
