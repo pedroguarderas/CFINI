@@ -14,7 +14,7 @@
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvES <- function(alpha, I, A, B, t, x) {
-    .Call('_CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
+    .Call('CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
 }
 
 #' @title Diffusion solver
@@ -31,7 +31,7 @@ CFDiffSolvES <- function(alpha, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
-    .Call('_CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
+    .Call('CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
 #' @title Black-Scholes solver
@@ -49,15 +49,15 @@ CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
-    .Call('_CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
+    .Call('CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
 }
 
 GridUniform <- function(a, b, N) {
-    .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
+    .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
 GridExpAddapt <- function(l, a, b, N, E) {
-    .Call('_CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
+    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
 }
 
 #' @title Thiele equations solver
@@ -70,12 +70,24 @@ GridExpAddapt <- function(l, a, b, N, E) {
 #' @return Return a list with the mathematical reserve, the time grid.
 #' @note The solver is implemented to compute the solution forwards in time.
 #' @author Pedro Guarderas
+#' @useDynLib CFINI
+#' @importFrom Rcpp sourceCpp
+#' @exportPattern("^[[:alpha:]]+")
 #' @export
 CFThieleSolv <- function(t, V0, b, B, theta = 0.5) {
-    .Call('_CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
+    .Call('CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
 }
 
+#' @title Tridiagonal solver
+#' @description Solver tridiagonal matrices.
+#' @param alpha
+#' @param a lower diagonal
+#' @param b diagonal
+#' @param c upper diagonal
+#' @param d image of the solution vector, which over written with the solution
+#' @author Pedro Guarderas
+#' @export
 CFTriDiagSolv <- function(a, b, c, d) {
-    invisible(.Call('_CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
+    invisible(.Call('CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
 }
 

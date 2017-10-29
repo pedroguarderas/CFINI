@@ -4,7 +4,8 @@
 \alias{CFTreePricing}
 \title{Pricing options with a multinomial tree}
 \usage{
-CFTreePricing(Q, EQ, R, S, option, Type = "E", option.par)
+CFTreePricing(Q, EQ, R, S, option = identity, Type = "E",
+  option.par = NULL)
 }
 \arguments{
 \item{Q}{equivalent discrete martingale measure}
@@ -36,4 +37,3 @@ regarded as the option
 \author{
 Pedro Guarderas
 }
-

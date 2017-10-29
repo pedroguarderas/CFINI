@@ -18,4 +18,3 @@ Diffusion solver for pricing options
 \author{
 Pedro Guarderas
 }
-

@@ -18,4 +18,3 @@ pricing options
 \author{
 Pedro Guarderas
 }
-
