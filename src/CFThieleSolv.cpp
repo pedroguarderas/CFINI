@@ -1,26 +1,12 @@
 
-#include <RcppArmadillo.h>
+#include "CFThieleSolv.h"
 
-using namespace Rcpp;
-
-
-//' @title Thiele equations solver
-//' @description Solver for Thiele equation and computation of Mathematical reserves. The solver 
-//' is implemented with a Crank-Nicolson algorithm.
-//' @param t time grid, could be adapted
-//' @param V0 initial mathematical reserve
-//' @param b fixed benefits
-//' @param B transition benefits
-//' @return Return a list with the mathematical reserve, the time grid.
-//' @note The solver is implemented to compute the solution forwards in time.
-//' @author Pedro Guarderas
-//' @export
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 List CFThieleSolv( const arma::colvec& t,
                    const arma::colvec& V0,
                    const arma::mat& b,
                    const arma::cube& B,
-                   const double& theta = 0.5 ) {
+                   const double& theta ) {
   
   int M, N, n, i;
   double dt;

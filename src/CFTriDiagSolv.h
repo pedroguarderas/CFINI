@@ -1,40 +1,27 @@
-#ifndef __CFTRIDIAG__
-#define __CFTRIDIAG__
+#ifndef __CF_TRIDIAG_SOLV__
+#define __CF_TRIDIAG_SOLV__
 
 #include <RcppArmadillo.h>
 
-using namespace Rcpp;
-
-//[[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp14)]]
 // [[Rcpp::depends(RcppArmadillo)]]
 
+using namespace Rcpp;
+
+//--------------------------------------------------------------------------------------------------
+//' @title Tridiagonal solver
+//' @description Solver tridiagonal matrices.
+//' @param alpha
+//' @param a lower diagonal
+//' @param b diagonal
+//' @param c upper diagonal
+//' @param d image of the solution vector, which over written with the solution
+//' @author Pedro Guarderas
+//' @export
 // [[Rcpp::export]]
 void CFTriDiagSolv( arma::colvec& a,
                     arma::colvec& b,
                     arma::colvec& c,
-                    arma::colvec& d ) {
-  
-  double mu;
-  int N = d.size();
-  int i;
-  
-  N--; 
-  c(0) /= b(0);
-  d(0) /= b(0);
-  
-  // Forward recursion
-  for ( i = 1; i < N; i++ ) {
-    c(i) /= b( i ) - a( i ) * c( i - 1 );
-    d( i ) = ( d( i ) - a( i ) * d( i - 1 ) ) / ( b( i ) - a( i ) * c( i - 1 ) );
-  }
-  
-  d( N ) = ( d( N ) - a( N ) * d( N - 1 ) ) / ( b( N ) - a( N ) * c( N - 1 ) );
-  
-  // Backsubstitution
-  for ( i = N; i-- > 0; ) {
-    d( i ) -= c( i ) * d( i + 1 );
-  }
-  
-}
+                    arma::colvec& d );
 
 #endif

@@ -1,11 +1,7 @@
-#include <RcppArmadillo.h>
 
-using namespace Rcpp;
+#include "CFGridEngine.h"
 
-//[[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
-
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
   double i;
   arma::colvec X( N );
@@ -19,7 +15,7 @@ arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
   return X;
 }
 
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 arma::colvec GridExpAddapt( const double& l, const double& a, const double& b, const double& N,
                             const double& E ) {
   double i;

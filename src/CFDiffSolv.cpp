@@ -1,25 +1,7 @@
-#include <RcppArmadillo.h>
 
-//[[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
+#include "CFDiffSolv.h"
 
-#include "CFTriDiagSolv.h"
-
-using namespace Rcpp;
-
-//' @title Diffusion solver
-//' @description Solver for standard diffusion problems
-//' @param alpha
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
-//' @return List with solution parameters
-//' @note Diffusion solver for pricing options
-//' @author Pedro Guarderas
-//' @export
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 List CFDiffSolvES( const double& alpha,
                    const arma::colvec& I,
                    const arma::colvec& A,
@@ -63,20 +45,7 @@ List CFDiffSolvES( const double& alpha,
                        Named( "x" ) = x );
 }
 
-//' @title Diffusion solver
-//' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
-//' @param alpha
-//' @param theta
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
-//' @return List with solution parameters
-//' @note Diffusion solver for pricing options
-//' @author Pedro Guarderas
-//' @export
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 List CFDiffSolvCNS( const double& alpha,
                     const double& theta,
                     const arma::colvec& I,
@@ -161,21 +130,7 @@ List CFDiffSolvCNS( const double& alpha,
                        Named( "x" ) = x );
 }
 
-//' @title Black-Scholes solver
-//' @description Solver for Black-Scholes models implemented with Crank-Nicolson scheme
-//' @param sigma
-//' @param rate
-//' @param theta
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
-//' @return List with solution parameters
-//' @note pricing options
-//' @author Pedro Guarderas
-//' @export
-// [[Rcpp::export]]
+//--------------------------------------------------------------------------------------------------
 List CFBlackScholesSolvCNS( const double& sigma,
                             const double& rate,
                             const double& theta,
