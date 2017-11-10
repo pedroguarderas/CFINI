@@ -52,10 +52,28 @@ CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
     .Call('CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
 }
 
+#' @title Uniform grid
+#' @description 
+#' @param a
+#' @param b
+#' @param N
+#' @return Grid.
+#' @author Pedro Guarderas
+#' @export
 GridUniform <- function(a, b, N) {
     .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
+#' @title Exponential grid
+#' @description
+#' @param l
+#' @param a
+#' @param b
+#' @param n
+#' @param E
+#' @return Grid.
+#' @author Pedro Guarderas
+#' @export
 GridExpAddapt <- function(l, a, b, N, E) {
     .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
 }
