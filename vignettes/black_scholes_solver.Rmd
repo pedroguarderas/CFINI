@@ -1,0 +1,71 @@
+---
+title: "Black Scholes solver"
+author: "Pedro Guarderas"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Running a MAUT Model}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+1. Loading packages
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+library( CFINI )
+library( plotly )
+library( Rcpp )
+library( RcppArmadillo )
+```
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+sigma<-1
+r<-0.05
+alpha<-( sigma^2 - 2 * r ) / ( 2 * sigma^2 )
+beta<- -( ( 2 * r + sigma^2 ) / ( 2 * sigma^2 ) )^2
+```
+
+3. Time grid
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+t0<-0
+t1<-1
+t1<-t1 * ( sigma^2 ) / 2
+Nt<-500
+t<-GridExpAddapt( 1, t0, t1, Nt, 1 )
+```
+
+4. Value grid
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+x0<--8
+x1<-8
+Nx<-50
+x<-GridExpAddapt( -4.5, x0, x1, Nx, 1 )
+```
+
+3. Initial conditions
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+K<-1500
+I<-sapply( x, FUN = function( x ) exp( -alpha * x ) * max( exp( x ) - K, 0 ) )
+```
+
+4. Boundary conditions
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+A<-rep( 0, Nt )
+B<-sapply( t, FUN = function( t ) exp( -alpha * x1 ) * (  exp( x1 ) - K ) * exp( -beta * t ) )
+```
+
+5. Black-Scholes solver
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+theta<-0.5
+V<-CFBlackScholesSolvCNS( sigma, r, theta, I, A, B, t, x )
+```
+
+6. Plotting results
+```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
+plot_ly( x = V$t[,1], y = V$x[,1], z = V$u, alpha = 0.8 ) %>% 
+  layout( scene = list(
+      xaxis = list(title = "t"),
+      yaxis = list(title = "S"),
+      zaxis = list(title = "u") ) ) %>%
+  add_surface()
+```
