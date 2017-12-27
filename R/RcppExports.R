@@ -3,53 +3,54 @@
 
 #' @title Diffusion solver
 #' @description Solver for standard diffusion problems
-#' @param alpha
-#' @param I
-#' @param A
-#' @param B
-#' @param t
-#' @param x
+#' @param alpha Diffusion parameter
+#' @param I Initial condition
+#' @param A Inferior boundary condition
+#' @param B Superior boundary condition
+#' @param t Time grid
+#' @param x Spatial grid
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvES <- function(alpha, I, A, B, t, x) {
-    .Call('CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
+    .Call('_CFINI_CFDiffSolvES', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
 }
 
 #' @title Diffusion solver
 #' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
-#' @param alpha
-#' @param theta
-#' @param I
-#' @param A
-#' @param B
-#' @param t
-#' @param x
+#' @param alpha Diffusion parameter
+#' @param theta Parameter for the Crank-Nicolson scheme
+#' @param I Initial condition
+#' @param A Inferior boundary condition
+#' @param B Superior boundary condition
+#' @param t Time grid
+#' @param x Spatial grid
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
 CFDiffSolvCNS <- function(alpha, theta, I, A, B, t, x) {
-    .Call('CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
+    .Call('_CFINI_CFDiffSolvCNS', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
 }
 
 #' @title Black-Scholes solver
-#' @description Solver for Black-Scholes models implemented with Crank-Nicolson scheme
-#' @param sigma
-#' @param rate
-#' @param theta
-#' @param I
-#' @param A
-#' @param B
-#' @param t
-#' @param x
+#' @description Solver for Black-Scholes models implemented with the Crank-Nicolson numerical 
+#' scheme
+#' @param sigma Volatility
+#' @param rate Interest rate
+#' @param theta Parameter for the Crank-Nicolson scheme
+#' @param I Initial condition
+#' @param A Inferior boundary condition
+#' @param B Superior boundary condition
+#' @param t Time grid
+#' @param x Spatial grid
 #' @return List with solution parameters
 #' @note pricing options
 #' @author Pedro Guarderas
 #' @export
 CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
-    .Call('CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
+    .Call('_CFINI_CFBlackScholesSolvCNS', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
 }
 
 #' @title Uniform grid
@@ -61,7 +62,7 @@ CFBlackScholesSolvCNS <- function(sigma, rate, theta, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 GridUniform <- function(a, b, N) {
-    .Call('CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
+    .Call('_CFINI_GridUniform', PACKAGE = 'CFINI', a, b, N)
 }
 
 #' @title Exponential grid
@@ -75,7 +76,7 @@ GridUniform <- function(a, b, N) {
 #' @author Pedro Guarderas
 #' @export
 GridExpAddapt <- function(l, a, b, N, E) {
-    .Call('CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
+    .Call('_CFINI_GridExpAddapt', PACKAGE = 'CFINI', l, a, b, N, E)
 }
 
 #' @title Thiele equations solver
@@ -93,7 +94,7 @@ GridExpAddapt <- function(l, a, b, N, E) {
 #' @exportPattern("^[[:alpha:]]+")
 #' @export
 CFThieleSolv <- function(t, V0, b, B, theta = 0.5) {
-    .Call('CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
+    .Call('_CFINI_CFThieleSolv', PACKAGE = 'CFINI', t, V0, b, B, theta)
 }
 
 #' @title Tridiagonal solver
@@ -106,6 +107,6 @@ CFThieleSolv <- function(t, V0, b, B, theta = 0.5) {
 #' @author Pedro Guarderas
 #' @export
 CFTriDiagSolv <- function(a, b, c, d) {
-    invisible(.Call('CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
+    invisible(.Call('_CFINI_CFTriDiagSolv', PACKAGE = 'CFINI', a, b, c, d))
 }
 

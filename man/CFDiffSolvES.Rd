@@ -6,6 +6,19 @@
 \usage{
 CFDiffSolvES(alpha, I, A, B, t, x)
 }
+\arguments{
+\item{alpha}{Diffusion parameter}
+
+\item{I}{Initial condition}
+
+\item{A}{Inferior boundary condition}
+
+\item{B}{Superior boundary condition}
+
+\item{t}{Time grid}
+
+\item{x}{Spatial grid}
+}
 \value{
 List with solution parameters
 }

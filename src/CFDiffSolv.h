@@ -13,12 +13,12 @@ using namespace Rcpp;
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver
 //' @description Solver for standard diffusion problems
-//' @param alpha
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
+//' @param alpha Diffusion parameter
+//' @param I Initial condition
+//' @param A Inferior boundary condition
+//' @param B Superior boundary condition
+//' @param t Time grid
+//' @param x Spatial grid
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
@@ -32,15 +32,15 @@ List CFDiffSolvES( const double& alpha,
                    const arma::colvec& x );
 
 //--------------------------------------------------------------------------------------------------
-//' @title Diffusion solver
+//' @title Diffusion solver with Crank-Nicolson scheme
 //' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
-//' @param alpha
-//' @param theta
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
+//' @param alpha Diffusion parameter
+//' @param theta Parameter for the Crank-Nicolson scheme
+//' @param I Initial condition
+//' @param A Inferior boundary condition
+//' @param B Superior boundary condition
+//' @param t Time grid
+//' @param x Spatial grid
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
@@ -56,15 +56,16 @@ List CFDiffSolvCNS( const double& alpha,
 
 //--------------------------------------------------------------------------------------------------
 //' @title Black-Scholes solver
-//' @description Solver for Black-Scholes models implemented with Crank-Nicolson scheme
-//' @param sigma
-//' @param rate
-//' @param theta
-//' @param I
-//' @param A
-//' @param B
-//' @param t
-//' @param x
+//' @description Solver for Black-Scholes models implemented with the Crank-Nicolson numerical 
+//' scheme
+//' @param sigma Volatility
+//' @param rate Interest rate
+//' @param theta Parameter for the Crank-Nicolson scheme
+//' @param I Initial condition
+//' @param A Inferior boundary condition
+//' @param B Superior boundary condition
+//' @param t Time grid
+//' @param x Spatial grid
 //' @return List with solution parameters
 //' @note pricing options
 //' @author Pedro Guarderas

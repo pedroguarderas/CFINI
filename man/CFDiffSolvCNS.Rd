@@ -6,6 +6,21 @@
 \usage{
 CFDiffSolvCNS(alpha, theta, I, A, B, t, x)
 }
+\arguments{
+\item{alpha}{Diffusion parameter}
+
+\item{theta}{Parameter for the Crank-Nicolson scheme}
+
+\item{I}{Initial condition}
+
+\item{A}{Inferior boundary condition}
+
+\item{B}{Superior boundary condition}
+
+\item{t}{Time grid}
+
+\item{x}{Spatial grid}
+}
 \value{
 List with solution parameters
 }

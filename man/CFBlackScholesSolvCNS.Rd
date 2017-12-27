@@ -6,11 +6,29 @@
 \usage{
 CFBlackScholesSolvCNS(sigma, rate, theta, I, A, B, t, x)
 }
+\arguments{
+\item{sigma}{Volatility}
+
+\item{rate}{Interest rate}
+
+\item{theta}{Parameter for the Crank-Nicolson scheme}
+
+\item{I}{Initial condition}
+
+\item{A}{Inferior boundary condition}
+
+\item{B}{Superior boundary condition}
+
+\item{t}{Time grid}
+
+\item{x}{Spatial grid}
+}
 \value{
 List with solution parameters
 }
 \description{
-Solver for Black-Scholes models implemented with Crank-Nicolson scheme
+Solver for Black-Scholes models implemented with the Crank-Nicolson numerical 
+scheme
 }
 \note{
 pricing options
