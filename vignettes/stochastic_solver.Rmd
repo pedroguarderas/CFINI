@@ -33,12 +33,12 @@ for ( i in 2:d ) {
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 t<-seq( 0, 2, 0.0001 )
 d<-2
-X0<-matrix( c( 1, 2 ), 2, 1 )
+X0<-matrix( c( 0, 0 ), 2, 1 )
 b<-function( t, X ) { 
-  return( matrix( c( exp( 0.04 * t ), exp( 0.03 * t ) ), 2, 1 ) )
+  return( matrix( c( exp( -0.04 * t ), exp( -0.03 * t ) ), 2, 1 ) )
 }
 s<-function( t, X ) { 
-  return( matrix( c( exp( 0.02 * t ), exp( 2 * t ), exp( 2 * t ), exp( 0.05 * t ) ), 2, 2 ) )
+  return( matrix( c( exp( 0.2 * t ), exp( 2 * t ), exp( 2 * t ), exp( 0.5 * t ) ), 2, 2 ) )
 }
 ```
 

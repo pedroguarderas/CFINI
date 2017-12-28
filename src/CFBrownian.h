@@ -24,7 +24,7 @@ arma::mat CFRBrownian( const int& d,
 
 //--------------------------------------------------------------------------------------------------
 //' @title Brownian motion
-//' @description Simulate d-dimensional Browninan motion
+//' @description Simulate d-dimensional Brownian motion
 //' @param d Dimension
 //' @param t Time grid
 //' @return List with solution parameters
