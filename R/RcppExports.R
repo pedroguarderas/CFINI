@@ -14,10 +14,14 @@ CFRBrownian <- function(d, t) {
 }
 
 #' @title Brownian motion
-#' @description Simulate d-dimensional Browninan motion
-#' @param d Dimension
-#' @param t Time grid
-#' @return List with solution parameters
+#' @description Simulate d-dimensional Brownian motion
+#' @param d1
+#' @param d2
+#' @param X0
+#' @param b
+#' @param s
+#' @param t
+#' @return Solution to the stochastic differential equation
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
