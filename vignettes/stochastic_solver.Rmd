@@ -1,0 +1,59 @@
+---
+title: "Stochastic solver simulation"
+author: "Pedro Guarderas"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Running a MAUT Model}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+1. Loading packages
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+library( CFINI )
+```
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+t<-seq( 0, 1, 0.0001 )
+d<-40
+W<-CFRBrownian( d, t )
+```
+
+```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
+cols<-sample( colors()[ grepl( 'blue', colors() ) ], d, replace = TRUE )
+
+plot( t, W[,1], type = 'l', col = cols[1], ylim = c( -3.5, 3.5 ), xlab = 't', ylab = 'W' )
+for ( i in 2:d ) {
+  points( t, W[,i], type = 'l', col = cols[i] )
+}
+```
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+t<-seq( 0, 2, 0.0001 )
+d<-2
+X0<-matrix( c( 1, 2 ), 2, 1 )
+b<-function( t, X ) { 
+  return( matrix( c( exp( 0.04 * t ), exp( 0.03 * t ) ), 2, 1 ) )
+}
+s<-function( t, X ) { 
+  return( matrix( c( exp( 0.02 * t ), exp( 2 * t ), exp( 2 * t ), exp( 0.05 * t ) ), 2, 2 ) )
+}
+```
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+X<-CFStochSolv( d, d, X0, b, s, t )
+```
+
+```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
+plot( X[,1], X[,2], col = 'midnightblue', type = 'l', lwd = 1.5 )
+```
+
+```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
+plot( t, X[,1], col = 'midnightblue', type = 'l', lwd = 1.5 )
+```
+
+```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
+plot( t, X[,2], col = 'midnightblue', type = 'l', lwd = 1.5 )
+```

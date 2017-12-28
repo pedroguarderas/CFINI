@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{CFDiffSolvCNS}
 \alias{CFDiffSolvCNS}
-\title{Diffusion solver}
+\title{Diffusion solver with Crank-Nicolson scheme}
 \usage{
 CFDiffSolvCNS(alpha, theta, I, A, B, t, x)
 }
