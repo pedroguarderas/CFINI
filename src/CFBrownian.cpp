@@ -27,7 +27,7 @@ arma::mat CFRBrownian( const int& d,
   return( W );
 }
 
-
+//--------------------------------------------------------------------------------------------------
 arma::mat CFStochSolv( const int& d1,
                        const int& d2,
                        const arma::colvec& X0,
