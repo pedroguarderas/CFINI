@@ -4,18 +4,13 @@
 \alias{CFStochSolv}
 \title{Brownian motion}
 \usage{
-CFStochSolv(d, X0, b, s, t)
-}
-\arguments{
-\item{d}{Dimension}
-
-\item{t}{Time grid}
+CFStochSolv(d1, d2, X0, b, s, t)
 }
 \value{
-List with solution parameters
+Solution to the stochastic differential equation
 }
 \description{
-Simulate d-dimensional Browninan motion
+Simulate d-dimensional Brownian motion
 }
 \note{
 Diffusion solver for pricing options
