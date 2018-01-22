@@ -7,7 +7,7 @@
 #' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
 #' @param S multinomial lattice
 #' @param option function defining the option over S
-#' @param Type option type a character that specifies the king of option, by default 'E' european
+#' @param type option type a character that specifies the king of option, by default 'E' european
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @param option.par list of parameter for the option
 #' @return A list with a tree structure of the asset evolution
@@ -16,7 +16,7 @@
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
 #' @export
-CFTreePricing<-function( Q, EQ, R, S, option = identity, Type = 'E', option.par = NULL ) {
+CFTreePricing<-function( Q, EQ, R, S, option = identity, type = 'E', option.par = NULL ) {
   C<-S
   N<-length( C )
   n<-length( Q )
@@ -35,7 +35,15 @@ CFTreePricing<-function( Q, EQ, R, S, option = identity, Type = 'E', option.par 
   }
   
   C[[N]]<-sapply( C[[N]], FUN = function( x ) do.call( option, c( x, option.par ) ) )
-  
+  if ( type == 'S' ) {
+    if ( check == 1 ) {
+      C[[N]]<-C[[N]] / ( 1 + R )  
+    } else if ( check == 2 ) {
+      C[[N]]<-C[[N]] / ( 1 + R[[N]] )
+    }
+  } 
+ 
+  # Reduce the total lenght list 
   N<-N-1
   CN<-combinations( n, N, set = TRUE, repeats.allowed = TRUE )
   
@@ -81,9 +89,17 @@ CFTreePricing<-function( Q, EQ, R, S, option = identity, Type = 'E', option.par 
       CQ<-EQ( Q, v * C[[2]][1:n] )
     }
     
-    if ( Type %in% c( 'E', 'F' ) ) {
+    if ( type %in% c( 'E', 'F' ) ) {
       C[[t]]<-CQ
-    } else if ( Type == 'A' ) {
+    } else if ( type == 'S' ) {
+      if ( check == 1 ) {
+        SW<-sapply( 1:length( CQ ), FUN = function( k ) do.call( option, c( S[[t]][k], option.par ) ) / ( 1 + R ) )
+        C[[t]]<-CQ + SW
+      } else if ( check == 2 ) {
+        SW<-sapply( 1:length( CQ ), FUN = function( k ) do.call( option, c( S[[t]][k], option.par ) ) / ( 1 + R[[t]][k] ) )
+        C[[t]]<-CQ + SW
+      }
+    } else if ( type == 'A' ) {
       C[[t]]<-sapply( 1:length( CQ ), 
                       FUN = function( k ) max( do.call( option, c( S[[t]][k], option.par ) ), CQ[k] ) )
     }
