@@ -4,7 +4,7 @@
 \alias{CFTreePricing}
 \title{Pricing options with a multinomial tree}
 \usage{
-CFTreePricing(Q, EQ, R, S, option = identity, Type = "E",
+CFTreePricing(Q, EQ, R, S, option = identity, type = "E",
   option.par = NULL)
 }
 \arguments{
@@ -14,11 +14,11 @@ CFTreePricing(Q, EQ, R, S, option = identity, Type = "E",
 
 \item{R}{term structure of the interest rate, could be a fixed value or a multinomial lattice}
 
-\item{S}{multinomial lattice}
+\item{S}{multinomial tree}
 
 \item{option}{function defining the option over S}
 
-\item{Type}{option type a character that specifies the king of option, by default 'E' european
+\item{type}{option type a character that specifies the king of option, by default 'E' european
 option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...}
 
 \item{option.par}{list of parameter for the option}
