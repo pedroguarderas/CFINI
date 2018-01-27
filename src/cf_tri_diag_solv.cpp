@@ -1,5 +1,5 @@
 
-#include "CFTriDiagSolv.h"
+#include "cf_tri_diag_solv.h"
 
 //--------------------------------------------------------------------------------------------------
 void CFTriDiagSolv( arma::colvec& a,

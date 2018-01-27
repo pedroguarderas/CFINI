@@ -1,5 +1,5 @@
 
-#include "CFGridEngine.h"
+#include "cf_grid_engine.h"
 
 //--------------------------------------------------------------------------------------------------
 arma::colvec GridUniform( const double& a, const double& b, const double& N ) {

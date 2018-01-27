@@ -6,7 +6,7 @@
 // [[Rcpp::plugins(cpp14)]]
 // [[Rcpp::depends(RcppArmadillo)]]
 
-#include "CFTriDiagSolv.h"
+#include "cf_tri_siag_solv.h"
 
 using namespace Rcpp;
 

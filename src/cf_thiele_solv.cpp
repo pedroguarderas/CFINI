@@ -1,5 +1,5 @@
 
-#include "CFThieleSolv.h"
+#include "cf_thiele_solv.h"
 
 //--------------------------------------------------------------------------------------------------
 List CFThieleSolv( const arma::colvec& t,

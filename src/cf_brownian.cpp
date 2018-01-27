@@ -1,5 +1,5 @@
 
-#include "CFBrownian.h"
+#include "cf_brownian.h"
 
 //--------------------------------------------------------------------------------------------------
 arma::mat CFRBrownian( const int& d,
