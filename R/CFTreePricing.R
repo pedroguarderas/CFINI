@@ -5,7 +5,7 @@
 #' @param Q equivalent discrete martingale measure
 #' @param EQ discrete version of the equivalent discrete martingale average
 #' @param R term structure of the interest rate, could be a fixed value or a multinomial lattice
-#' @param S multinomial lattice
+#' @param S multinomial tree
 #' @param option function defining the option over S
 #' @param type option type a character that specifies the king of option, by default 'E' european
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
