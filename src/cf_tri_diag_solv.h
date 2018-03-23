@@ -19,9 +19,9 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-void CFTriDiagSolv( arma::colvec& a,
-                    arma::colvec& b,
-                    arma::colvec& c,
-                    arma::colvec& d );
+void cf_tri_diag_solv( arma::colvec& a,
+                       arma::colvec& b,
+                       arma::colvec& c,
+                       arma::colvec& d );
 
 #endif

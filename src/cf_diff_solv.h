@@ -24,12 +24,12 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List CFDiffSolvES( const double& alpha,
-                   const arma::colvec& I,
-                   const arma::colvec& A,
-                   const arma::colvec& B,
-                   const arma::colvec& t,
-                   const arma::colvec& x );
+List cf_diff_solv_euls( const double& alpha,
+                        const arma::colvec& I,
+                        const arma::colvec& A,
+                        const arma::colvec& B,
+                        const arma::colvec& t,
+                        const arma::colvec& x );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with Crank-Nicolson scheme
@@ -46,7 +46,7 @@ List CFDiffSolvES( const double& alpha,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List CFDiffSolvCNS( const double& alpha,
+List cf_diff_solv_cns( const double& alpha,
                     const double& theta,
                     const arma::colvec& I,
                     const arma::colvec& A,
@@ -71,13 +71,13 @@ List CFDiffSolvCNS( const double& alpha,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List CFBlackScholesSolvCNS( const double& sigma,
-                            const double& rate,
-                            const double& theta,
-                            const arma::colvec& I,
-                            const arma::colvec& A,
-                            const arma::colvec& B,
-                            const arma::colvec& t,
-                            const arma::colvec& x );
+List cf_black_scholes_solv_cns( const double& sigma,
+                                const double& rate,
+                                const double& theta,
+                                const arma::colvec& I,
+                                const arma::colvec& A,
+                                const arma::colvec& B,
+                                const arma::colvec& t,
+                                const arma::colvec& x );
 
 #endif

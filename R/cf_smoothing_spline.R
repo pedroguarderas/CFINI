@@ -8,7 +8,7 @@
 #' @author Pedro Guarderas
 #' @import Matrix
 #' @export
-smoothing_spline<-function( t, y, alpha ) {
+cf_smoothing_spline<-function( t, y, alpha ) {
 
   N<-length( t ) + 1
   A<-Matrix( 0, N, N )
@@ -43,7 +43,7 @@ smoothing_spline<-function( t, y, alpha ) {
 #' @return vector
 #' @author Pedro Guarderas
 #' @export
-forward_rate<-function( u, t, b ) {
+cf_forward_rate<-function( u, t, b ) {
   spline_base<-function( s, t ) {
     m<-min( s, t )
     return( t * m - 0.5 * m^2 + t )
@@ -69,7 +69,7 @@ forward_rate<-function( u, t, b ) {
 #' @return vector
 #' @author Pedro Guarderas
 #' @export
-yield<-function( u, b, t ) {
+cf_yield<-function( u, b, t ) {
   # Integration base function
   spline_base_integration<-function( t, u ) {
     A<-0

@@ -10,7 +10,7 @@
 #' @importFrom gtools combinations
 #' @importFrom stats dmultinom
 #' @export
-CFElemSecurity<-function( n, q, u, r ) {
+cf_elem_security<-function( q, u, r ) {
   m<-length( q )
   C<-combinations( m, n, set = TRUE, repeats.allowed = TRUE )
   P<-NULL
