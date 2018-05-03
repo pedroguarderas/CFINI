@@ -19,7 +19,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::colvec GridUniform( const double& a, const double& b, const double& N );
+arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Exponential grid
@@ -33,7 +33,7 @@ arma::colvec GridUniform( const double& a, const double& b, const double& N );
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::colvec GridExpAddapt( const double& l, const double& a, const double& b, const double& N,
+arma::colvec cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
                             const double& E );
 
 #endif

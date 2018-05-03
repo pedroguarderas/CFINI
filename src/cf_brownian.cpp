@@ -2,7 +2,7 @@
 #include "cf_brownian.h"
 
 //--------------------------------------------------------------------------------------------------
-arma::mat CFRBrownian( const int& d,
+arma::mat cf_brownian( const int& d,
                        const arma::colvec& t ) {
   
   int i, j, n;
@@ -28,12 +28,12 @@ arma::mat CFRBrownian( const int& d,
 }
 
 //--------------------------------------------------------------------------------------------------
-arma::mat CFStochSolv( const int& d1,
-                       const int& d2,
-                       const arma::colvec& X0,
-                       const Function& b,
-                       const Function& s,
-                       const arma::colvec& t ) {
+arma::mat cf_stoch_solv( const int& d1,
+                         const int& d2,
+                         const arma::colvec& X0,
+                         const Function& b,
+                         const Function& s,
+                         const arma::colvec& t ) {
   int i, k, n;
   double dt, sdt;
   std::random_device engine;

@@ -19,7 +19,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::mat CFRBrownian( const int& d,
+arma::mat cf_brownian( const int& d,
                        const arma::colvec& t );
 
 //--------------------------------------------------------------------------------------------------
@@ -36,12 +36,12 @@ arma::mat CFRBrownian( const int& d,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::mat CFStochSolv( const int& d1,
-                       const int& d2,
-                       const arma::colvec& X0,
-                       const Function& b,
-                       const Function& s,
-                       const arma::colvec& t );
+arma::mat cf_stoch_solv( const int& d1,
+                         const int& d2,
+                         const arma::colvec& X0,
+                         const Function& b,
+                         const Function& s,
+                         const arma::colvec& t );
 
 #endif
 

@@ -2,11 +2,11 @@
 #include "cf_thiele_solv.h"
 
 //--------------------------------------------------------------------------------------------------
-List CFThieleSolv( const arma::colvec& t,
-                   const arma::colvec& V0,
-                   const arma::mat& b,
-                   const arma::cube& B,
-                   const double& theta ) {
+List cf_thiele_solv( const arma::colvec& t,
+                     const arma::colvec& V0,
+                     const arma::mat& b,
+                     const arma::cube& B,
+                     const double& theta ) {
   
   int M, N, n, i;
   double dt;

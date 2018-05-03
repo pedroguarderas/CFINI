@@ -2,7 +2,7 @@
 #include "cf_grid_engine.h"
 
 //--------------------------------------------------------------------------------------------------
-arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
+arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N ) {
   double i;
   arma::colvec X( N );
   double h;
@@ -16,7 +16,7 @@ arma::colvec GridUniform( const double& a, const double& b, const double& N ) {
 }
 
 //--------------------------------------------------------------------------------------------------
-arma::colvec GridExpAddapt( const double& l, const double& a, const double& b, const double& N,
+arma::colvec cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
                             const double& E ) {
   double i;
   arma::colvec X( N );

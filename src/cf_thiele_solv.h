@@ -24,10 +24,10 @@ using namespace Rcpp;
 //' @exportPattern("^[[:alpha:]]+")
 //' @export
 // [[Rcpp::export]]
-List CFThieleSolv( const arma::colvec& t,
-                   const arma::colvec& V0,
-                   const arma::mat& b,
-                   const arma::cube& B,
-                   const double& theta = 0.5 );
+List cf_thiele_solv( const arma::colvec& t,
+                     const arma::colvec& V0,
+                     const arma::mat& b,
+                     const arma::cube& B,
+                     const double& theta = 0.5 );
 
 #endif

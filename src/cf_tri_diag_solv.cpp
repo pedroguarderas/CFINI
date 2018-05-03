@@ -2,10 +2,10 @@
 #include "cf_tri_diag_solv.h"
 
 //--------------------------------------------------------------------------------------------------
-void CFTriDiagSolv( arma::colvec& a,
-                    arma::colvec& b,
-                    arma::colvec& c,
-                    arma::colvec& d ) {
+void cf_tri_diag_solv( arma::colvec& a,
+                       arma::colvec& b,
+                       arma::colvec& c,
+                       arma::colvec& d ) {
   
   double mu;
   int N = d.size();

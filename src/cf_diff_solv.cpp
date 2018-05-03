@@ -2,12 +2,12 @@
 #include "cf_diff_solv.h"
 
 //--------------------------------------------------------------------------------------------------
-List CFDiffSolvES( const double& alpha,
-                   const arma::colvec& I,
-                   const arma::colvec& A,
-                   const arma::colvec& B,
-                   const arma::colvec& t,
-                   const arma::colvec& x ) {
+List cf_diff_solv_euls( const double& alpha,
+                        const arma::colvec& I,
+                        const arma::colvec& A,
+                        const arma::colvec& B,
+                        const arma::colvec& t,
+                        const arma::colvec& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambda, h;
@@ -46,13 +46,13 @@ List CFDiffSolvES( const double& alpha,
 }
 
 //--------------------------------------------------------------------------------------------------
-List CFDiffSolvCNS( const double& alpha,
-                    const double& theta,
-                    const arma::colvec& I,
-                    const arma::colvec& A,
-                    const arma::colvec& B,
-                    const arma::colvec& t,
-                    const arma::colvec& x ) {
+List cf_diff_solv_cns( const double& alpha,
+                       const double& theta,
+                       const arma::colvec& I,
+                       const arma::colvec& A,
+                       const arma::colvec& B,
+                       const arma::colvec& t,
+                       const arma::colvec& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
@@ -115,7 +115,7 @@ List CFDiffSolvCNS( const double& alpha,
         ( lambdaf * ( u( n, i + 1 ) - u( n, i ) ) - lambdab * ( u( n, i ) - u( n, i - 1 ) ) ) ;
     }
     
-    CFTriDiagSolv( a, b, c, d );
+    cf_tri_diag_solv( a, b, c, d );
     d( 0 ) = A( n );
     d( nx ) = B( n );
     
@@ -131,14 +131,14 @@ List CFDiffSolvCNS( const double& alpha,
 }
 
 //--------------------------------------------------------------------------------------------------
-List CFBlackScholesSolvCNS( const double& sigma,
-                            const double& rate,
-                            const double& theta,
-                            const arma::colvec& I,
-                            const arma::colvec& A,
-                            const arma::colvec& B,
-                            const arma::colvec& t,
-                            const arma::colvec& x ) {
+List cf_black_scholes_solv_cns( const double& sigma,
+                                const double& rate,
+                                const double& theta,
+                                const arma::colvec& I,
+                                const arma::colvec& A,
+                                const arma::colvec& B,
+                                const arma::colvec& t,
+                                const arma::colvec& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
@@ -209,7 +209,7 @@ List CFBlackScholesSolvCNS( const double& sigma,
         ( lambdaf * ( u( n, i + 1 ) - u( n, i ) ) - lambdab * ( u( n, i ) - u( n, i - 1 ) ) ) ;
     }
     
-    CFTriDiagSolv( a, b, c, d );
+    cf_tri_diag_solv( a, b, c, d );
     d( 0 ) = A( n );
     d( nx ) = B( n );
     
