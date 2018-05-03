@@ -20,7 +20,7 @@
 #' U<-c( d, u )
 #' S<-CFLattice( N, U, S0 )
 #' @export
-CFLattice<-function( N, U, S0 ) {
+cf_lattice<-function( N, U, S0 ) {
   S<-list( S0, U * S0 )
   n<-length( U )
   

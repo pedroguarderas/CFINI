@@ -48,7 +48,7 @@
 #' # Pricing american put
 #' Pa<-CFLatticePricing( Q, EQ, R, S, put, Type = 'A' )
 #' @export
-CFLatticePricing<-function( Q, EQ, R, S, option, Type = 'E' ) {
+cf_lattice_pricing<-function( Q, EQ, R, S, option, Type = 'E' ) {
   C<-S
   N<-length(S)
   n<-length(Q)

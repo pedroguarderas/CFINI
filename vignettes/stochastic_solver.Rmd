@@ -18,7 +18,7 @@ library( CFINI )
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 t<-seq( 0, 1, 0.0001 )
 d<-40
-W<-CFRBrownian( d, t )
+W<-cf_brownian( d, t )
 ```
 
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
@@ -43,7 +43,7 @@ s<-function( t, X ) {
 ```
 
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-X<-CFStochSolv( d, d, X0, b, s, t )
+X<-cf_stoch_solv( d, d, X0, b, s, t )
 ```
 
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}

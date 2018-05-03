@@ -16,7 +16,7 @@
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
 #' @export
-CFTreePricing<-function( Q, EQ, R, S, option = identity, type = 'E', option.par = NULL ) {
+cf_tree_pricing<-function( Q, EQ, R, S, option = identity, type = 'E', option.par = NULL ) {
   C<-S
   N<-length( C )
   n<-length( Q )

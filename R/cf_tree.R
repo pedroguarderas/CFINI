@@ -9,7 +9,7 @@
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
 #' @export
-CFTree<-function( n, u, S0 ) {
+cf_tree<-function( n, u, S0 ) {
   m<-length( u )
   N<-n
   

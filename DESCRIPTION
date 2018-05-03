@@ -19,6 +19,8 @@ Imports:
     Rcpp,
     Rdpack
 Suggests: data.table,
+    Matrix,
+    gtools,
     colorRamps,
     plotly,
     knitr, 

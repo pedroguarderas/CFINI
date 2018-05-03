@@ -32,7 +32,7 @@ t0<-0
 t1<-1
 t1<-t1 * ( sigma^2 ) / 2
 Nt<-500
-t<-GridExpAddapt( 1, t0, t1, Nt, 1 )
+t<-cf_adapt_grid( 1, t0, t1, Nt, 1 )
 ```
 
 4. Value grid
@@ -40,7 +40,7 @@ t<-GridExpAddapt( 1, t0, t1, Nt, 1 )
 x0<--8
 x1<-8
 Nx<-50
-x<-GridExpAddapt( -4.5, x0, x1, Nx, 1 )
+x<-cf_adapt_grid( -4.5, x0, x1, Nx, 1 )
 ```
 
 5. Initial conditions
@@ -58,7 +58,7 @@ B<-sapply( t, FUN = function( t ) exp( -alpha * x1 ) * (  exp( x1 ) - K ) * exp(
 5. Black-Scholes solver
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 theta<-0.5
-V<-CFBlackScholesSolvCNS( sigma, r, theta, I, A, B, t, x )
+V<-cf_black_scholes_solv_cns( sigma, r, theta, I, A, B, t, x )
 ```
 
 7. Plotting results

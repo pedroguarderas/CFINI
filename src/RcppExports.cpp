@@ -6,21 +6,21 @@
 
 using namespace Rcpp;
 
-// CFRBrownian
-arma::mat CFRBrownian(const int& d, const arma::colvec& t);
-RcppExport SEXP _CFINI_CFRBrownian(SEXP dSEXP, SEXP tSEXP) {
+// cf_brownian
+arma::mat cf_brownian(const int& d, const arma::colvec& t);
+RcppExport SEXP _CFINI_cf_brownian(SEXP dSEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const int& >::type d(dSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFRBrownian(d, t));
+    rcpp_result_gen = Rcpp::wrap(cf_brownian(d, t));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFStochSolv
-arma::mat CFStochSolv(const int& d1, const int& d2, const arma::colvec& X0, const Function& b, const Function& s, const arma::colvec& t);
-RcppExport SEXP _CFINI_CFStochSolv(SEXP d1SEXP, SEXP d2SEXP, SEXP X0SEXP, SEXP bSEXP, SEXP sSEXP, SEXP tSEXP) {
+// cf_stoch_solv
+arma::mat cf_stoch_solv(const int& d1, const int& d2, const arma::colvec& X0, const Function& b, const Function& s, const arma::colvec& t);
+RcppExport SEXP _CFINI_cf_stoch_solv(SEXP d1SEXP, SEXP d2SEXP, SEXP X0SEXP, SEXP bSEXP, SEXP sSEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -30,13 +30,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const Function& >::type b(bSEXP);
     Rcpp::traits::input_parameter< const Function& >::type s(sSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFStochSolv(d1, d2, X0, b, s, t));
+    rcpp_result_gen = Rcpp::wrap(cf_stoch_solv(d1, d2, X0, b, s, t));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFDiffSolvES
-List CFDiffSolvES(const double& alpha, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
-RcppExport SEXP _CFINI_CFDiffSolvES(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+// cf_diff_solv_euls
+List cf_diff_solv_euls(const double& alpha, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
+RcppExport SEXP _CFINI_cf_diff_solv_euls(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -46,13 +46,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFDiffSolvES(alpha, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_euls(alpha, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFDiffSolvCNS
-List CFDiffSolvCNS(const double& alpha, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
-RcppExport SEXP _CFINI_CFDiffSolvCNS(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+// cf_diff_solv_cns
+List cf_diff_solv_cns(const double& alpha, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
+RcppExport SEXP _CFINI_cf_diff_solv_cns(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -63,13 +63,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFDiffSolvCNS(alpha, theta, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_cns(alpha, theta, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFBlackScholesSolvCNS
-List CFBlackScholesSolvCNS(const double& sigma, const double& rate, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
-RcppExport SEXP _CFINI_CFBlackScholesSolvCNS(SEXP sigmaSEXP, SEXP rateSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+// cf_black_scholes_solv_cns
+List cf_black_scholes_solv_cns(const double& sigma, const double& rate, const double& theta, const arma::colvec& I, const arma::colvec& A, const arma::colvec& B, const arma::colvec& t, const arma::colvec& x);
+RcppExport SEXP _CFINI_cf_black_scholes_solv_cns(SEXP sigmaSEXP, SEXP rateSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -81,26 +81,26 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFBlackScholesSolvCNS(sigma, rate, theta, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(cf_black_scholes_solv_cns(sigma, rate, theta, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
-// GridUniform
-arma::colvec GridUniform(const double& a, const double& b, const double& N);
-RcppExport SEXP _CFINI_GridUniform(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
+// cf_uniform_grid
+arma::colvec cf_uniform_grid(const double& a, const double& b, const double& N);
+RcppExport SEXP _CFINI_cf_uniform_grid(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
     Rcpp::traits::input_parameter< const double& >::type N(NSEXP);
-    rcpp_result_gen = Rcpp::wrap(GridUniform(a, b, N));
+    rcpp_result_gen = Rcpp::wrap(cf_uniform_grid(a, b, N));
     return rcpp_result_gen;
 END_RCPP
 }
-// GridExpAddapt
-arma::colvec GridExpAddapt(const double& l, const double& a, const double& b, const double& N, const double& E);
-RcppExport SEXP _CFINI_GridExpAddapt(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP, SEXP ESEXP) {
+// cf_adapt_grid
+arma::colvec cf_adapt_grid(const double& l, const double& a, const double& b, const double& N, const double& E);
+RcppExport SEXP _CFINI_cf_adapt_grid(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP, SEXP ESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -109,13 +109,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
     Rcpp::traits::input_parameter< const double& >::type N(NSEXP);
     Rcpp::traits::input_parameter< const double& >::type E(ESEXP);
-    rcpp_result_gen = Rcpp::wrap(GridExpAddapt(l, a, b, N, E));
+    rcpp_result_gen = Rcpp::wrap(cf_adapt_grid(l, a, b, N, E));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFThieleSolv
-List CFThieleSolv(const arma::colvec& t, const arma::colvec& V0, const arma::mat& b, const arma::cube& B, const double& theta);
-RcppExport SEXP _CFINI_CFThieleSolv(SEXP tSEXP, SEXP V0SEXP, SEXP bSEXP, SEXP BSEXP, SEXP thetaSEXP) {
+// cf_thiele_solv
+List cf_thiele_solv(const arma::colvec& t, const arma::colvec& V0, const arma::mat& b, const arma::cube& B, const double& theta);
+RcppExport SEXP _CFINI_cf_thiele_solv(SEXP tSEXP, SEXP V0SEXP, SEXP bSEXP, SEXP BSEXP, SEXP thetaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -124,34 +124,34 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type b(bSEXP);
     Rcpp::traits::input_parameter< const arma::cube& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const double& >::type theta(thetaSEXP);
-    rcpp_result_gen = Rcpp::wrap(CFThieleSolv(t, V0, b, B, theta));
+    rcpp_result_gen = Rcpp::wrap(cf_thiele_solv(t, V0, b, B, theta));
     return rcpp_result_gen;
 END_RCPP
 }
-// CFTriDiagSolv
-void CFTriDiagSolv(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
-RcppExport SEXP _CFINI_CFTriDiagSolv(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
+// cf_tri_diag_solv
+void cf_tri_diag_solv(arma::colvec& a, arma::colvec& b, arma::colvec& c, arma::colvec& d);
+RcppExport SEXP _CFINI_cf_tri_diag_solv(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::colvec& >::type a(aSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type b(bSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type c(cSEXP);
     Rcpp::traits::input_parameter< arma::colvec& >::type d(dSEXP);
-    CFTriDiagSolv(a, b, c, d);
+    cf_tri_diag_solv(a, b, c, d);
     return R_NilValue;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_CFINI_CFRBrownian", (DL_FUNC) &_CFINI_CFRBrownian, 2},
-    {"_CFINI_CFStochSolv", (DL_FUNC) &_CFINI_CFStochSolv, 6},
-    {"_CFINI_CFDiffSolvES", (DL_FUNC) &_CFINI_CFDiffSolvES, 6},
-    {"_CFINI_CFDiffSolvCNS", (DL_FUNC) &_CFINI_CFDiffSolvCNS, 7},
-    {"_CFINI_CFBlackScholesSolvCNS", (DL_FUNC) &_CFINI_CFBlackScholesSolvCNS, 8},
-    {"_CFINI_GridUniform", (DL_FUNC) &_CFINI_GridUniform, 3},
-    {"_CFINI_GridExpAddapt", (DL_FUNC) &_CFINI_GridExpAddapt, 5},
-    {"_CFINI_CFThieleSolv", (DL_FUNC) &_CFINI_CFThieleSolv, 5},
-    {"_CFINI_CFTriDiagSolv", (DL_FUNC) &_CFINI_CFTriDiagSolv, 4},
+    {"_CFINI_cf_brownian", (DL_FUNC) &_CFINI_cf_brownian, 2},
+    {"_CFINI_cf_stoch_solv", (DL_FUNC) &_CFINI_cf_stoch_solv, 6},
+    {"_CFINI_cf_diff_solv_euls", (DL_FUNC) &_CFINI_cf_diff_solv_euls, 6},
+    {"_CFINI_cf_diff_solv_cns", (DL_FUNC) &_CFINI_cf_diff_solv_cns, 7},
+    {"_CFINI_cf_black_scholes_solv_cns", (DL_FUNC) &_CFINI_cf_black_scholes_solv_cns, 8},
+    {"_CFINI_cf_uniform_grid", (DL_FUNC) &_CFINI_cf_uniform_grid, 3},
+    {"_CFINI_cf_adapt_grid", (DL_FUNC) &_CFINI_cf_adapt_grid, 5},
+    {"_CFINI_cf_thiele_solv", (DL_FUNC) &_CFINI_cf_thiele_solv, 5},
+    {"_CFINI_cf_tri_diag_solv", (DL_FUNC) &_CFINI_cf_tri_diag_solv, 4},
     {NULL, NULL, 0}
 };
 
