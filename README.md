@@ -3,5 +3,4 @@
 CFINI
 =====
 
-Package for actuarial computation for the computation of actuarial reserves, for closed and open 
-open populations with different premiums and benefits.
+This package was created with the intention to implement different computational routines that can be applied to solve stochastic problems, mainly with applications in finance and actuarial science.
