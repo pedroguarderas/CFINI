@@ -17,6 +17,8 @@ using namespace Rcpp;
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
+//' @useDynLib CFINI, .registration = TRUE
+//' @importFrom Rcpp sourceCpp
 //' @export
 // [[Rcpp::export]]
 Eigen::MatrixXd cf_wiener( const int& d,
