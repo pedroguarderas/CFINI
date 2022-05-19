@@ -2,10 +2,10 @@
 #define __CF_BROWNIAN__
 
 #include <random>
-#include <RcppArmadillo.h>
+#include <RcppEigen.h>
 
 // [[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
 
@@ -19,10 +19,11 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::mat cf_brownian( const int& d,
-                       const arma::colvec& t );
+Eigen::MatrixXd cf_brownian( const int& d,
+                             const Eigen::VectorXd& t );
 
 //--------------------------------------------------------------------------------------------------
+/*
 //' @title Brownian motion
 //' @description Simulate d-dimensional Brownian motion
 //' @param d1
@@ -36,13 +37,11 @@ arma::mat cf_brownian( const int& d,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::mat cf_stoch_solv( const int& d1,
-                         const int& d2,
-                         const arma::colvec& X0,
-                         const Function& b,
-                         const Function& s,
-                         const arma::colvec& t );
-
+Eigen::MatrixXd cf_stoch_solv( const int& d1,
+                               const int& d2,
+                               const Eigen::VectorXd& X0,
+                               const Function& b,
+                               const Function& s,
+                               const Eigen::VectorXd& t );
+*/
 #endif
-
-

@@ -1,10 +1,10 @@
 #ifndef __CF_GRID_ENGINE__
 #define __CF_GRID_ENGINE__
 
-#include <RcppArmadillo.h>
+#include <RcppEigen.h>
 
-//[[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
 

@@ -4,7 +4,7 @@
 #include <RcppArmadillo.h>
 
 // [[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::depends(RcppEigen)]]
 
 #include "cf_tri_diag_solv.h"
 

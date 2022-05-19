@@ -1,10 +1,10 @@
 #ifndef __CF_TRIDIAG_SOLV__
 #define __CF_TRIDIAG_SOLV__
 
-#include <RcppArmadillo.h>
+#include <RcppEigen.h>
 
 // [[Rcpp::plugins(cpp14)]]
-// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
 
