@@ -14,7 +14,7 @@
 #' @author Pedro Guarderas
 #' @export
 cf_diff_solv_euls <- function(alpha, I, A, B, t, x) {
-    .Call('_CFINI_cf_diff_solv_euls', PACKAGE = 'CFINI', alpha, I, A, B, t, x)
+    .Call(`_CFINI_cf_diff_solv_euls`, alpha, I, A, B, t, x)
 }
 
 #' @title Diffusion solver with Crank-Nicolson scheme
@@ -31,7 +31,7 @@ cf_diff_solv_euls <- function(alpha, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 cf_diff_solv_cns <- function(alpha, theta, I, A, B, t, x) {
-    .Call('_CFINI_cf_diff_solv_cns', PACKAGE = 'CFINI', alpha, theta, I, A, B, t, x)
+    .Call(`_CFINI_cf_diff_solv_cns`, alpha, theta, I, A, B, t, x)
 }
 
 #' @title Black-Scholes solver
@@ -50,7 +50,7 @@ cf_diff_solv_cns <- function(alpha, theta, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 cf_black_scholes_solv_cns <- function(sigma, rate, theta, I, A, B, t, x) {
-    .Call('_CFINI_cf_black_scholes_solv_cns', PACKAGE = 'CFINI', sigma, rate, theta, I, A, B, t, x)
+    .Call(`_CFINI_cf_black_scholes_solv_cns`, sigma, rate, theta, I, A, B, t, x)
 }
 
 #' @title Uniform grid
@@ -62,7 +62,7 @@ cf_black_scholes_solv_cns <- function(sigma, rate, theta, I, A, B, t, x) {
 #' @author Pedro Guarderas
 #' @export
 cf_uniform_grid <- function(a, b, N) {
-    .Call('_CFINI_cf_uniform_grid', PACKAGE = 'CFINI', a, b, N)
+    .Call(`_CFINI_cf_uniform_grid`, a, b, N)
 }
 
 #' @title Exponential grid
@@ -76,7 +76,7 @@ cf_uniform_grid <- function(a, b, N) {
 #' @author Pedro Guarderas
 #' @export
 cf_adapt_grid <- function(l, a, b, N, E) {
-    .Call('_CFINI_cf_adapt_grid', PACKAGE = 'CFINI', l, a, b, N, E)
+    .Call(`_CFINI_cf_adapt_grid`, l, a, b, N, E)
 }
 
 #' @title Tridiagonal solver
@@ -89,7 +89,7 @@ cf_adapt_grid <- function(l, a, b, N, E) {
 #' @author Pedro Guarderas
 #' @export
 cf_tri_diag_solv <- function(a, b, c, d) {
-    invisible(.Call('_CFINI_cf_tri_diag_solv', PACKAGE = 'CFINI', a, b, c, d))
+    invisible(.Call(`_CFINI_cf_tri_diag_solv`, a, b, c, d))
 }
 
 #' @title Brownian motion
@@ -99,8 +99,10 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
+#' @useDynLib CFINI, .registration = TRUE
+#' @importFrom Rcpp sourceCpp
 #' @export
 cf_wiener <- function(d, t) {
-    .Call('_CFINI_cf_wiener', PACKAGE = 'CFINI', d, t)
+    .Call(`_CFINI_cf_wiener`, d, t)
 }
 
