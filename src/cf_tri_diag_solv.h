@@ -3,7 +3,7 @@
 
 #include <RcppEigen.h>
 
-// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
@@ -19,9 +19,9 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-void cf_tri_diag_solv( arma::colvec& a,
-                       arma::colvec& b,
-                       arma::colvec& c,
-                       arma::colvec& d );
+void cf_tri_diag_solv( Eigen::VectorXd& a,
+                       Eigen::VectorXd& b,
+                       Eigen::VectorXd& c,
+                       Eigen::VectorXd& d );
 
 #endif

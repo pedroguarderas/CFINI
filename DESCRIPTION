@@ -12,12 +12,10 @@ Authors@R: c(
 URL: https://github.com/pedroguarderas/CFINI
 BugReports: https://github.com/pedroguarderas/CFINI/issues
 Depends:
-    R (>= 3.3)
-LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 6.0.1
-Imports:
-    Rcpp,
-    Rdpack
+    R (>= 4.0)
+LinkingTo: Rcpp, RcppEigen
+RoxygenNote: 7.1.2
+Imports: Rcpp, Rdpack
 Suggests: data.table,
     Matrix,
     gtools,
@@ -29,3 +27,4 @@ Suggests: data.table,
 LazyData: true
 VignetteBuilder: knitr
 RdMacros: Rdpack
+Roxygen: list(markdown = TRUE)

@@ -3,11 +3,11 @@
 
 //--------------------------------------------------------------------------------------------------
 List cf_diff_solv_euls( const double& alpha,
-                        const arma::colvec& I,
-                        const arma::colvec& A,
-                        const arma::colvec& B,
-                        const arma::colvec& t,
-                        const arma::colvec& x ) {
+                        const Eigen::VectorXd& I,
+                        const Eigen::VectorXd& A,
+                        const Eigen::VectorXd& B,
+                        const Eigen::VectorXd& t,
+                        const Eigen::VectorXd& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambda, h;
@@ -15,7 +15,7 @@ List cf_diff_solv_euls( const double& alpha,
   
   Nt = t.size();
   Nx = x.size();
-  arma::mat u( Nt, Nx );
+  Eigen::MatrixXd u( Nt, Nx );
   
   // Inicial condition
   for ( i = 0; i < Nx; i++ ) {
@@ -48,11 +48,11 @@ List cf_diff_solv_euls( const double& alpha,
 //--------------------------------------------------------------------------------------------------
 List cf_diff_solv_cns( const double& alpha,
                        const double& theta,
-                       const arma::colvec& I,
-                       const arma::colvec& A,
-                       const arma::colvec& B,
-                       const arma::colvec& t,
-                       const arma::colvec& x ) {
+                       const Eigen::VectorXd& I,
+                       const Eigen::VectorXd& A,
+                       const Eigen::VectorXd& B,
+                       const Eigen::VectorXd& t,
+                       const Eigen::VectorXd& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
@@ -63,11 +63,11 @@ List cf_diff_solv_cns( const double& alpha,
   nx = Nx - 1;
   nt = Nt - 1;
   
-  arma::colvec a( Nx );
-  arma::colvec b( Nx );
-  arma::colvec c( Nx );
-  arma::colvec d( Nx );
-  arma::mat u( Nt, Nx );
+  Eigen::VectorXd a( Nx );
+  Eigen::VectorXd b( Nx );
+  Eigen::VectorXd c( Nx );
+  Eigen::VectorXd d( Nx );
+  Eigen::MatrixXd u( Nt, Nx );
   
   // Inicial condition
   for ( i = 0; i < Nx; i++ ) {
@@ -134,11 +134,11 @@ List cf_diff_solv_cns( const double& alpha,
 List cf_black_scholes_solv_cns( const double& sigma,
                                 const double& rate,
                                 const double& theta,
-                                const arma::colvec& I,
-                                const arma::colvec& A,
-                                const arma::colvec& B,
-                                const arma::colvec& t,
-                                const arma::colvec& x ) {
+                                const Eigen::VectorXd& I,
+                                const Eigen::VectorXd& A,
+                                const Eigen::VectorXd& B,
+                                const Eigen::VectorXd& t,
+                                const Eigen::VectorXd& x ) {
   
   int n, i;
   double dt, dxf, dxb, lambdaf, lambdab, h;
@@ -155,13 +155,13 @@ List cf_black_scholes_solv_cns( const double& sigma,
   nx = Nx - 1;
   nt = Nt - 1;
   
-  arma::colvec a( Nx );
-  arma::colvec b( Nx );
-  arma::colvec c( Nx );
-  arma::colvec d( Nx );
+  Eigen::VectorXd a( Nx );
+  Eigen::VectorXd b( Nx );
+  Eigen::VectorXd c( Nx );
+  Eigen::VectorXd d( Nx );
   
-  arma::mat u( Nt, Nx );
-  arma::mat v( Nt, Nx );
+  Eigen::MatrixXd u( Nt, Nx );
+  Eigen::MatrixXd v( Nt, Nx );
   
   // Inicial condition
   for ( i = 0; i < Nx; i++ ) {

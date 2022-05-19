@@ -1,9 +1,9 @@
 
-#include "cf_brownian.h"
+#include "cf_wiener.h"
 
 //--------------------------------------------------------------------------------------------------
-Eigen::MatrixXd cf_brownian( const int& d,
-                             const Eigen::VectorXd& t ) {
+Eigen::MatrixXd cf_wiener( const int& d,
+                           const Eigen::VectorXd& t ) {
   
   int i, j, n;
   double sdt;

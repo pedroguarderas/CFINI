@@ -3,7 +3,7 @@
 
 #include <RcppEigen.h>
 
-// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
@@ -19,7 +19,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N );
+Eigen::VectorXd cf_uniform_grid( const double& a, const double& b, const double& N );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Exponential grid
@@ -33,7 +33,7 @@ arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N 
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-arma::colvec cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
-                            const double& E );
+Eigen::VectorXd cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
+                               const double& E );
 
 #endif

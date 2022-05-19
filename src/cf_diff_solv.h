@@ -1,9 +1,9 @@
 #ifndef __CF_DIFF_SOLV__
 #define __CF_DIFF_SOLV__
 
-#include <RcppArmadillo.h>
+#include <RcppEigen.h>
 
-// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 #include "cf_tri_diag_solv.h"
@@ -25,11 +25,11 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 List cf_diff_solv_euls( const double& alpha,
-                        const arma::colvec& I,
-                        const arma::colvec& A,
-                        const arma::colvec& B,
-                        const arma::colvec& t,
-                        const arma::colvec& x );
+                        const Eigen::VectorXd& I,
+                        const Eigen::VectorXd& A,
+                        const Eigen::VectorXd& B,
+                        const Eigen::VectorXd& t,
+                        const Eigen::VectorXd& x );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with Crank-Nicolson scheme
@@ -48,11 +48,11 @@ List cf_diff_solv_euls( const double& alpha,
 // [[Rcpp::export]]
 List cf_diff_solv_cns( const double& alpha,
                     const double& theta,
-                    const arma::colvec& I,
-                    const arma::colvec& A,
-                    const arma::colvec& B,
-                    const arma::colvec& t,
-                    const arma::colvec& x );
+                    const Eigen::VectorXd& I,
+                    const Eigen::VectorXd& A,
+                    const Eigen::VectorXd& B,
+                    const Eigen::VectorXd& t,
+                    const Eigen::VectorXd& x );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Black-Scholes solver
@@ -74,10 +74,10 @@ List cf_diff_solv_cns( const double& alpha,
 List cf_black_scholes_solv_cns( const double& sigma,
                                 const double& rate,
                                 const double& theta,
-                                const arma::colvec& I,
-                                const arma::colvec& A,
-                                const arma::colvec& B,
-                                const arma::colvec& t,
-                                const arma::colvec& x );
+                                const Eigen::VectorXd& I,
+                                const Eigen::VectorXd& A,
+                                const Eigen::VectorXd& B,
+                                const Eigen::VectorXd& t,
+                                const Eigen::VectorXd& x );
 
 #endif

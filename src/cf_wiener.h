@@ -1,10 +1,10 @@
-#ifndef __CF_BROWNIAN__
-#define __CF_BROWNIAN__
+#ifndef __CF_WIENER__
+#define __CF_WIENER__
 
 #include <random>
 #include <RcppEigen.h>
 
-// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
@@ -19,7 +19,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-Eigen::MatrixXd cf_brownian( const int& d,
+Eigen::MatrixXd cf_wiener( const int& d,
                              const Eigen::VectorXd& t );
 
 //--------------------------------------------------------------------------------------------------
@@ -43,5 +43,6 @@ Eigen::MatrixXd cf_stoch_solv( const int& d1,
                                const Function& b,
                                const Function& s,
                                const Eigen::VectorXd& t );
+
 */
 #endif

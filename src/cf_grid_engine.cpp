@@ -2,10 +2,10 @@
 #include "cf_grid_engine.h"
 
 //--------------------------------------------------------------------------------------------------
-arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N ) {
+Eigen::VectorXd cf_uniform_grid( const double& a, const double& b, const double& N ) {
   double i;
-  arma::colvec X( N );
   double h;
+  Eigen::VectorXd X( static_cast< size_t >( N ) );
   
   h = ( b - a ) / ( N - 1.0 );
   
@@ -16,10 +16,10 @@ arma::colvec cf_uniform_grid( const double& a, const double& b, const double& N 
 }
 
 //--------------------------------------------------------------------------------------------------
-arma::colvec cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
-                            const double& E ) {
+Eigen::VectorXd cf_adapt_grid( const double& l, const double& a, const double& b, const double& N,
+                               const double& E ) {
   double i;
-  arma::colvec X( N );
+  Eigen::VectorXd X( static_cast< size_t >( N ) );
   double x, y, D, h;
   
   h = 1.0 / ( N - 1.0 );

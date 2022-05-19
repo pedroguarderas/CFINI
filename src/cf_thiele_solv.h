@@ -3,12 +3,13 @@
 
 #include <RcppEigen.h>
 
-// [[Rcpp::plugins(cpp14)]]
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
 
 //--------------------------------------------------------------------------------------------------
+/*
 //' @title Thiele equations solver
 //' @description Solver for Thiele equation and computation of Mathematical reserves. The solver 
 //' is implemented with a Crank-Nicolson algorithm.
@@ -24,10 +25,10 @@ using namespace Rcpp;
 //' @exportPattern("^[[:alpha:]]+")
 //' @export
 // [[Rcpp::export]]
-List cf_thiele_solv( const arma::colvec& t,
-                     const arma::colvec& V0,
-                     const arma::mat& b,
-                     const arma::cube& B,
+List cf_thiele_solv( const Eigen::VectorXd& t,
+                     const Eigen::VectorXd& V0,
+                     const Eigen::MatrixXd& b,
+                     const Eigen::MatrixXd& B,
                      const double& theta = 0.5 );
-
+*/
 #endif
