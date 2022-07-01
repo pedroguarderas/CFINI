@@ -10,34 +10,84 @@ List cf_diff_solv_euls( const double& alpha,
                         const Eigen::VectorXd& x ) {
   
   int n, i;
-  double dt, dxf, dxb, lambda, h;
-  int Nt, Nx;
+  double dt, dxf, dxb, lambda;
+  int Nt, Nx, nt, nx;
   
   Nt = t.size();
   Nx = x.size();
+  nx = Nx - 1;
+  nt = Nt - 1;
+  
+  Eigen::VectorXd a( Nx );
+  Eigen::VectorXd b( Nx );
+  Eigen::VectorXd c( Nx );
+  Eigen::VectorXd d( Nx );
   Eigen::MatrixXd u( Nt, Nx );
   
-  // Inicial condition
+  // Setting the inicial condition
   for ( i = 0; i < Nx; i++ ) {
     u( 0, i ) = I( i );
   }
   
-  // Boundary conditions
+  // Setting boundary conditions
   for ( n = 0; n < Nt; n++ ) {
     u( n, 0 ) = A( n );
-    u( n, Nt - 1 ) = B( n );
+    u( n, nx ) = B( n );
   }
   
+  dxf = x( 1 ) - x( 0 );
+  dxb = x( nx ) - x( nx - 1 );
+  lambda = alpha * dt / ( dxf * dxf );
+  
+  a( 0 ) = -lambda;
+  a( nx ) = -lambda;
+  b( 0 ) = 1.0 + lambda;
+  b( nx ) = 1.0 + lambda;
+  c( 0 ) = -lambda;
+  c( nx ) = -lambda;
+  
   // Solver
-  // Euler explicit scheme
-  for ( n = 0; n < Nt - 1; n++ ) {
+  // Euler implicit scheme
+  for ( n = 0; n < nt; n++ ) {
+    
+    // Time difference
     dt = t( n + 1 ) - t( n );
-    for ( i = 1; i < Nx - 1; i++ ) {
+    
+    d( 0 ) = A( n );
+    d( nx ) = B( n );
+    
+    // forward difference
+    dxf = x( 1 ) - x( 0 );
+    lambda = alpha * dt / ( dxf * dxf );
+    
+    // Initial filling
+    a( 0 ) = -lambda;
+    a( nx ) = -lambda;
+    b( 0 ) = 1.0 + 2.0 * lambda;
+    b( nx ) = 1.0 + 2.0 * lambda;
+    c( 0 ) = -lambda;
+    c( nx ) = -lambda;
+    
+    for ( i = 1; i < nx; i++ ) {
       dxf = x( i + 1 ) - x( i );
       dxb = x( i ) - x( i - 1 );
-      lambda = alpha * dt / ( dxf * dxb );
-      u( n + 1, i ) = u( n, i ) + lambda * ( u( n, i + 1 ) - 2.0 * u( n, i ) + u( n, i - 1 ) );
+      lambda = alpha * dt / ( dxb * dxf );
+      
+      a( i ) = -lambda;
+      b( i ) = 1.0 + 2.0 * lambda;
+      c( i ) = -lambda;
+      
+      d( i ) = u( n, i );
     }
+    
+    cf_tri_diag_solv( a, b, c, d );
+    d( 0 ) = A( n );
+    d( nx ) = B( n );
+
+    for ( i = 0; i < Nx; i++ ) {
+      u( n + 1, i ) = d( i );
+    }
+
   }
   
   return List::create( Named( "u" ) = u,
