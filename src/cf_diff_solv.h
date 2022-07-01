@@ -11,8 +11,8 @@
 using namespace Rcpp;
 
 //--------------------------------------------------------------------------------------------------
-//' @title Diffusion solver
-//' @description Solver for standard diffusion problems
+//' @title Diffusion solver with implicit Euler scheme
+//' @description Solver for diffusion problems implemented using the Euler implicit scheme
 //' @param alpha Diffusion parameter
 //' @param I Initial condition
 //' @param A Inferior boundary condition
@@ -34,8 +34,8 @@ List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with Crank-Nicolson scheme
 //' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
-//' @param alpha Diffusion parameter
 //' @param theta Parameter for the Crank-Nicolson scheme
+//' @param alpha Diffusion parameter
 //' @param I Initial condition
 //' @param A Inferior boundary condition
 //' @param B Superior boundary condition
