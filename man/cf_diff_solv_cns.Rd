@@ -4,12 +4,12 @@
 \alias{cf_diff_solv_cns}
 \title{Diffusion solver with Crank-Nicolson scheme}
 \usage{
-cf_diff_solv_cns(alpha, theta, I, A, B, t, x)
+cf_diff_solv_cns(theta, alpha, I, A, B, t, x)
 }
 \arguments{
-\item{alpha}{Diffusion parameter}
-
 \item{theta}{Parameter for the Crank-Nicolson scheme}
+
+\item{alpha}{Diffusion parameter}
 
 \item{I}{Initial condition}
 
