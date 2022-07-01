@@ -27,8 +27,6 @@ ht <- ( t1 - t0 ) / ( Nt - 1 )
 
 Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
 Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
-# persp( t, x, Ucn$u, theta = 80, phi = 45, xlab = 't', ylab = 'x', zlab = 'u', col = 'gold',
-#         box = TRUE, axes = TRUE, main = 'Diffusion solution' )
 
 # Computing solution as convolution
 alph <- max( alpha )
@@ -52,3 +50,7 @@ test_that( "Checking numerical approximation of Euler implicit method", {
 # plot( x, s, type = 'l' )
 # points( x, Ueu$u[Nt,], cex = 0.5, pch = 16, col = 'blue' )
 # points( x, Ucn$u[Nt,], cex = 0.5, pch = 16, col = 'orange' )
+# persp( t, x, Ucn$u, theta = 80, phi = 45, xlab = 't', ylab = 'x', zlab = 'u', col = 'gold',
+#         box = TRUE, axes = TRUE, main = 'Diffusion solution' )
+# library( rgl )
+# persp3d( t, x, Ucn$u, col = 'gold' )
