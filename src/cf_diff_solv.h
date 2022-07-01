@@ -24,7 +24,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_euls( const double& alpha,
+List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
                         const Eigen::VectorXd& I,
                         const Eigen::VectorXd& A,
                         const Eigen::VectorXd& B,
@@ -46,8 +46,8 @@ List cf_diff_solv_euls( const double& alpha,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_cns( const double& alpha,
-                       const double& theta,
+List cf_diff_solv_cns( const double& theta,
+                       const Eigen::MatrixXd& alpha,
                        const Eigen::VectorXd& I,
                        const Eigen::VectorXd& A,
                        const Eigen::VectorXd& B,

@@ -2,7 +2,7 @@
 #include "cf_diff_solv.h"
 
 //--------------------------------------------------------------------------------------------------
-List cf_diff_solv_euls( const double& alpha,
+List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
                         const Eigen::VectorXd& I,
                         const Eigen::VectorXd& A,
                         const Eigen::VectorXd& B,
@@ -35,17 +35,6 @@ List cf_diff_solv_euls( const double& alpha,
     u( n, nx ) = B( n );
   }
   
-  dxf = x( 1 ) - x( 0 );
-  dxb = x( nx ) - x( nx - 1 );
-  lambda = alpha * dt / ( dxf * dxf );
-  
-  a( 0 ) = -lambda;
-  a( nx ) = -lambda;
-  b( 0 ) = 1.0 + lambda;
-  b( nx ) = 1.0 + lambda;
-  c( 0 ) = -lambda;
-  c( nx ) = -lambda;
-  
   // Solver
   // Euler implicit scheme
   for ( n = 0; n < nt; n++ ) {
@@ -58,7 +47,7 @@ List cf_diff_solv_euls( const double& alpha,
     
     // forward difference
     dxf = x( 1 ) - x( 0 );
-    lambda = alpha * dt / ( dxf * dxf );
+    lambda = alpha( n, 0 ) * dt / ( dxf * dxf );
     
     // Initial filling
     a( 0 ) = -lambda;
@@ -71,7 +60,7 @@ List cf_diff_solv_euls( const double& alpha,
     for ( i = 1; i < nx; i++ ) {
       dxf = x( i + 1 ) - x( i );
       dxb = x( i ) - x( i - 1 );
-      lambda = alpha * dt / ( dxb * dxf );
+      lambda = alpha( n, i ) * dt / ( dxb * dxf );
       
       a( i ) = -lambda;
       b( i ) = 1.0 + 2.0 * lambda;
@@ -96,8 +85,8 @@ List cf_diff_solv_euls( const double& alpha,
 }
 
 //--------------------------------------------------------------------------------------------------
-List cf_diff_solv_cns( const double& alpha,
-                       const double& theta,
+List cf_diff_solv_cns( const double& theta,
+                       const Eigen::MatrixXd& alpha,
                        const Eigen::VectorXd& I,
                        const Eigen::VectorXd& A,
                        const Eigen::VectorXd& B,
@@ -142,11 +131,11 @@ List cf_diff_solv_cns( const double& alpha,
     
     // forward difference
     dxf = x( 1 ) - x( 0 );
-    lambdaf = alpha * dt / ( dxf * dxf );
+    lambdaf = alpha( n, 0 ) * dt / ( dxf * dxf );
     
     // backward difference
     dxb = x( nx ) - x( nx - 1 );
-    lambdab = alpha * dt / ( dxb * dxf );
+    lambdab = alpha( n, nx ) * dt / ( dxb * dxf );
     
     // Initial filling
     a( 0 ) = -theta * lambdab;
@@ -159,8 +148,8 @@ List cf_diff_solv_cns( const double& alpha,
     for ( i = 1; i < nx; i++ ) {
       dxf = x( i + 1 ) - x( i );
       dxb = x( i ) - x( i - 1 );
-      lambdab = alpha * dt / ( dxb * dxf );
-      lambdaf = alpha * dt / ( dxf * dxf );
+      lambdab = alpha( n, i ) * dt / ( dxb * dxf );
+      lambdaf = alpha( n, i ) * dt / ( dxf * dxf );
       
       a( i ) = -theta * lambdab;
       b( i ) = 1.0 + theta * ( lambdaf + lambdab );

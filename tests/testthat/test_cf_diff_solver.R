@@ -18,25 +18,27 @@ I <- sapply( x, FUN = If )
 A <- rep( 0, Nt )
 B <- rep( 0, Nt )
 
-alpha <- 10^(-2.3)
+# Diffusion parameter constant
+alpha <- matrix( 10^(-2.3), Nt, Nx )
 theta <- 0.25
 
 hx <- ( x1 - x0 ) / ( Nx - 1 )
 ht <- ( t1 - t0 ) / ( Nt - 1 )
 
-Ucn <- cf_diff_solv_cns( alpha, theta, I, A, B, t, x )
+Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
 Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
 # persp( t, x, Ucn$u, theta = 80, phi = 45, xlab = 't', ylab = 'x', zlab = 'u', col = 'gold',
 #         box = TRUE, axes = TRUE, main = 'Diffusion solution' )
 
 # Computing solution as convolution
-phi <- function( x ) dnorm( x, mean = 0, sd = sqrt( 2 * alpha * t[ Nt ] ) )
+alph <- max( alpha )
+phi <- function( x ) dnorm( x, mean = 0, sd = sqrt( 2 * alph * t[ Nt ] ) )
 s <- sapply( x, FUN = function( y ) integrate( function( x, y ) If( y - x ) * phi( x ), -Inf, Inf, y )$value )
 ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 )
 eeu <- matrix( Ueu$u[Nt,] - s, Nx, 1 )
 
 test_that( "Checking Courant-Friedrichs-Lewy condition", {
-  expect_lt( ht / ( hx * hx ), 0.5 / alpha  )
+  expect_lt( ht / ( hx * hx ), 0.5 / max( alpha )  )
 })
 
 test_that( "Checking numerical approximation of Crank-Nicolson method", {
