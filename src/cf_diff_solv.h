@@ -47,12 +47,12 @@ List cf_diff_solv_euls( const double& alpha,
 //' @export
 // [[Rcpp::export]]
 List cf_diff_solv_cns( const double& alpha,
-                    const double& theta,
-                    const Eigen::VectorXd& I,
-                    const Eigen::VectorXd& A,
-                    const Eigen::VectorXd& B,
-                    const Eigen::VectorXd& t,
-                    const Eigen::VectorXd& x );
+                       const double& theta,
+                       const Eigen::VectorXd& I,
+                       const Eigen::VectorXd& A,
+                       const Eigen::VectorXd& B,
+                       const Eigen::VectorXd& t,
+                       const Eigen::VectorXd& x );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Black-Scholes solver

@@ -25,7 +25,7 @@ List cf_diff_solv_euls( const double& alpha,
   // Boundary conditions
   for ( n = 0; n < Nt; n++ ) {
     u( n, 0 ) = A( n );
-    u( n, Nt-1 ) = B( n );
+    u( n, Nt - 1 ) = B( n );
   }
   
   // Solver
@@ -69,12 +69,12 @@ List cf_diff_solv_cns( const double& alpha,
   Eigen::VectorXd d( Nx );
   Eigen::MatrixXd u( Nt, Nx );
   
-  // Inicial condition
+  // Setting the inicial condition
   for ( i = 0; i < Nx; i++ ) {
     u( 0, i ) = I( i );
   }
   
-  // Boundary conditions
+  // Setting boundary conditions
   for ( n = 0; n < Nt; n++ ) {
     u( n, 0 ) = A( n );
     u( n, nx ) = B( n );
@@ -83,17 +83,22 @@ List cf_diff_solv_cns( const double& alpha,
   // Solver
   // Crank-Nicolson scheme
   for ( n = 0; n < nt; n++ ) {
+    
+    // Time difference
     dt = t( n + 1 ) - t( n );
     
     d( 0 ) = A( n );
     d( nx ) = B( n );
     
+    // forward difference
     dxf = x( 1 ) - x( 0 );
     lambdaf = alpha * dt / ( dxf * dxf );
-
+    
+    // backward difference
     dxb = x( nx ) - x( nx - 1 );
     lambdab = alpha * dt / ( dxb * dxf );
     
+    // Initial filling
     a( 0 ) = -theta * lambdab;
     a( nx ) = -theta * lambdab;
     b( 0 ) = 1.0 + theta * ( lambdaf + lambdab );
@@ -122,7 +127,7 @@ List cf_diff_solv_cns( const double& alpha,
     for ( i = 0; i < Nx; i++ ) {
       u( n + 1, i ) = d( i );
     }
-
+    
   }
   
   return List::create( Named( "u" ) = u,
