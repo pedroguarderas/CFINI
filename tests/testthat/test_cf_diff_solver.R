@@ -20,20 +20,25 @@ B <- rep( 0, Nt )
 
 # Diffusion parameter constant
 alpha <- matrix( 10^(-2.3), Nt, Nx )
+# alpha <- matrix( runif( Nt * Nx, 0, 10^(-2) ), Nt, Nx )
 theta <- 0.25
 
 hx <- ( x1 - x0 ) / ( Nx - 1 )
 ht <- ( t1 - t0 ) / ( Nt - 1 )
 
-Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
+# Solving with Euler implicit method
 Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
+
+# Solving with Crank-Nicolson implicit method
+Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
 
 # Computing solution as convolution
 alph <- max( alpha )
 phi <- function( x ) dnorm( x, mean = 0, sd = sqrt( 2 * alph * t[ Nt ] ) )
 s <- sapply( x, FUN = function( y ) integrate( function( x, y ) If( y - x ) * phi( x ), -Inf, Inf, y )$value )
-ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 )
-eeu <- matrix( Ueu$u[Nt,] - s, Nx, 1 )
+
+eeu <- matrix( Ueu$u[Nt,] - s, Nx, 1 ) # Euler error
+ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 ) # Crank-Nicolson error
 
 test_that( "Checking Courant-Friedrichs-Lewy condition", {
   expect_lt( ht / ( hx * hx ), 0.5 / max( alpha )  )
