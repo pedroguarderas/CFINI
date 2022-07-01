@@ -37,6 +37,6 @@ phi <- function( x ) dnorm( x, mean = 0, sd = sqrt( 2 * alpha * t[ Nt ] ) )
 s <- sapply( x, FUN = function( y ) integrate( function( x, y ) If( y - x ) * phi( x ), -Inf, Inf, y )$value )
 e <- matrix( U$u[Nt,] - s, Nx, 1 )
 
-test_that( "Verify if Bühlmann-Straub last projection match with Wüthrich's book results", {
+test_that( "Verification of numerical solution with Crank-Nicolson method", {
   expect_lt( norm( e, type = '2' ), 0.5 )
 })
