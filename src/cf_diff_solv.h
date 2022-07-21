@@ -11,8 +11,8 @@
 using namespace Rcpp;
 
 //--------------------------------------------------------------------------------------------------
-//' @title Diffusion solver
-//' @description Solver for standard diffusion problems
+//' @title Diffusion solver with implicit Euler scheme
+//' @description Solver for diffusion problems implemented using the Euler implicit scheme
 //' @param alpha Diffusion parameter
 //' @param I Initial condition
 //' @param A Inferior boundary condition
@@ -24,7 +24,7 @@ using namespace Rcpp;
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_euls( const double& alpha,
+List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
                         const Eigen::VectorXd& I,
                         const Eigen::VectorXd& A,
                         const Eigen::VectorXd& B,
@@ -34,8 +34,8 @@ List cf_diff_solv_euls( const double& alpha,
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with Crank-Nicolson scheme
 //' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
-//' @param alpha Diffusion parameter
 //' @param theta Parameter for the Crank-Nicolson scheme
+//' @param alpha Diffusion parameter
 //' @param I Initial condition
 //' @param A Inferior boundary condition
 //' @param B Superior boundary condition
@@ -46,13 +46,13 @@ List cf_diff_solv_euls( const double& alpha,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_cns( const double& alpha,
-                    const double& theta,
-                    const Eigen::VectorXd& I,
-                    const Eigen::VectorXd& A,
-                    const Eigen::VectorXd& B,
-                    const Eigen::VectorXd& t,
-                    const Eigen::VectorXd& x );
+List cf_diff_solv_cns( const double& theta,
+                       const Eigen::MatrixXd& alpha,
+                       const Eigen::VectorXd& I,
+                       const Eigen::VectorXd& A,
+                       const Eigen::VectorXd& B,
+                       const Eigen::VectorXd& t,
+                       const Eigen::VectorXd& x );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Black-Scholes solver

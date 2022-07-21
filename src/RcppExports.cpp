@@ -12,12 +12,12 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // cf_diff_solv_euls
-List cf_diff_solv_euls(const double& alpha, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
+List cf_diff_solv_euls(const Eigen::MatrixXd& alpha, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
 RcppExport SEXP _CFINI_cf_diff_solv_euls(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const double& >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< const Eigen::MatrixXd& >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type I(ISEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type A(ASEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type B(BSEXP);
@@ -28,19 +28,19 @@ BEGIN_RCPP
 END_RCPP
 }
 // cf_diff_solv_cns
-List cf_diff_solv_cns(const double& alpha, const double& theta, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
-RcppExport SEXP _CFINI_cf_diff_solv_cns(SEXP alphaSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+List cf_diff_solv_cns(const double& theta, const Eigen::MatrixXd& alpha, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
+RcppExport SEXP _CFINI_cf_diff_solv_cns(SEXP thetaSEXP, SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const double& >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< const double& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const Eigen::MatrixXd& >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type I(ISEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type A(ASEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type B(BSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_cns(alpha, theta, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_cns(theta, alpha, I, A, B, t, x));
     return rcpp_result_gen;
 END_RCPP
 }

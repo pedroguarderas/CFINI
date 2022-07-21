@@ -30,8 +30,8 @@ cf_diff_solv_euls <- function(alpha, I, A, B, t, x) {
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
-cf_diff_solv_cns <- function(alpha, theta, I, A, B, t, x) {
-    .Call(`_CFINI_cf_diff_solv_cns`, alpha, theta, I, A, B, t, x)
+cf_diff_solv_cns <- function(theta, alpha, I, A, B, t, x) {
+    .Call(`_CFINI_cf_diff_solv_cns`, theta, alpha, I, A, B, t, x)
 }
 
 #' @title Black-Scholes solver
