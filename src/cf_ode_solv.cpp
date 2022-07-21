@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------------------------------
 List cf_edo_solv_precor( const Eigen::VectorXd& t,
                          const Eigen::VectorXd& v0,
-                         const Function& f,
+                         Function f,
                          const int& m,
                          const double& err ) {
   
@@ -17,26 +17,30 @@ List cf_edo_solv_precor( const Eigen::VectorXd& t,
   // vector dimension
   d = v0.size();
   
-  Eigen::VectorXd vk( d ), vk0( d );
+  Eigen::VectorXd vk( d ), vk0( d ), fn( d ), fnk( d );
   Eigen::MatrixXd v( N, d );
   
   // Setting conditions
-  v.row( 0 ) = v0.transpose();
-  
+  v.row( 0 ) = v0;
+  vk = v0;
+  vk0 = vk;
+
   // Predictor corrector solver
   for ( n = 0; n < N - 1; n++ ) {
     dt = t( n + 1 ) - t( n );
     
     // Predictor-corrector step
-    vk0 = v.row( n ) + dt * Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n ), vk ) );
+    fn = Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n ), vk ) );
+    vk = v.row( 0 ).transpose() + dt * fn;
+    nk = ( vk - vk0 ).norm() / vk.norm();
     k = 0;
     while ( k <= m || nk > err ) {
-      vk = v.row( n ) 
-      + 0.5 * dt * ( Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n ), v.row( n + 1 ) ) ) 
-      + Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n + 1 ), vk0 ) ) );
+      fn = Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n ), v.row( n ).transpose() ) );
+      fnk = Rcpp::as< Eigen::Map< Eigen::VectorXd > >( f( t( n + 1 ), vk ) );
       vk0 = vk;
+      vk = v.row( n ).transpose() + 0.5 * dt * ( fn + fnk );
       nk = ( vk - vk0 ).norm() / vk.norm();
-      k++;
+       k++;
     }
     v.row( n + 1 ) = vk;
     

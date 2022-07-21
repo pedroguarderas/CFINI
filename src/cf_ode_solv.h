@@ -22,8 +22,8 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 List cf_edo_solv_precor( const Eigen::VectorXd& t,
                          const Eigen::VectorXd& v0,
-                         const Function& f,
-                         const int& m,
-                         const double& err );
+                         Function f,
+                         const int& m = 2,
+                         const double& err = 1e-2 );
 
 #endif

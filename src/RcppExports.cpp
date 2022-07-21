@@ -91,14 +91,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // cf_edo_solv_precor
-List cf_edo_solv_precor(const Eigen::VectorXd& t, const Eigen::VectorXd& v0, const Function& f, const int& m, const double& err);
+List cf_edo_solv_precor(const Eigen::VectorXd& t, const Eigen::VectorXd& v0, Function f, const int& m, const double& err);
 RcppExport SEXP _CFINI_cf_edo_solv_precor(SEXP tSEXP, SEXP v0SEXP, SEXP fSEXP, SEXP mSEXP, SEXP errSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type v0(v0SEXP);
-    Rcpp::traits::input_parameter< const Function& >::type f(fSEXP);
+    Rcpp::traits::input_parameter< Function >::type f(fSEXP);
     Rcpp::traits::input_parameter< const int& >::type m(mSEXP);
     Rcpp::traits::input_parameter< const double& >::type err(errSEXP);
     rcpp_result_gen = Rcpp::wrap(cf_edo_solv_precor(t, v0, f, m, err));
