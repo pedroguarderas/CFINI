@@ -79,6 +79,20 @@ cf_adapt_grid <- function(l, a, b, N, E) {
     .Call(`_CFINI_cf_adapt_grid`, l, a, b, N, E)
 }
 
+#' @title Ordinary differenatial equation solver
+#' @description Solver for ordinary differential equations, implemented with the predictor 
+#' corrector method.
+#' @param t time grid, could be adapted
+#' @param v0 initial value
+#' @param f dynamic function
+#' @return Return the numerical solution to the ODE.
+#' @note The solver is implemented to compute the solution forwards in time.
+#' @author Pedro Guarderas
+#' @export
+cf_edo_solv_precor <- function(t, v0, f, m, err) {
+    .Call(`_CFINI_cf_edo_solv_precor`, t, v0, f, m, err)
+}
+
 #' @title Tridiagonal solver
 #' @description Solver tridiagonal matrices.
 #' @param alpha

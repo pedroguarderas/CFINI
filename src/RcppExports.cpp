@@ -90,6 +90,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cf_edo_solv_precor
+List cf_edo_solv_precor(const Eigen::VectorXd& t, const Eigen::VectorXd& v0, const Function& f, const int& m, const double& err);
+RcppExport SEXP _CFINI_cf_edo_solv_precor(SEXP tSEXP, SEXP v0SEXP, SEXP fSEXP, SEXP mSEXP, SEXP errSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type v0(v0SEXP);
+    Rcpp::traits::input_parameter< const Function& >::type f(fSEXP);
+    Rcpp::traits::input_parameter< const int& >::type m(mSEXP);
+    Rcpp::traits::input_parameter< const double& >::type err(errSEXP);
+    rcpp_result_gen = Rcpp::wrap(cf_edo_solv_precor(t, v0, f, m, err));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cf_tri_diag_solv
 void cf_tri_diag_solv(Eigen::VectorXd& a, Eigen::VectorXd& b, Eigen::VectorXd& c, Eigen::VectorXd& d);
 RcppExport SEXP _CFINI_cf_tri_diag_solv(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
@@ -122,6 +137,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_CFINI_cf_black_scholes_solv_cns", (DL_FUNC) &_CFINI_cf_black_scholes_solv_cns, 8},
     {"_CFINI_cf_uniform_grid", (DL_FUNC) &_CFINI_cf_uniform_grid, 3},
     {"_CFINI_cf_adapt_grid", (DL_FUNC) &_CFINI_cf_adapt_grid, 5},
+    {"_CFINI_cf_edo_solv_precor", (DL_FUNC) &_CFINI_cf_edo_solv_precor, 5},
     {"_CFINI_cf_tri_diag_solv", (DL_FUNC) &_CFINI_cf_tri_diag_solv, 4},
     {"_CFINI_cf_wiener", (DL_FUNC) &_CFINI_cf_wiener, 2},
     {NULL, NULL, 0}
