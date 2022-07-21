@@ -13,13 +13,13 @@ Eigen::MatrixXd cf_wiener( const int& d,
   std::random_device engine;
   std::normal_distribution< double > Normal( 0, 1.0 );
   
-  for ( j = 0; j < d; j++ ) {
-    W( 0, j ) = 0.0;
-  }
-  
   for ( i = 1; i < n; i++ ) {
     sdt = sqrt( t( i ) - t( i - 1 ) );
     for ( j = 0; j < d; j++ ) {
+      if ( i == 1  ) {
+        W( 0, j ) = 0.0;
+      }
+      
       W( i, j ) = W( i - 1, j ) + sdt * Normal( engine );
     }
   }
