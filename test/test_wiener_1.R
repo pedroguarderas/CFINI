@@ -13,12 +13,15 @@ test_that( "Checking simulation", {
 plot( W[,1], W[,2], type = 'l' )
 
 # Test predictor-corrector method ------------------------------------------------------------------
-t <- seq( 0, 1, length.out = 10 )
+n <- 1000
+t <- seq( 0, 1, length.out = n )
 f <- function( t, y ) {
- A <- matrix( c( 1, 0, 2, 1 ), 2, 2 )
+ A <- matrix( c( 1, 0, 0, 1 ), 2, 2 )
  return( A %*% y )
 }
 
 v0 <- c( 1, 1 )
 f( 1, v0 )
-cf_edo_solv_precor( t, v0, f, 2, 1e-2 )
+S <- cf_edo_solv_precor( t, v0, f, 10, 1e-6 )
+exp( 1 )
+S$v[ n ]
