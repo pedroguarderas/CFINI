@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{cf_diff_solv_euls}
 \alias{cf_diff_solv_euls}
-\title{Diffusion solver}
+\title{Diffusion solver with implicit Euler scheme}
 \usage{
 cf_diff_solv_euls(alpha, I, A, B, t, x)
 }
@@ -23,7 +23,7 @@ cf_diff_solv_euls(alpha, I, A, B, t, x)
 List with solution parameters
 }
 \description{
-Solver for standard diffusion problems
+Solver for diffusion problems implemented using the Euler implicit scheme
 }
 \note{
 Diffusion solver for pricing options

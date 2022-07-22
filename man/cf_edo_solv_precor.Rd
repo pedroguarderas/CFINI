@@ -4,7 +4,7 @@
 \alias{cf_edo_solv_precor}
 \title{Ordinary differenatial equation solver}
 \usage{
-cf_edo_solv_precor(t, v0, f, m, err)
+cf_edo_solv_precor(t, v0, f, m = 2L, err = 0.01)
 }
 \arguments{
 \item{t}{time grid, could be adapted}
