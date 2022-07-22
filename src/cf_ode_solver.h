@@ -1,5 +1,5 @@
-#ifndef __CF_ODE_SOLV__
-#define __CF_ODE_SOLV__
+#ifndef __CF_ODE_SOLVER__
+#define __CF_ODE_SOLVER__
 
 #include <RcppEigen.h>
 
