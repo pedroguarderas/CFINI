@@ -9,18 +9,18 @@
 #' @author Pedro Guarderas
 #' @importFrom gtools combinations
 #' @export
-cf_tree<-function( n, u, S0 ) {
-  m<-length( u )
-  N<-n
+cf_tree <- function( n, u, S0 ) {
+  m <- length( u )
+  N <- n
   
-  Tree<-list( S0 )
+  Tree <- list( S0 )
   for ( k in 1:N ) {
-    C<-combinations( m, k, set = TRUE, repeats.allowed = TRUE )
-    U<-NULL
+    C <- combinations( m, k, set = TRUE, repeats.allowed = TRUE )
+    U <- NULL
     for ( i in 1:nrow( C ) ) {
-      U<-c( U, prod( u[ C[i,] ] ) )
+      U <- c( U, prod( u[ C[i,] ] ) )
     }  
-    Tree[[k+1]]<-S0 * U
+    Tree[[k+1]] <- S0 * U
   }
   return( Tree )
 }
