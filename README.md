@@ -1,8 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-CFINI
-=====
+\#CFINI
 
 This package was created with the pourpose to implement different
 computational routines that can be applied to solve stochastic problems,
