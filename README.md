@@ -17,7 +17,8 @@ Rcpp and RcppEigen.
 -   Diffusion solver with Euler implicit scheme
 -   Diffusion solver with Crank-Nicolson scheme
 
-The different methods are implemented following the following sources of
+The different methods in the CFINI package are implemented based on the
+concepts and algorithms introduced in the following sources of
 information:
 
 -   The book [Finite difference methods in financial

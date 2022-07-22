@@ -25,7 +25,8 @@ Several functions are implemented with C++ by employing the packages Rcpp and Rc
 - Diffusion solver with Euler implicit scheme
 - Diffusion solver with Crank-Nicolson scheme
 
-The different methods are implemented following the following sources of information:
+The different methods in the CFINI package are implemented based on the concepts and algorithms
+introduced in the following sources of information:
 
 - The book [Finite difference methods in financial engineering](
 https://www.wiley.com/en-us/Finite+Difference+Methods+in+Financial+Engineering:+A+Partial+Differential+Equati
