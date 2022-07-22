@@ -13,5 +13,5 @@ f( 1, v0 )
 S <- cf_edo_solv_precor( t, v0, f, 5, 1e-6 )
 
 test_that( "Checking numerical solution vs exact solution", {
-  expect_lt( abs( exp( 1 ) - S$v[ n ] ), 0.0001 )
+  expect_lt( norm( exp( rep( 1, 2 ) ) - S$v[ n, 1:2 ], type = '2' ), 0.0001 )
 })
