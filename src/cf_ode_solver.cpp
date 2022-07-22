@@ -24,7 +24,7 @@ List cf_edo_solv_precor( const Eigen::VectorXd& t,
   v.row( 0 ) = v0;
   vk = v0;
   vk0 = vk;
-
+  
   // Predictor corrector solver
   for ( n = 0; n < N - 1; n++ ) {
     dt = t( n + 1 ) - t( n );
@@ -40,7 +40,7 @@ List cf_edo_solv_precor( const Eigen::VectorXd& t,
       vk0 = vk;
       vk = v.row( n ).transpose() + 0.5 * dt * ( fn + fnk );
       nk = ( vk - vk0 ).norm() / vk.norm();
-       k++;
+      k++;
     }
     v.row( n + 1 ) = vk;
     
