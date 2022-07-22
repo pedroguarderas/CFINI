@@ -8,17 +8,17 @@
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
 #' @examples
-#' s <- 0.3
-#' T <- 0.25
-#' N <- 15
-#' u <- exp( s * sqrt( T / N ) )
-#' d <- 1/u
-#' r <- 0.02
-#' S0 <- 100
-#' R <- exp( r * T / N )
-#' q <- ( R - d ) / ( u - d )
-#' U <- c( d, u )
-#' S <- CFLattice( N, U, S0 )
+# s <- 0.3
+# T <- 0.25
+# N <- 15
+# u <- exp( s * sqrt( T / N ) )
+# d <- 1/u
+# r <- 0.02
+# S0 <- 100
+# R <- exp( r * T / N )
+# q <- ( R - d ) / ( u - d )
+# U <- c( d, u )
+# S <- cf_lattice( N, U, S0 )
 #' @export
 cf_lattice <- function( N, U, S0 ) {
   S <- list( S0, U * S0 )

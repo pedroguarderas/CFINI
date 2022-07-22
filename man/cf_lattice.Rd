@@ -20,19 +20,6 @@ A list with a tree structure of the asset evolution
 The option pricing can be made with a multinomial lattice, this functions can
 generate such a lattice with aid of some give parameters.
 }
-\examples{
-s<-0.3
-T<-0.25
-N<-15
-u<-exp( s * sqrt( T / N ) )
-d<-1/u
-r<-0.02
-S0<-100
-R<-exp( r * T / N )
-q<-( R - d ) / ( u - d )
-U<-c( d, u )
-S<-CFLattice( N, U, S0 )
-}
 \author{
 Pedro Guarderas
 }
