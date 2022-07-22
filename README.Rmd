@@ -18,7 +18,8 @@ This package was created with implement different computational routines that ca
 solve pricig problems, that are usually presented in Finance and Actuarial Science.
 
 Here a list of the main numerical methods implemented inside CFINI. Many of this functions are 
-coded in C++ by employing the packages Rcpp and RcppEigen.
+coded with C++ by employing the packages Rcpp and RcppEigen.
+
 - Pricing with trees
 - Pricing with multinomial trees
 - Ordinary differential equation solver implemented with the predictor-corrector method

@@ -8,11 +8,15 @@ that can be applied to solve pricig problems, that are usually presented
 in Finance and Actuarial Science.
 
 Here a list of the main numerical methods implemented inside CFINI. Many
-of this functions are coded in C++ by employing the packages Rcpp and
-RcppEigen. - Pricing with trees - Pricing with multinomial trees -
-Ordinary differential equation solver implemented with the
-predictor-corrector method - Diffusion solver with Euler implicit
-scheme - Diffusion solver with Crank-Nicolson scheme
+of this functions are coded with C++ by employing the packages Rcpp and
+RcppEigen.
+
+-   Pricing with trees
+-   Pricing with multinomial trees
+-   Ordinary differential equation solver implemented with the
+    predictor-corrector method
+-   Diffusion solver with Euler implicit scheme
+-   Diffusion solver with Crank-Nicolson scheme
 
 The different methods in the CFINI package are implemented based on the
 concepts and algorithms introduced in the following sources of
