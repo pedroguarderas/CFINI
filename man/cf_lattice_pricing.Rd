@@ -4,7 +4,7 @@
 \alias{cf_lattice_pricing}
 \title{Option pricing with the multinomial model}
 \usage{
-cf_lattice_pricing(Q, EQ, R, S, option, Type = "E")
+cf_lattice_pricing(Q, EQ, R, S, option, type = "E")
 }
 \arguments{
 \item{Q}{equivalent discrete martingale measure}
@@ -17,7 +17,7 @@ cf_lattice_pricing(Q, EQ, R, S, option, Type = "E")
 
 \item{option}{function defining the option over S}
 
-\item{Type}{option type a character that specifies the king of option, by default 'E' european
+\item{type}{option type a character that specifies the king of option, by default 'E' european
 option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...}
 }
 \value{
@@ -27,41 +27,41 @@ A list with a tree structure of the asset evolution
 Function for pricing an option with a multinomial model
 }
 \examples{
-s<-0.3
-T<-0.25
-N<-15
-c<-0.01
-u<-exp( s * sqrt( T / N ) )
-d<-1/u
-r<-0.02
-S0<-100
-K<-110
-R<-exp( r * T / N )
-q<-( R - d ) / ( u - d )
-Q<-c( 1-q, q )
-U<-c( d, u )
+s <- 0.3
+T <- 0.25
+N <- 15
+c <- 0.01
+u <- exp( s * sqrt( T / N ) )
+d <- 1/u
+r <- 0.02
+S0 <- 100
+K <- 110
+R <- exp( r * T / N )
+q <- ( R - d ) / ( u - d )
+Q <- c( 1-q, q )
+U <- c( d, u )
 
 # K is global
-call<-function( S ) {
+call <- function( S ) {
   max( S - K, 0 )
 }
 
-put<-function( S ) {
+put <- function( S ) {
   max( K - S, 0 )
 }
 
 # Equivalent measure
-EQ<-function(R,Q,C) {
+EQ <- function(R,Q,C) {
   return( sum( R * Q * C ) )
 }
 
-S<-CFLattice( N, U, S0 )
+S <- CFLattice( N, U, S0 )
 
 # Pricing american call
-Ca<-CFLatticePricing( Q, EQ, R, S, call, Type = 'A' )
+Ca <- CFLatticePricing( Q, EQ, R, S, call, type = 'A' )
 
 # Pricing american put
-Pa<-CFLatticePricing( Q, EQ, R, S, put, Type = 'A' )
+Pa <- CFLatticePricing( Q, EQ, R, S, put, type = 'A' )
 }
 \seealso{
 \code{\link{CFLattice}}
