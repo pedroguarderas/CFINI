@@ -46,18 +46,18 @@ List cf_sor_solv( const Eigen::VectorXd& u0,
   Eigen::VectorXd u( d ), u1( d );
   u = u0;
   
+  k = 0;
+  ek = 2 * e;
   while( k <= n || ek > e ) {
     u1 = u;
     for ( i = 0; i < d; i++ ) {
       v = b( i );
-      for ( j > i; i < d; i++ ) {
+      for ( j > i; j < d; j++ ) {
         v = v - A( i, j ) * u( j ) - A( j, i ) * u( j );
       }
       
       if ( A( i, i ) != 0 ) {
         u( i ) = ( 1 - w ) * u( i ) + ( w / A( i, i ) ) * v;
-      } else {
-        u( i ) = ( 1 - w ) * u( i );
       }
       u( i ) = std::max( u( i ), c( i ) );
     }
