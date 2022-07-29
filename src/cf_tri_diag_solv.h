@@ -24,4 +24,29 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
                        Eigen::VectorXd& c,
                        Eigen::VectorXd& d );
 
+
+
+//--------------------------------------------------------------------------------------------------
+//' @title SOR algorithm
+//' @description Solver tridiagonal matrices.
+//' @param u0 initial guest of the solution
+//' @param A matrix determining the variational inequality
+//' @param b
+//' @param c lower constraint for the solution
+//' @param w weight
+//' @param n maximal number of iterations
+//' @param e relative error for the solution improvement
+//' @author Pedro Guarderas
+//' @export
+// [[Rcpp::export]]
+List cf_sor_solv( const Eigen::VectorXd& u0,
+                  const Eigen::MatrixXd& A, 
+                  const Eigen::VectorXd& b,
+                  const Eigen::VectorXd& c,
+                  const double& w,
+                  const int& n,
+                  const double& e );
+  
 #endif
+  
+  
