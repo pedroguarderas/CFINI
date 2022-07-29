@@ -53,7 +53,7 @@ List cf_sor_solv( const Eigen::VectorXd& u0,
     for ( i = 0; i < d; i++ ) {
       v = b( i );
       for ( j > i; j < d; j++ ) {
-        v = v - A( i, j ) * u( j ) - A( j, i ) * u( j );
+        v = v - A( i, j ) * u1( j ) - A( i, j - i - 1 ) * u( j - i - 1 );
       }
       
       if ( A( i, i ) != 0 ) {
