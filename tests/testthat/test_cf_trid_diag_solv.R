@@ -16,13 +16,14 @@ e <- 1e-6
 
 S <- cf_psor_solv( u0, A, b, c, w, n, e ) 
 u <- S$u
+s <- A %*% u
 
 test_that( "Checking numerical solution with PSOR algorithm", {
-  expect_lt( norm( A %*% u - b, type = '2' ), 1e-6 )
+  expect_lt( norm( s - b, type = '2' ), 1e-6 )
 })
 
 test_that( "Checking variational inequality", {
-  expect_true( all( A %*% u <= b ) )
+  expect_true( all( s <= b ) )
 })
 
 test_that( "Checking variational inequality constraint", {
