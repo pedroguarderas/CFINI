@@ -8,10 +8,10 @@ for ( i in 1:( d - 1 ) ) {
 }
 
 b <- rep( 1, d )
-c <- rep( -1e4, d )
-u0 <- rep( 1, d )
-n <- 10000
-w <- 0.5
+c <- rep( -1e3, d )
+u0 <- runif( d )
+n <- 100
+w <- 0.95
 e <- 1e-5
 
 S <- cf_psor_solv( u0, A, b, c, w, n, e ) 
