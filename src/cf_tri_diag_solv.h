@@ -1,5 +1,5 @@
-#ifndef __CF_TRIDIAG_SOLV__
-#define __CF_TRIDIAG_SOLV__
+#ifndef __CF_TRI_DIAG_SOLV__
+#define __CF_TRI_DIAG_SOLV__
 
 #include <RcppEigen.h>
 
