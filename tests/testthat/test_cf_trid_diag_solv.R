@@ -20,3 +20,11 @@ u <- S$u
 test_that( "Checking numerical solution with PSOR algorithm", {
   expect_lt( norm( A %*% u - b, type = '2' ), 1e-6 )
 })
+
+test_that( "Checking variational inequality", {
+  expect_true( all( A %*% u <= b ) )
+})
+
+test_that( "Checking variational inequality constraint", {
+  expect_true( all( u >= c ) )
+})
