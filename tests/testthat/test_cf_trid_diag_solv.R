@@ -14,10 +14,14 @@ n <- 10000
 w <- 0.5
 e <- 1e-5
 
-S <- cf_sor_solv( u0, A, b, c, w, n, e ) 
+S <- cf_psor_solv( u0, A, b, c, w, n, e ) 
 u <- S$u
 
 A %*% u - b
 
 us <- solve( A, b )
 us
+
+test_that( "Checking numerical solution with PSOR algorithm", {
+  expect_lt( norm( us - u, type = '2' ), 0.0001 )
+})
