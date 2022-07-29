@@ -51,13 +51,17 @@ List cf_psor_solv( const Eigen::VectorXd& u0,
   while( k <= n || ek > e ) {
     u1 = u;
     for ( i = 0; i < d; i++ ) {
-      v = b( i );
-      for ( j > i; j < d; j++ ) {
-        v = v - A( i, j ) * u1( j ) - A( i, j - i - 1 ) * u( j - i - 1 );
+      v = 0;
+      for ( j = i + 1; j < d; j++ ) {
+        v += A( i, j ) * u1( j );
+      }
+      
+      for ( j = 0; j < i; j++ ) {
+        v += A( i, j ) * u( j );
       }
       
       if ( A( i, i ) != 0 ) {
-        u( i ) = ( 1 - w ) * u( i ) + ( w / A( i, i ) ) * v;
+        u( i ) = ( 1 - w ) * u( i ) + ( w / A( i, i ) ) * ( b( i ) - v );
       }
       u( i ) = std::max( u( i ), c( i ) );
     }
