@@ -11,7 +11,7 @@ b <- rep( 1, d )
 c <- rep( -1e4, d )
 u0 <- rep( 1, d )
 n <- 10000
-w <- 0.9
+w <- 0.5
 e <- 1e-5
 
 S <- cf_sor_solv( u0, A, b, c, w, n, e ) 
@@ -21,4 +21,3 @@ A %*% u - b
 
 us <- solve( A, b )
 us
-
