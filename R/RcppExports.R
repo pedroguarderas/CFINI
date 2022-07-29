@@ -106,8 +106,8 @@ cf_tri_diag_solv <- function(a, b, c, d) {
     invisible(.Call(`_CFINI_cf_tri_diag_solv`, a, b, c, d))
 }
 
-#' @title SOR algorithm
-#' @description Solver tridiagonal matrices.
+#' @title PSOR algorithm
+#' @description Projected successive overrelaxation
 #' @param u0 initial guest of the solution
 #' @param A matrix determining the variational inequality
 #' @param b
@@ -117,8 +117,8 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 #' @param e relative error for the solution improvement
 #' @author Pedro Guarderas
 #' @export
-cf_sor_solv <- function(u0, A, b, c, w, n, e) {
-    .Call(`_CFINI_cf_sor_solv`, u0, A, b, c, w, n, e)
+cf_psor_solv <- function(u0, A, b, c, w, n, e) {
+    .Call(`_CFINI_cf_psor_solv`, u0, A, b, c, w, n, e)
 }
 
 #' @title Brownian motion

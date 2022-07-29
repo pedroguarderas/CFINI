@@ -118,9 +118,9 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// cf_sor_solv
-List cf_sor_solv(const Eigen::VectorXd& u0, const Eigen::MatrixXd& A, const Eigen::VectorXd& b, const Eigen::VectorXd& c, const double& w, const int& n, const double& e);
-RcppExport SEXP _CFINI_cf_sor_solv(SEXP u0SEXP, SEXP ASEXP, SEXP bSEXP, SEXP cSEXP, SEXP wSEXP, SEXP nSEXP, SEXP eSEXP) {
+// cf_psor_solv
+List cf_psor_solv(const Eigen::VectorXd& u0, const Eigen::MatrixXd& A, const Eigen::VectorXd& b, const Eigen::VectorXd& c, const double& w, const int& n, const double& e);
+RcppExport SEXP _CFINI_cf_psor_solv(SEXP u0SEXP, SEXP ASEXP, SEXP bSEXP, SEXP cSEXP, SEXP wSEXP, SEXP nSEXP, SEXP eSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -131,7 +131,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double& >::type w(wSEXP);
     Rcpp::traits::input_parameter< const int& >::type n(nSEXP);
     Rcpp::traits::input_parameter< const double& >::type e(eSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_sor_solv(u0, A, b, c, w, n, e));
+    rcpp_result_gen = Rcpp::wrap(cf_psor_solv(u0, A, b, c, w, n, e));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -156,7 +156,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_CFINI_cf_adapt_grid", (DL_FUNC) &_CFINI_cf_adapt_grid, 5},
     {"_CFINI_cf_edo_solv_precor", (DL_FUNC) &_CFINI_cf_edo_solv_precor, 5},
     {"_CFINI_cf_tri_diag_solv", (DL_FUNC) &_CFINI_cf_tri_diag_solv, 4},
-    {"_CFINI_cf_sor_solv", (DL_FUNC) &_CFINI_cf_sor_solv, 7},
+    {"_CFINI_cf_psor_solv", (DL_FUNC) &_CFINI_cf_psor_solv, 7},
     {"_CFINI_cf_wiener", (DL_FUNC) &_CFINI_cf_wiener, 2},
     {NULL, NULL, 0}
 };

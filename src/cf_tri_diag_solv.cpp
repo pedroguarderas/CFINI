@@ -31,13 +31,13 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 }
 
 //--------------------------------------------------------------------------------------------------
-List cf_sor_solv( const Eigen::VectorXd& u0,
-                  const Eigen::MatrixXd& A, 
-                  const Eigen::VectorXd& b,
-                  const Eigen::VectorXd& c,
-                  const double& w,
-                  const int& n,
-                  const double& e ) {
+List cf_psor_solv( const Eigen::VectorXd& u0,
+                   const Eigen::MatrixXd& A, 
+                   const Eigen::VectorXd& b,
+                   const Eigen::VectorXd& c,
+                   const double& w,
+                   const int& n,
+                   const double& e ) {
   
   int i, j, k, ek;
   int d = b.size();

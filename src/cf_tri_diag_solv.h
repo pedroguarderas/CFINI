@@ -27,8 +27,8 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 
 
 //--------------------------------------------------------------------------------------------------
-//' @title SOR algorithm
-//' @description Solver tridiagonal matrices.
+//' @title PSOR algorithm
+//' @description Projected successive overrelaxation
 //' @param u0 initial guest of the solution
 //' @param A matrix determining the variational inequality
 //' @param b
@@ -39,14 +39,13 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 //' @author Pedro Guarderas
 //' @export
 // [[Rcpp::export]]
-List cf_sor_solv( const Eigen::VectorXd& u0,
-                  const Eigen::MatrixXd& A, 
-                  const Eigen::VectorXd& b,
-                  const Eigen::VectorXd& c,
-                  const double& w,
-                  const int& n,
-                  const double& e );
-  
+List cf_psor_solv( const Eigen::VectorXd& u0,
+                   const Eigen::MatrixXd& A, 
+                   const Eigen::VectorXd& b,
+                   const Eigen::VectorXd& c,
+                   const double& w,
+                   const int& n,
+                   const double& e );
+
 #endif
-  
-  
+
