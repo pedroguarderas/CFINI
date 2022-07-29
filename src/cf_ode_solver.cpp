@@ -46,5 +46,5 @@ List cf_edo_solv_precor( const Eigen::VectorXd& t,
     
   }
   
-  return  List::create( Named( "t" ) = t, Named( "v" ) = v );
+  return List::create( Named( "t" ) = t, Named( "v" ) = v );
 }
