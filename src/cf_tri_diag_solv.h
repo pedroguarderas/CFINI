@@ -28,7 +28,7 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 
 //--------------------------------------------------------------------------------------------------
 //' @title PSOR algorithm
-//' @description Projected successive overrelaxation
+//' @description Projected successive over-relaxation
 //' @param u0 initial guest of the solution
 //' @param A matrix determining the variational inequality
 //' @param b

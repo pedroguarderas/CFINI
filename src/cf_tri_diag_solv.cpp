@@ -69,7 +69,7 @@ List cf_psor_solv( const Eigen::VectorXd& u0,
     k++;
   }
   
-  return List::create( Named( "u" ) = u, Named( "k" ) = k , Named( "e" ) = e );
+  return List::create( Named( "u" ) = u, Named( "k" ) = k , Named( "e" ) = ek );
   
 }
 
