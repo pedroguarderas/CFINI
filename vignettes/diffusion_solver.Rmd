@@ -117,7 +117,7 @@ plot
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
 plot_ly( x = Ueu$t, y = Ueu$x, z = Ueu$u, alpha = 0.8 ) %>% 
   layout( scene = list( xaxis = list(title = "t"),
-                        yaxis = list(title = "S"),
+                        yaxis = list(title = "x"),
                         zaxis = list(title = "u") ) ) %>%
   add_surface()
 ```
@@ -145,7 +145,7 @@ plot
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
 plot_ly( x = Ucn$t, y = Ucn$x, z = Ucn$u, alpha = 0.8 ) %>% 
   layout( scene = list( xaxis = list(title = "t"),
-                        yaxis = list(title = "S"),
+                        yaxis = list(title = "x"),
                         zaxis = list(title = "u") ) ) %>%
   add_surface()
 ```
