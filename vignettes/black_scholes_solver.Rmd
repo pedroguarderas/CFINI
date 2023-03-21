@@ -1,10 +1,10 @@
 ---
-title: "Black Scholes solver"
+title: "Black Scholes model"
 author: "Pedro Guarderas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Running a MAUT Model}
+  %\VignetteIndexEntry{Black Scholes model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -36,13 +36,27 @@ V( t, S_h ) = v_2( t ) & \forall t \in [ 0, T ]
 
 the particular case of Black-Scholes is given by the following parameters 
 $\alpha( t, S ) = \frac{1}{2}\sigma^2 S^2$, $\beta( t, S ) = r S$ and $\gamma( t, S ) = -r$
-where $\sigma, r$ are constants. It is important to observe that this model considers a final
-condition FC, that usually represents the value of the option at the end of the contract. 
+where $\sigma, r$ are constants. 
+
+It is important to observe that this model considers a final condition FC, that usually represents 
+the value of the option at the end of the contract. 
 
 The idea of being able to produce a differential model that will be capable to produce a consistent
 pricing model that will hedge the final option is supported by the the second fundamental theorem 
 of asset pricing, which precisely relates the ability to hedge arbitrary claims, to the uniqueness 
 of martingale measures.
+
+## Transformation of the particular case of Black-Scholes
+The previous model can be transformed in the classical diffusion problem, related to the heat
+equation, by the right change of variables.
+\begin{equation}
+V( t, S ) = e^{\alpha x + \beta \tau} u( x, t )\\
+\alpha = -\frac{1}{2}\left( \frac{2r}{\sigma^2}  - 1 \right) \\
+\beta = -\frac{1}{4}\left( \frac{2r}{\sigma^2} + 1 \right)^2 \\
+S = e^x \\
+t = T - \frac{2 \tau}{\sigma^2}
+\end{equation}
+
 
 2. Related coefficients
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
@@ -92,14 +106,16 @@ c_1 & b_2 & a_2 & 0 & \cdots & 0 \\
 
 5. Euler implicit scheme has the following form for the equation
 \begin{equation}
-u_{n+1,i} - u_{n,i} = \alpha_{n,i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}}
-( u_{n+1,i+1} - 2 u_{n+1,i} + u_{n+1,i-1} )
+u_{n+1,i} - u_{n,i} = \lambda_{n, i} ( u_{n+1,i+1} - 2 u_{n+1,i} + u_{n+1,i-1} ) +
+\rho_{n,i} ( u_{n+1,i+1/2} - u_{n+1,i-1/2} ) + 
+\gamma_{n,i} u_{n+1,i}
 \end{equation}
 
 From previous scheme at every time step $n$ we formulate a tridiagonal problem $A u_n = d$, with 
 the folowing definitions.
 \begin{eqnarray}
 \lambda_{n, i} & = & \alpha_{n, i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}} \\
+\rho_{n, i} & = & \beta_{n, i} \frac{\Delta t_n}{2(x_{i+1} - x_{i})} \\
 a_i & = & -\lambda_{n,i} \\
 b_i & = & 1 + 2 \lambda_{n,i} \\
 c_i & = & -\lambda_{n,i} \\
