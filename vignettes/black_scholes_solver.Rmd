@@ -10,11 +10,39 @@ vignette: >
 ---
 
 ## Introduction
+
 1. Loading packages
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 library( CFINI )
 library( plotly )
 ```
+
+A general representation of the equation related to the Black-Scholes models.
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\dfrac{\partial V}{\partial t}( t, S ) +
+\alpha( t, S ) \dfrac{\partial^2 V}{\partial S^2}( t, S ) +
+\beta( t, S ) \dfrac{\partial V}{\partial S}( t, S ) + 
+\gamma( t, S ) V( t, S ) = 0 & \forall ( t, S ) \in [0,T] \times [ S_l, S_h ] \\
+\text{FC:} & \\
+V( T, S ) = V_0( S ) & \forall S \in [ S_l, S_h ] \\
+\text{BC:} & \\
+V( t, S_l ) = v_1( t ) & \forall t \in [ 0, T ] \\
+V( t, S_h ) = v_2( t ) & \forall t \in [ 0, T ]
+\end{array} 
+\right.
+\end{equation}
+
+the particular case of Black-Scholes is given by the following parameters 
+$\alpha( t, S ) = \frac{1}{2}\sigma^2 S^2$, $\beta( t, S ) = r S$ and $\gamma( t, S ) = -r$
+where $\sigma, r$ are constants. It is important to observe that this model considers a final
+condition FC, that usually represents the value of the option at the end of the contract. 
+
+The idea of being able to produce a differential model that will be capable to produce a consistent
+pricing model that will hedge the final option is supported by the the second fundamental theorem 
+of asset pricing, which precisely relates the ability to hedge arbitrary claims, to the uniqueness 
+of martingale measures.
 
 2. Related coefficients
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
@@ -51,15 +79,52 @@ I <- sapply( x, FUN = If )
 A <- rep( 0, Nt )
 B <- rep( 0, Nt )
 ```
+\begin{equation}
+A = \begin{bmatrix}
+b_1 & a_1 & 0 & 0 & \cdots & 0 \\
+c_1 & b_2 & a_2 & 0 & \cdots & 0 \\
+0 & c_2 & b_3 & a_3 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \ddots & \ddots & \vdots \\
+0 & 0 & \cdots & c_{n-2} & b_{n-1} & a_{n-1} \\
+0 & 0 & \cdots & 0 & c_{n-1} & b_n
+\end{bmatrix}
+\end{equation}
 
-5. # Solving with Euler implicit method
+5. Euler implicit scheme has the following form for the equation
+\begin{equation}
+u_{n+1,i} - u_{n,i} = \alpha_{n,i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}}
+( u_{n+1,i+1} - 2 u_{n+1,i} + u_{n+1,i-1} )
+\end{equation}
+
+From previous scheme at every time step $n$ we formulate a tridiagonal problem $A u_n = d$, with 
+the folowing definitions.
+\begin{eqnarray}
+\lambda_{n, i} & = & \alpha_{n, i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}} \\
+a_i & = & -\lambda_{n,i} \\
+b_i & = & 1 + 2 \lambda_{n,i} \\
+c_i & = & -\lambda_{n,i} \\
+d_i & = & u_{n,i}
+\end{eqnarray}
+
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-hx <- ( x1 - x0 ) / ( Nx - 1 )
-ht <- ( t1 - t0 ) / ( Nt - 1 )
 Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
 ```
 
 6. Solving with Crank-Nicolson implicit method
+\begin{equation}
+u_{n+1,i} + \theta (  \lambda^2_{n,i} \Delta_x u_{n+1,i+1} -  \lambda^1_{n,i} \Delta_x u_{n+1,i} ) =
+u_{n,i} + ( 1 - \theta ) (  \lambda^2_{n,i} \Delta_x u_{n,i+1} -  \lambda^1_{n,i} \Delta_x u_{n,i} )
+\end{equation}
+
+\begin{eqnarray}
+\lambda^1_{n,i} & = & \alpha_{n, i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}} \\
+\lambda^2_{n,i} & = & \alpha_{n, i} \frac{\Delta t_n}{\Delta x_{i+1}\ \Delta x_{i+1}} \\
+a_i & = & -\theta \lambda^1_{n,i} \\
+b_i & = & 1 + \theta ( \lambda^1_{n,i} + \lambda^2_{n,i} ) \\
+c_i & = & -\theta \lambda^2_{n,i} \\
+d_i & = & u_{n,i} + ( 1 - \theta ) (  \lambda^2_{n,i} \Delta_x u_{n,i+1} -  \lambda^1_{n,i} \Delta_x u_{n,i} )
+\end{eqnarray}
+
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
 ```
@@ -76,7 +141,7 @@ ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 )
 
 7. Plotting results
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
-plot_ly( x = Ueu$t, y = Ueu$x, z = Ueu$u, alpha = 0.8 ) %>% 
+plot_ly( x = Ucn$t, y = Ucn$x, z = Ueu$u, alpha = 0.8 ) %>% 
   layout( scene = list( xaxis = list(title = "t"),
                         yaxis = list(title = "S"),
                         zaxis = list(title = "u") ) ) %>%
