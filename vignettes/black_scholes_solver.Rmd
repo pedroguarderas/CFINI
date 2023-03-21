@@ -14,56 +14,69 @@ vignette: >
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 library( CFINI )
 library( plotly )
-library( Rcpp )
-library( RcppArmadillo )
 ```
 
 2. Related coefficients
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-sigma<-1
-r<-0.05
-alpha<-( sigma^2 - 2 * r ) / ( 2 * sigma^2 )
-beta<- -( ( 2 * r + sigma^2 ) / ( 2 * sigma^2 ) )^2
+# Diffusion parameter constant
+Nt <- 300
+Nx <- 150
+alpha <- matrix( 10^(-2.3), Nt, Nx )
+theta <- 0.25
 ```
 
 3. Time grid
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-t0<-0
-t1<-1
-t1<-t1 * ( sigma^2 ) / 2
-Nt<-500
-t<-cf_adapt_grid( 1, t0, t1, Nt, 1 )
+t0 <- 0
+t1 <- 1
+t <- cf_uniform_grid( t0, t1, Nt )
 ```
 
 4. Value grid
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-x0<--8
-x1<-8
-Nx<-50
-x<-cf_adapt_grid( -4.5, x0, x1, Nx, 1 )
+x0 <- -0.5
+x1 <- 0.5
+x <- cf_uniform_grid( x0, x1, Nx )
 ```
 
 5. Initial conditions
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-K<-1500
-I<-sapply( x, FUN = function( x ) exp( -alpha * x ) * max( exp( x ) - K, 0 ) )
+If <- function( x ) if ( abs(x) <= 0.1 ) return( 1 ) else return( 0 )
+If <- Vectorize( If )
+I <- sapply( x, FUN = If )
 ```
 
 6. Boundary conditions
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-A<-rep( 0, Nt )
-B<-sapply( t, FUN = function( t ) exp( -alpha * x1 ) * (  exp( x1 ) - K ) * exp( -beta * t ) )
+A <- rep( 0, Nt )
+B <- rep( 0, Nt )
 ```
 
-5. Black-Scholes solver
+5. # Solving with Euler implicit method
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-theta<-0.5
-V<-cf_black_scholes_solv_cns( sigma, r, theta, I, A, B, t, x )
+hx <- ( x1 - x0 ) / ( Nx - 1 )
+ht <- ( t1 - t0 ) / ( Nt - 1 )
+Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
+```
+
+6. Solving with Crank-Nicolson implicit method
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
+```
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+alph <- max( alpha )
+phi <- function( x ) dnorm( x, mean = 0, sd = sqrt( 2 * alph * t[ Nt ] ) )
+s <- sapply( x, FUN = function( y ) integrate( function( x, y ) If( y - x ) * phi( x ), -Inf, Inf, y )$value )
+
+eeu <- matrix( Ueu$u[Nt,] - s, Nx, 1 ) # Euler error
+ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 )
+
 ```
 
 7. Plotting results
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
-plot_ly( x = V$t[,1], y = V$x[,1], z = V$u, alpha = 0.8 ) %>% 
+plot_ly( x = Ueu$t, y = Ueu$x, z = Ueu$u, alpha = 0.8 ) %>% 
   layout( scene = list( xaxis = list(title = "t"),
                         yaxis = list(title = "S"),
                         zaxis = list(title = "u") ) ) %>%
