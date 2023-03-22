@@ -12,53 +12,55 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // cf_diff_solv_euls
-List cf_diff_solv_euls(const Eigen::MatrixXd& alpha, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
-RcppExport SEXP _CFINI_cf_diff_solv_euls(SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+List cf_diff_solv_euls(const Eigen::MatrixXd& alpha, const Eigen::VectorXd& u0, const Eigen::VectorXd& u1, const Eigen::VectorXd& u2, const Eigen::VectorXd& t, const Eigen::VectorXd& x, const bool is_initial);
+RcppExport SEXP _CFINI_cf_diff_solv_euls(SEXP alphaSEXP, SEXP u0SEXP, SEXP u1SEXP, SEXP u2SEXP, SEXP tSEXP, SEXP xSEXP, SEXP is_initialSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Eigen::MatrixXd& >::type alpha(alphaSEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type I(ISEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type A(ASEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type B(BSEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u2(u2SEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_euls(alpha, I, A, B, t, x));
+    Rcpp::traits::input_parameter< const bool >::type is_initial(is_initialSEXP);
+    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_euls(alpha, u0, u1, u2, t, x, is_initial));
     return rcpp_result_gen;
 END_RCPP
 }
 // cf_diff_solv_cns
-List cf_diff_solv_cns(const double& theta, const Eigen::MatrixXd& alpha, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
-RcppExport SEXP _CFINI_cf_diff_solv_cns(SEXP thetaSEXP, SEXP alphaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+List cf_diff_solv_cns(const double& theta, const Eigen::MatrixXd& alpha, const Eigen::VectorXd& u0, const Eigen::VectorXd& u1, const Eigen::VectorXd& u2, const Eigen::VectorXd& t, const Eigen::VectorXd& x, const bool is_initial);
+RcppExport SEXP _CFINI_cf_diff_solv_cns(SEXP thetaSEXP, SEXP alphaSEXP, SEXP u0SEXP, SEXP u1SEXP, SEXP u2SEXP, SEXP tSEXP, SEXP xSEXP, SEXP is_initialSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< const Eigen::MatrixXd& >::type alpha(alphaSEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type I(ISEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type A(ASEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type B(BSEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u2(u2SEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_cns(theta, alpha, I, A, B, t, x));
+    Rcpp::traits::input_parameter< const bool >::type is_initial(is_initialSEXP);
+    rcpp_result_gen = Rcpp::wrap(cf_diff_solv_cns(theta, alpha, u0, u1, u2, t, x, is_initial));
     return rcpp_result_gen;
 END_RCPP
 }
 // cf_black_scholes_solv_cns
-List cf_black_scholes_solv_cns(const double& sigma, const double& rate, const double& theta, const Eigen::VectorXd& I, const Eigen::VectorXd& A, const Eigen::VectorXd& B, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
-RcppExport SEXP _CFINI_cf_black_scholes_solv_cns(SEXP sigmaSEXP, SEXP rateSEXP, SEXP thetaSEXP, SEXP ISEXP, SEXP ASEXP, SEXP BSEXP, SEXP tSEXP, SEXP xSEXP) {
+List cf_black_scholes_solv_cns(const double& sigma, const double& rate, const double& theta, const Eigen::VectorXd& u0, const Eigen::VectorXd& u1, const Eigen::VectorXd& u2, const Eigen::VectorXd& t, const Eigen::VectorXd& x);
+RcppExport SEXP _CFINI_cf_black_scholes_solv_cns(SEXP sigmaSEXP, SEXP rateSEXP, SEXP thetaSEXP, SEXP u0SEXP, SEXP u1SEXP, SEXP u2SEXP, SEXP tSEXP, SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type sigma(sigmaSEXP);
     Rcpp::traits::input_parameter< const double& >::type rate(rateSEXP);
     Rcpp::traits::input_parameter< const double& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type I(ISEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type A(ASEXP);
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type B(BSEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type u2(u2SEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type t(tSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_black_scholes_solv_cns(sigma, rate, theta, I, A, B, t, x));
+    rcpp_result_gen = Rcpp::wrap(cf_black_scholes_solv_cns(sigma, rate, theta, u0, u1, u2, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -149,8 +151,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_CFINI_cf_diff_solv_euls", (DL_FUNC) &_CFINI_cf_diff_solv_euls, 6},
-    {"_CFINI_cf_diff_solv_cns", (DL_FUNC) &_CFINI_cf_diff_solv_cns, 7},
+    {"_CFINI_cf_diff_solv_euls", (DL_FUNC) &_CFINI_cf_diff_solv_euls, 7},
+    {"_CFINI_cf_diff_solv_cns", (DL_FUNC) &_CFINI_cf_diff_solv_cns, 8},
     {"_CFINI_cf_black_scholes_solv_cns", (DL_FUNC) &_CFINI_cf_black_scholes_solv_cns, 8},
     {"_CFINI_cf_uniform_grid", (DL_FUNC) &_CFINI_cf_uniform_grid, 3},
     {"_CFINI_cf_adapt_grid", (DL_FUNC) &_CFINI_cf_adapt_grid, 5},

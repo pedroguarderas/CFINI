@@ -13,8 +13,8 @@
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
-cf_diff_solv_euls <- function(alpha, I, A, B, t, x) {
-    .Call(`_CFINI_cf_diff_solv_euls`, alpha, I, A, B, t, x)
+cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
+    .Call(`_CFINI_cf_diff_solv_euls`, alpha, u0, u1, u2, t, x, is_initial)
 }
 
 #' @title Diffusion solver with Crank-Nicolson scheme
@@ -30,8 +30,8 @@ cf_diff_solv_euls <- function(alpha, I, A, B, t, x) {
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
 #' @export
-cf_diff_solv_cns <- function(theta, alpha, I, A, B, t, x) {
-    .Call(`_CFINI_cf_diff_solv_cns`, theta, alpha, I, A, B, t, x)
+cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
+    .Call(`_CFINI_cf_diff_solv_cns`, theta, alpha, u0, u1, u2, t, x, is_initial)
 }
 
 #' @title Black-Scholes solver
@@ -49,8 +49,8 @@ cf_diff_solv_cns <- function(theta, alpha, I, A, B, t, x) {
 #' @note pricing options
 #' @author Pedro Guarderas
 #' @export
-cf_black_scholes_solv_cns <- function(sigma, rate, theta, I, A, B, t, x) {
-    .Call(`_CFINI_cf_black_scholes_solv_cns`, sigma, rate, theta, I, A, B, t, x)
+cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
+    .Call(`_CFINI_cf_black_scholes_solv_cns`, sigma, rate, theta, u0, u1, u2, t, x)
 }
 
 #' @title Uniform grid
@@ -107,7 +107,7 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 }
 
 #' @title PSOR algorithm
-#' @description Projected successive overrelaxation
+#' @description Projected successive over-relaxation
 #' @param u0 initial guest of the solution
 #' @param A matrix determining the variational inequality
 #' @param b
