@@ -14,7 +14,7 @@ BugReports: https://github.com/pedroguarderas/CFINI/issues
 Depends:
     R (>= 4.0)
 LinkingTo: Rcpp, RcppEigen
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Imports: Rcpp, Rdpack
 Suggests: data.table,
     Matrix,
