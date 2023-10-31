@@ -15,7 +15,7 @@
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
-    .Call(`_CFINI_cf_diff_solv_euls`, alpha, u0, u1, u2, t, x, is_initial)
+    .Call('_CFINI_cf_diff_solv_euls', PACKAGE = 'CFINI', alpha, u0, u1, u2, t, x, is_initial)
 }
 
 #' @title Diffusion solver with Crank-Nicolson scheme
@@ -33,7 +33,7 @@ cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
-    .Call(`_CFINI_cf_diff_solv_cns`, theta, alpha, u0, u1, u2, t, x, is_initial)
+    .Call('_CFINI_cf_diff_solv_cns', PACKAGE = 'CFINI', theta, alpha, u0, u1, u2, t, x, is_initial)
 }
 
 #' @title Black-Scholes solver
@@ -53,7 +53,7 @@ cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
-    .Call(`_CFINI_cf_black_scholes_solv_cns`, sigma, rate, theta, u0, u1, u2, t, x)
+    .Call('_CFINI_cf_black_scholes_solv_cns', PACKAGE = 'CFINI', sigma, rate, theta, u0, u1, u2, t, x)
 }
 
 #' @title Uniform grid
@@ -66,7 +66,7 @@ cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_uniform_grid <- function(a, b, N) {
-    .Call(`_CFINI_cf_uniform_grid`, a, b, N)
+    .Call('_CFINI_cf_uniform_grid', PACKAGE = 'CFINI', a, b, N)
 }
 
 #' @title Exponential grid
@@ -81,7 +81,7 @@ cf_uniform_grid <- function(a, b, N) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_adapt_grid <- function(l, a, b, N, E) {
-    .Call(`_CFINI_cf_adapt_grid`, l, a, b, N, E)
+    .Call('_CFINI_cf_adapt_grid', PACKAGE = 'CFINI', l, a, b, N, E)
 }
 
 #' @title Ordinary differenatial equation solver
@@ -96,7 +96,7 @@ cf_adapt_grid <- function(l, a, b, N, E) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_edo_solv_precor <- function(t, v0, f, m = 2L, err = 1e-2) {
-    .Call(`_CFINI_cf_edo_solv_precor`, t, v0, f, m, err)
+    .Call('_CFINI_cf_edo_solv_precor', PACKAGE = 'CFINI', t, v0, f, m, err)
 }
 
 #' @title Tridiagonal solver
@@ -109,7 +109,7 @@ cf_edo_solv_precor <- function(t, v0, f, m = 2L, err = 1e-2) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_tri_diag_solv <- function(a, b, c, d) {
-    invisible(.Call(`_CFINI_cf_tri_diag_solv`, a, b, c, d))
+    invisible(.Call('_CFINI_cf_tri_diag_solv', PACKAGE = 'CFINI', a, b, c, d))
 }
 
 #' @title PSOR algorithm
@@ -125,13 +125,20 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_psor_solv <- function(u0, A, b, c, w, n, e) {
-    .Call(`_CFINI_cf_psor_solv`, u0, A, b, c, w, n, e)
+    .Call('_CFINI_cf_psor_solv', PACKAGE = 'CFINI', u0, A, b, c, w, n, e)
 }
 
 #' @title Brownian motion
-NULL
-
+#' @description Simulate d-dimensional Browninan motion
+#' @param d Dimension
+#' @param t Time grid
+#' @return List with solution parameters
+#' @note Diffusion solver for pricing options
+#' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
+#' @importFrom Rcpp sourceCpp
+#' @export
 cf_wiener <- function(d, t) {
-    .Call(`_CFINI_cf_wiener`, d, t)
+    .Call('_CFINI_cf_wiener', PACKAGE = 'CFINI', d, t)
 }
 

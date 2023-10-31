@@ -11,16 +11,16 @@ using namespace Rcpp;
 
 //--------------------------------------------------------------------------------------------------
 //' @title Brownian motion
- //' @description Simulate d-dimensional Browninan motion
- //' @param d Dimension
- //' @param t Time grid
- //' @return List with solution parameters
- //' @note Diffusion solver for pricing options
- //' @author Pedro Guarderas
- //' \email{pedro.felipe.guarderas@@gmail.com}
- //' @importFrom Rcpp sourceCpp
- //' @export
- // [[Rcpp::export]]
+//' @description Simulate d-dimensional Browninan motion
+//' @param d Dimension
+//' @param t Time grid
+//' @return List with solution parameters
+//' @note Diffusion solver for pricing options
+//' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
+//' @importFrom Rcpp sourceCpp
+//' @export
+// [[Rcpp::export]]
  Eigen::MatrixXd cf_wiener( const int& d,
                             const Eigen::VectorXd& t );
 
