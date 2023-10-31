@@ -7,17 +7,21 @@
 cf_adapt_grid(l, a, b, N, E)
 }
 \arguments{
+\item{l}{adaptation points}
+
 \item{a}{inferior value for the grid}
 
 \item{b}{superior value for the grid}
 
+\item{E}{refinement parameter}
+
 \item{n}{number of points in the grid}
 }
 \value{
-Grid.
+A vector with the adaptive grid points.
 }
 \description{
-Exponential grid
+Adaptive grid generator
 }
 \author{
 Pedro Guarderas

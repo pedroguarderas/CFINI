@@ -14,10 +14,10 @@ cf_uniform_grid(a, b, N)
 \item{n}{number of points in the grid}
 }
 \value{
-Grid.
+A vector with the grid points.
 }
 \description{
-Uniform grid
+simple function for grid generation
 }
 \author{
 Pedro Guarderas
