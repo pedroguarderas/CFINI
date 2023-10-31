@@ -31,7 +31,7 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 //' @description Projected successive over-relaxation
 //' @param u0 initial guest of the solution
 //' @param A matrix determining the variational inequality
-//' @param b
+//' @param b right term of the inequality
 //' @param c lower constraint for the solution
 //' @param w weight
 //' @param n maximal number of iterations

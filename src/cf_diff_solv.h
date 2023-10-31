@@ -13,12 +13,12 @@ using namespace Rcpp;
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with implicit Euler scheme
 //' @description Solver for diffusion problems implemented using the Euler implicit scheme
-//' @param alpha Diffusion parameter
-//' @param I Initial condition
-//' @param A Inferior boundary condition
-//' @param B Superior boundary condition
-//' @param t Time grid
-//' @param x Spatial grid
+//' @param alpha matrix discretization Diffusion parameter
+//' @param u0 vector with discretization of the initial condition
+//' @param u1 vector with discretization of the inferior boundary condition
+//' @param u2 vector with discretization of the superior boundary condition
+//' @param t vector with discretization of the time grid
+//' @param x vector with discretization of the spatial grid
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
@@ -36,12 +36,12 @@ List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
 //' @title Diffusion solver with Crank-Nicolson scheme
 //' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
 //' @param theta Parameter for the Crank-Nicolson scheme
-//' @param alpha Diffusion parameter
-//' @param I Initial condition
-//' @param A Inferior boundary condition
-//' @param B Superior boundary condition
-//' @param t Time grid
-//' @param x Spatial grid
+//' @param alpha matrix discretization Diffusion parameter
+//' @param u0 vector with discretization of the initial condition
+//' @param u1 vector with discretization of the inferior boundary condition
+//' @param u2 vector with discretization of the superior boundary condition
+//' @param t vector with discretization of the time grid
+//' @param x vector with discretization of the spatial grid
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
@@ -63,11 +63,11 @@ List cf_diff_solv_cns( const double& theta,
 //' @param sigma Volatility
 //' @param rate Interest rate
 //' @param theta Parameter for the Crank-Nicolson scheme
-//' @param I Initial condition
-//' @param A Inferior boundary condition
-//' @param B Superior boundary condition
-//' @param t Time grid
-//' @param x Spatial grid
+//' @param u0 vector with discretization of the initial condition
+//' @param u1 vector with discretization of the inferior boundary condition
+//' @param u2 vector with discretization of the superior boundary condition
+//' @param t vector with discretization of the time grid
+//' @param x vector with discretization of the spatial grid
 //' @return List with solution parameters
 //' @note pricing options
 //' @author Pedro Guarderas
