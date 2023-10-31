@@ -25,4 +25,5 @@ The solver is implemented to compute the solution forwards in time.
 }
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }

@@ -20,4 +20,5 @@ Solver tridiagonal matrices.
 }
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }

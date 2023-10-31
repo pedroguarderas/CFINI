@@ -30,4 +30,5 @@ Diffusion solver for pricing options
 }
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }

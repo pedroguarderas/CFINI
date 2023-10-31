@@ -21,4 +21,5 @@ simple function for grid generation
 }
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }
