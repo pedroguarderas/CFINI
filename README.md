@@ -1,4 +1,9 @@
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/pedroguarderas/CFINI/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pedroguarderas/CFINI/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # CFINI
@@ -11,25 +16,25 @@ Here a list of the main numerical methods implemented inside CFINI. Many
 of this functions are coded with C++ by employing the packages Rcpp and
 RcppEigen.
 
--   Pricing with trees
--   Pricing with multinomial trees
--   Ordinary differential equation solver implemented with the
-    predictor-corrector method
--   Diffusion solver with Euler implicit scheme
--   Diffusion solver with Crank-Nicolson scheme
+- Pricing with trees
+- Pricing with multinomial trees
+- Ordinary differential equation solver implemented with the
+  predictor-corrector method
+- Diffusion solver with Euler implicit scheme
+- Diffusion solver with Crank-Nicolson scheme
 
 The different methods in the CFINI package are implemented based on the
 concepts and algorithms introduced in the following sources of
 information:
 
--   The two volume book [Stochastic Calculus for Finance I and
-    II](https://doi.org/10.1007/978-0-387-22527-2) of Steven E. Shreve.
--   The book [Finite difference methods in financial
-    engineering](https://www.wiley.com/en-us/Finite+Difference+Methods+in+Financial+Engineering:+A+Partial+Differential+Equati%20on+Approach-p-9781118856482)
-    of Daniel J. Duffy.
--   The specialization of coursera [Financial Engineering and Risk
-    Management](https://www.coursera.org/specializations/financialengineering)
-    a MOOC provided by Columbia University.
--   The MOOC of coursera [Interest Rate
-    Models](https://www.coursera.org/learn/interest-rate-models)
-    provided by EPFL.
+- The two volume book [Stochastic Calculus for Finance I and
+  II](https://doi.org/10.1007/978-0-387-22527-2) of Steven E. Shreve.
+- The book [Finite difference methods in financial
+  engineering](https://www.wiley.com/en-us/Finite+Difference+Methods+in+Financial+Engineering:+A+Partial+Differential+Equati%20on+Approach-p-9781118856482)
+  of Daniel J. Duffy.
+- The specialization of coursera [Financial Engineering and Risk
+  Management](https://www.coursera.org/specializations/financialengineering)
+  a MOOC provided by Columbia University.
+- The MOOC of coursera [Interest Rate
+  Models](https://www.coursera.org/learn/interest-rate-models) provided
+  by EPFL.
