@@ -6,6 +6,13 @@
 \usage{
 cf_uniform_grid(a, b, N)
 }
+\arguments{
+\item{a}{inferior value for the grid}
+
+\item{b}{superior value for the grid}
+
+\item{n}{number of points in the grid}
+}
 \value{
 Grid.
 }

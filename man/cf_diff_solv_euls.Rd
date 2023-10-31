@@ -4,20 +4,20 @@
 \alias{cf_diff_solv_euls}
 \title{Diffusion solver with implicit Euler scheme}
 \usage{
-cf_diff_solv_euls(alpha, I, A, B, t, x)
+cf_diff_solv_euls(alpha, u0, u1, u2, t, x, is_initial)
 }
 \arguments{
-\item{alpha}{Diffusion parameter}
+\item{alpha}{matrix discretization Diffusion parameter}
 
-\item{I}{Initial condition}
+\item{u0}{vector with discretization of the initial condition}
 
-\item{A}{Inferior boundary condition}
+\item{u1}{vector with discretization of the inferior boundary condition}
 
-\item{B}{Superior boundary condition}
+\item{u2}{vector with discretization of the superior boundary condition}
 
-\item{t}{Time grid}
+\item{t}{vector with discretization of the time grid}
 
-\item{x}{Spatial grid}
+\item{x}{vector with discretization of the spatial grid}
 }
 \value{
 List with solution parameters

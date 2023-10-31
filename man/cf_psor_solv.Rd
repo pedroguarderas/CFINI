@@ -11,6 +11,8 @@ cf_psor_solv(u0, A, b, c, w, n, e)
 
 \item{A}{matrix determining the variational inequality}
 
+\item{b}{right term of the inequality}
+
 \item{c}{lower constraint for the solution}
 
 \item{w}{weight}
@@ -20,7 +22,7 @@ cf_psor_solv(u0, A, b, c, w, n, e)
 \item{e}{relative error for the solution improvement}
 }
 \description{
-Projected successive overrelaxation
+Projected successive over-relaxation
 }
 \author{
 Pedro Guarderas

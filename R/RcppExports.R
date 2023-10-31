@@ -3,12 +3,12 @@
 
 #' @title Diffusion solver with implicit Euler scheme
 #' @description Solver for diffusion problems implemented using the Euler implicit scheme
-#' @param alpha Diffusion parameter
-#' @param I Initial condition
-#' @param A Inferior boundary condition
-#' @param B Superior boundary condition
-#' @param t Time grid
-#' @param x Spatial grid
+#' @param alpha matrix discretization Diffusion parameter
+#' @param u0 vector with discretization of the initial condition
+#' @param u1 vector with discretization of the inferior boundary condition
+#' @param u2 vector with discretization of the superior boundary condition
+#' @param t vector with discretization of the time grid
+#' @param x vector with discretization of the spatial grid
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
@@ -20,12 +20,12 @@ cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
 #' @title Diffusion solver with Crank-Nicolson scheme
 #' @description Solver for diffusion problems implemented with Crank-Nicolson scheme
 #' @param theta Parameter for the Crank-Nicolson scheme
-#' @param alpha Diffusion parameter
-#' @param I Initial condition
-#' @param A Inferior boundary condition
-#' @param B Superior boundary condition
-#' @param t Time grid
-#' @param x Spatial grid
+#' @param alpha matrix discretization Diffusion parameter
+#' @param u0 vector with discretization of the initial condition
+#' @param u1 vector with discretization of the inferior boundary condition
+#' @param u2 vector with discretization of the superior boundary condition
+#' @param t vector with discretization of the time grid
+#' @param x vector with discretization of the spatial grid
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
@@ -40,11 +40,11 @@ cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
 #' @param sigma Volatility
 #' @param rate Interest rate
 #' @param theta Parameter for the Crank-Nicolson scheme
-#' @param I Initial condition
-#' @param A Inferior boundary condition
-#' @param B Superior boundary condition
-#' @param t Time grid
-#' @param x Spatial grid
+#' @param u0 vector with discretization of the initial condition
+#' @param u1 vector with discretization of the inferior boundary condition
+#' @param u2 vector with discretization of the superior boundary condition
+#' @param t vector with discretization of the time grid
+#' @param x vector with discretization of the spatial grid
 #' @return List with solution parameters
 #' @note pricing options
 #' @author Pedro Guarderas
@@ -54,11 +54,11 @@ cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
 }
 
 #' @title Uniform grid
-#' @description 
-#' @param a
-#' @param b
-#' @param N
-#' @return Grid.
+#' @description simple function for grid generation
+#' @param a inferior value for the grid
+#' @param b superior value for the grid
+#' @param n number of points in the grid
+#' @return A vector with the grid points.
 #' @author Pedro Guarderas
 #' @export
 cf_uniform_grid <- function(a, b, N) {
@@ -66,13 +66,13 @@ cf_uniform_grid <- function(a, b, N) {
 }
 
 #' @title Exponential grid
-#' @description
-#' @param l
-#' @param a
-#' @param b
-#' @param n
-#' @param E
-#' @return Grid.
+#' @description Adaptive grid generator
+#' @param l adaptation points
+#' @param a inferior value for the grid
+#' @param b superior value for the grid
+#' @param n number of points in the grid
+#' @param E refinement parameter
+#' @return A vector with the adaptive grid points.
 #' @author Pedro Guarderas
 #' @export
 cf_adapt_grid <- function(l, a, b, N, E) {
@@ -110,7 +110,7 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 #' @description Projected successive over-relaxation
 #' @param u0 initial guest of the solution
 #' @param A matrix determining the variational inequality
-#' @param b
+#' @param b right term of the inequality
 #' @param c lower constraint for the solution
 #' @param w weight
 #' @param n maximal number of iterations
