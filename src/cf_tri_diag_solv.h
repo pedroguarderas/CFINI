@@ -11,7 +11,6 @@ using namespace Rcpp;
 //--------------------------------------------------------------------------------------------------
 //' @title Tridiagonal solver
 //' @description Solver tridiagonal matrices.
-//' @param alpha
 //' @param a lower diagonal
 //' @param b diagonal
 //' @param c upper diagonal

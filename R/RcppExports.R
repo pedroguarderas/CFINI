@@ -95,7 +95,6 @@ cf_edo_solv_precor <- function(t, v0, f, m = 2L, err = 1e-2) {
 
 #' @title Tridiagonal solver
 #' @description Solver tridiagonal matrices.
-#' @param alpha
 #' @param a lower diagonal
 #' @param b diagonal
 #' @param c upper diagonal
