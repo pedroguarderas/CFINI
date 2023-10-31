@@ -7,7 +7,8 @@ Date: 2018-01-27
 License: LGPL-3
 Description: Computational finance routines. Pricing with multinomial trees.
 Authors@R: c(
-    person("Pedro", "Guarderas", email = "pedro.felipe.guarderas@gmail.com", role = c("aut","cre") )
+    person("Pedro", "Guarderas", email = "pedro.felipe.guarderas@gmail.com", role = c("aut","cre") ),
+    person("Andrés", "Lopez", role="ctb")
     )
 URL: https://github.com/pedroguarderas/CFINI
 BugReports: https://github.com/pedroguarderas/CFINI/issues
