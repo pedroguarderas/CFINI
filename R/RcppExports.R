@@ -12,6 +12,7 @@
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
     .Call(`_CFINI_cf_diff_solv_euls`, alpha, u0, u1, u2, t, x, is_initial)
@@ -29,6 +30,7 @@ cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
     .Call(`_CFINI_cf_diff_solv_cns`, theta, alpha, u0, u1, u2, t, x, is_initial)
@@ -48,6 +50,7 @@ cf_diff_solv_cns <- function(theta, alpha, u0, u1, u2, t, x, is_initial) {
 #' @return List with solution parameters
 #' @note pricing options
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
     .Call(`_CFINI_cf_black_scholes_solv_cns`, sigma, rate, theta, u0, u1, u2, t, x)
@@ -60,6 +63,7 @@ cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
 #' @param n number of points in the grid
 #' @return A vector with the grid points.
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_uniform_grid <- function(a, b, N) {
     .Call(`_CFINI_cf_uniform_grid`, a, b, N)
@@ -74,6 +78,7 @@ cf_uniform_grid <- function(a, b, N) {
 #' @param E refinement parameter
 #' @return A vector with the adaptive grid points.
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_adapt_grid <- function(l, a, b, N, E) {
     .Call(`_CFINI_cf_adapt_grid`, l, a, b, N, E)
@@ -88,6 +93,7 @@ cf_adapt_grid <- function(l, a, b, N, E) {
 #' @return Return the numerical solution to the ODE.
 #' @note The solver is implemented to compute the solution forwards in time.
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_edo_solv_precor <- function(t, v0, f, m = 2L, err = 1e-2) {
     .Call(`_CFINI_cf_edo_solv_precor`, t, v0, f, m, err)
@@ -100,6 +106,7 @@ cf_edo_solv_precor <- function(t, v0, f, m = 2L, err = 1e-2) {
 #' @param c upper diagonal
 #' @param d image of the solution vector, which over written with the solution
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_tri_diag_solv <- function(a, b, c, d) {
     invisible(.Call(`_CFINI_cf_tri_diag_solv`, a, b, c, d))
@@ -115,6 +122,7 @@ cf_tri_diag_solv <- function(a, b, c, d) {
 #' @param n maximal number of iterations
 #' @param e relative error for the solution improvement
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 cf_psor_solv <- function(u0, A, b, c, w, n, e) {
     .Call(`_CFINI_cf_psor_solv`, u0, A, b, c, w, n, e)
@@ -127,10 +135,14 @@ cf_psor_solv <- function(u0, A, b, c, w, n, e) {
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
-#' @useDynLib CFINI, .registration = TRUE
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @importFrom Rcpp sourceCpp
 #' @export
 cf_wiener <- function(d, t) {
     .Call(`_CFINI_cf_wiener`, d, t)
+}
+
+cf_stoch_solv <- function(d1, d2, X0, b, s, t) {
+    .Call(`_CFINI_cf_stoch_solv`, d1, d2, X0, b, s, t)
 }
 

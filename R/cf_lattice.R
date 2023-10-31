@@ -7,6 +7,7 @@
 #' @param S0 initial price
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @examples
 # s <- 0.3
 # T <- 0.25

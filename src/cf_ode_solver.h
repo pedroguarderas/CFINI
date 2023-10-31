@@ -18,6 +18,7 @@ using namespace Rcpp;
 //' @return Return the numerical solution to the ODE.
 //' @note The solver is implemented to compute the solution forwards in time.
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 List cf_edo_solv_precor( const Eigen::VectorXd& t,

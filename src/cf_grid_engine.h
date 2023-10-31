@@ -16,6 +16,7 @@ using namespace Rcpp;
 //' @param n number of points in the grid
 //' @return A vector with the grid points.
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 Eigen::VectorXd cf_uniform_grid( const double& a, 
@@ -32,6 +33,7 @@ Eigen::VectorXd cf_uniform_grid( const double& a,
 //' @param E refinement parameter
 //' @return A vector with the adaptive grid points.
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 Eigen::VectorXd cf_adapt_grid( const double& l, 

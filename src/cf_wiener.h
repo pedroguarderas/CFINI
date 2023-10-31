@@ -17,7 +17,7 @@ using namespace Rcpp;
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
-//' @useDynLib CFINI, .registration = TRUE
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @importFrom Rcpp sourceCpp
 //' @export
 // [[Rcpp::export]]
@@ -26,6 +26,8 @@ Eigen::MatrixXd cf_wiener( const int& d,
 
 //--------------------------------------------------------------------------------------------------
 /*
+ //' @useDynLib CFINI, .registration = TRUE
+ */
  //' @title Brownian motion
  //' @description Simulate d-dimensional Brownian motion
  //' @param d1
@@ -37,6 +39,7 @@ Eigen::MatrixXd cf_wiener( const int& d,
  //' @return Solution to the stochastic differential equation
  //' @note Diffusion solver for pricing options
  //' @author Pedro Guarderas
+ //' \email{pedro.felipe.guarderas@@gmail.com}
  //' @export
  // [[Rcpp::export]]
  Eigen::MatrixXd cf_stoch_solv( const int& d1,

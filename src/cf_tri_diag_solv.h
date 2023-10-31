@@ -16,14 +16,13 @@ using namespace Rcpp;
 //' @param c upper diagonal
 //' @param d image of the solution vector, which over written with the solution
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 void cf_tri_diag_solv( Eigen::VectorXd& a,
                        Eigen::VectorXd& b,
                        Eigen::VectorXd& c,
                        Eigen::VectorXd& d );
-
-
 
 //--------------------------------------------------------------------------------------------------
 //' @title PSOR algorithm
@@ -36,6 +35,7 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 //' @param n maximal number of iterations
 //' @param e relative error for the solution improvement
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 List cf_psor_solv( const Eigen::VectorXd& u0,

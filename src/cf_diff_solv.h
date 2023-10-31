@@ -22,6 +22,7 @@ using namespace Rcpp;
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
@@ -45,6 +46,7 @@ List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 List cf_diff_solv_cns( const double& theta,
@@ -71,6 +73,7 @@ List cf_diff_solv_cns( const double& theta,
 //' @return List with solution parameters
 //' @note pricing options
 //' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
 List cf_black_scholes_solv_cns( const double& sigma,
