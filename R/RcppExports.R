@@ -129,20 +129,9 @@ cf_psor_solv <- function(u0, A, b, c, w, n, e) {
 }
 
 #' @title Brownian motion
-#' @description Simulate d-dimensional Browninan motion
-#' @param d Dimension
-#' @param t Time grid
-#' @return List with solution parameters
-#' @note Diffusion solver for pricing options
-#' @author Pedro Guarderas
-#' \email{pedro.felipe.guarderas@@gmail.com}
-#' @importFrom Rcpp sourceCpp
-#' @export
+NULL
+
 cf_wiener <- function(d, t) {
     .Call(`_CFINI_cf_wiener`, d, t)
-}
-
-cf_stoch_solv <- function(d1, d2, X0, b, s, t) {
-    .Call(`_CFINI_cf_stoch_solv`, d1, d2, X0, b, s, t)
 }
 
