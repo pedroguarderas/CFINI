@@ -305,7 +305,7 @@ List cf_black_scholes_solv_cns( const double& sigma,
   
   // Inicial condition
   for ( i = 0; i < Nx; i++ ) {
-    u( 0, i ) = I( i );
+    u( 0, i ) = u0( i );
   }
   
   
@@ -314,8 +314,8 @@ List cf_black_scholes_solv_cns( const double& sigma,
   for ( n = 0; n < nt; n++ ) {
     dt = t( n + 1 ) - t( n );
     
-    d( 0 ) = A( n );
-    d( nx ) = B( n );
+    d( 0 ) = u1( n );
+    d( nx ) = u2( n );
     
     dxf = x( 1 ) - x( 0 );
     lambdaf = D * dt / ( dxf * dxf );
