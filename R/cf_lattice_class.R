@@ -1,6 +1,7 @@
-setClass( 'MLattice', representation( lattice = 'list' ) )
+setClass( 'cflattice', representation( lattice = 'list' ) )
 
-setMethod( '+', signature( e1 = "MLattice", e2 = "MLattice" ),
-           function( e1, e2 ) { 
-             
-} )
+setMethod( "[", "cflattice",
+           function( x, i ) {
+             return( x@lattice[[ i ]] )
+           }
+)
