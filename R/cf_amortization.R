@@ -19,12 +19,12 @@
 #' @export
 cf_amortization<-function( r, y, p, M ) {
   
-  I<-r/p
-  N<-y * p
-  R<--( 1 - ( 1 + I )^( N + 1 ) )/ I
-  C<-M * ( I * ( 1 + I )^N ) / ( ( 1 + I )^N - 1)
+  I <- r/p
+  N <- y * p
+  R <- -( 1 - ( 1 + I )^( N + 1 ) )/ I
+  C <- M * ( I * ( 1 + I )^N ) / ( ( 1 + I )^N - 1)
   
-  A<-data.table( t = seq( 0, N-1, 1 ) )
+  A <- data.table( t = seq( 0, N-1, 1 ) )
   A[ , y := t / p ]
   A[ , r := ( 1 + I )^t ]
   A[ , v := 1/r ]
