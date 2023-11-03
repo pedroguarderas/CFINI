@@ -10,7 +10,7 @@
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
-#' @seealso \code{\link{CFLattice}}
+#' @seealso \code{\link{cflattice}}
 #' @examples
 #' s <- 0.3
 #' T <- 0.25
@@ -70,57 +70,67 @@ cf_lattice_pricing <- function( Q, EQ, R, S, option, type = 'E' ) {
   }
   
   if ( type == 'E' & check == 1 ) {
-    C[[N]] <- sapply( C[[N]], FUN = option )
+    C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) EQ( 1/R, Q, C[[t+1]][k:(k+n-1)] )  )
+      C@l[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) EQ( 1/R, Q, C@lattice[[ t + 1 ]][k:(k+n-1)] )  )
     }
   } else if ( type == 'E' & check == 2 ) {
-    C[[N]] <- sapply( C[[N]], FUN = option )
+    C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) EQ( 1 / ( 1 + R[[t]][k] ), Q, C[[t+1]][k:(k+n-1)] )  )
+      C@lattice[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) EQ( 1 / ( 1 + R@lattice[[ t ]][k] ), Q, C@lattice[[ t + 1 ]][k:(k+n-1)] )  )
     }
   } else if ( type == 'A' & check == 1 ) {
-    C[[N]] <- sapply( C[[N]], FUN = option )
+    C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) max( option( S[[t]][k] ),
-                                                  EQ( 1/R, Q, C[[t+1]][k:(k+n-1)] ) ) )
+      C@lattice[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) max( option( S@lattice[[ t ]][k] ),EQ( 1/R, Q, C@lattice[[ t + 1 ]][k:(k+n-1)] ) ) )
     }
   } else if ( type == 'A' & check == 2 ) {
-    C[[N]] <- sapply( C[[N]], FUN = option )
+    C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) max( option( S[[t]][k] ),
-                                                  EQ( 1 / ( 1 + R[[t]][k] ), Q, C[[t+1]][k:(k+n-1)] ) ) )
+      C@lattice[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) max( option( S@lattice[[ t ]][k] ), EQ( 1 / ( 1 + R@lattice[[ t ]][k] ), Q, C@lattice[[ t + 1 ]][k:(k+n-1)] ) ) )
     }
   } else if ( type == 'F' & check == 1 ) {
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) EQ( 1 / R, Q, C[[t+1]][k:(k+n-1)] )  )
+      C@lattice[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) EQ( 1 / R, Q, C@lattice[[ t + 1 ]][ k:(k+n-1) ] )  )
     }
   } else if ( type == 'F' & check == 2 ) {
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) EQ( 1 / ( 1 + R[[t]][k] ), Q, C[[t+1]][k:(k+n-1)] )  )
+      C@lattice[[ t ]] <- sapply( 
+        1:M, 
+        FUN = function(k) EQ( 1 / ( 1 + R@lattice[[ t ]][k] ), Q, C@lattice[[ t + 1 ]][ k:(k+n-1) ] )  )
     }
   } else if ( type == 'S' & check == 2 ) {
-    C[[N]] <- sapply( C[[N]], FUN = option )
-    C[[N]] <- C[[N]] / ( 1 + R[[N]] )
+    C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
+    C@lattice[[ N ]] <- C@lattice[[ N ]] / ( 1 + R[N] )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C[[t]] <- sapply( 1:M, FUN = function(k) {
-        EQ( 1 / ( 1 + R[[t]][k] ), Q, C[[t+1]][k:(k+n-1)] ) +
-          option( S[[t]][k] ) / ( 1 + R[[t]][k] )
+      C@lattice[[ t ]] <- sapply( 1:M, FUN = function(k) {
+        EQ( 1 / ( 1 + R@lattice[[ t ]][k] ), Q, C@lattice[[ t + 1 ]][k:(k+n-1)] ) +
+          option( S@lattice[[ t ]][k] ) / ( 1 + R@lattice[[ t ]][k] )
       } )
     }
   } # else if ( type = 'P' & check == 2 ) {
-  #   C[[1]] <- 1
+  #   C[1] <- 1
   #   for ( t in 2:N ) {
   #     M <- n + (t-2)*(n-1)
-  #     C[[t]] <- sapply( 1:M, FUN = function(k) {
-  #       EQ( 1 / ( 1 + R[[t]][k] ), Q[], C[[t-1]][k:(k+n-1)] )
+  #     C@lattice[[ t ]] <- sapply( 1:M, FUN = function(k) {
+  #       EQ( 1 / ( 1 + R@lattice[[ t ]][k] ), Q[], C[t-1][k:(k+n-1)] )
   #       
   #     } )
   #   }

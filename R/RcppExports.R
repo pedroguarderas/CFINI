@@ -9,7 +9,7 @@
 #' @param u2 vector with discretization of the superior boundary condition
 #' @param t vector with discretization of the time grid
 #' @param x vector with discretization of the spatial grid
-#' @param is_initial
+#' @param is_initial specifies if the condition is final of initial
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
@@ -28,6 +28,7 @@ cf_diff_solv_euls <- function(alpha, u0, u1, u2, t, x, is_initial) {
 #' @param u2 vector with discretization of the superior boundary condition
 #' @param t vector with discretization of the time grid
 #' @param x vector with discretization of the spatial grid
+#' @param is_initial specifies if the condition is final of initial
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
