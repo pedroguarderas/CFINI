@@ -30,5 +30,5 @@ cf_lattice <- function( N, U, S0 ) {
     K <- M - n + 1
     S[[ t ]] <- c( U * S[[ t - 1 ]][ 1 ], U[ n ] * S[[ t - 1 ]][ 2:K ] )
   }
-  return( new( 'cflattice', lattice = S ) )
+  return( new( 'cflattice', lattice = S, order = 2 ) )
 }
