@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 CFINI
 =====
 
+## Introduction
 This package was created with implement different computational routines that can be applied to 
 solve pricig problems, that are usually presented in Finance and Actuarial Science.
 
@@ -40,3 +41,10 @@ on+Approach-p-9781118856482) of Daniel J. Duffy.
 - The specialization of coursera [Financial Engineering and Risk Management](https://www.coursera.org/specializations/financialengineering) a MOOC provided by Columbia University.
 - The MOOC of coursera [Interest Rate Models](https://www.coursera.org/learn/interest-rate-models) 
 provided by EPFL.
+
+## Installation
+To install **mau** you can proceed in the following way making use of the devtools library
+```{r, eval=FALSE}
+library( devtools )
+install_github( "pedroguarderas/CFINI" )
+```

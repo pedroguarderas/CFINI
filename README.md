@@ -8,6 +8,8 @@
 
 # CFINI
 
+## Introduction
+
 This package was created with implement different computational routines
 that can be applied to solve pricig problems, that are usually presented
 in Finance and Actuarial Science.
@@ -38,3 +40,13 @@ information:
 - The MOOC of coursera [Interest Rate
   Models](https://www.coursera.org/learn/interest-rate-models) provided
   by EPFL.
+
+## Installation
+
+To install **mau** you can proceed in the following way making use of
+the devtools library
+
+``` r
+library( devtools )
+install_github( "pedroguarderas/CFINI" )
+```
