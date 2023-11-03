@@ -4,16 +4,16 @@
 \alias{cf_elem_security}
 \title{Elementary securities}
 \usage{
-cf_elem_security(q, u, r)
+cf_elem_security(n, q, u, r)
 }
 \arguments{
+\item{n}{number of periods for the multinomial model}
+
 \item{q}{neutral risk probabilities}
 
 \item{u}{vector of changes}
 
 \item{r}{interest rate}
-
-\item{n}{number of periods for the multinomial model}
 }
 \value{
 A list with a tree structure of the asset evolution

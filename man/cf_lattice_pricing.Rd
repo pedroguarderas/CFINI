@@ -65,7 +65,6 @@ Ca <- cf_lattice_pricing( Q, EQ, R, S, call, type = 'A' )
 
 # Pricing american put
 Pa <- cf_lattice_pricing( Q, EQ, R, S, put, type = 'A' )
-#' @export
 }
 \seealso{
 \code{\link{CFLattice}}

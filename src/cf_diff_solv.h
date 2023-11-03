@@ -19,7 +19,7 @@ using namespace Rcpp;
 //' @param u2 vector with discretization of the superior boundary condition
 //' @param t vector with discretization of the time grid
 //' @param x vector with discretization of the spatial grid
-//' @param is_initial
+//' @param is_initial specifies if the condition is final of initial
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
@@ -44,6 +44,7 @@ List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
 //' @param u2 vector with discretization of the superior boundary condition
 //' @param t vector with discretization of the time grid
 //' @param x vector with discretization of the spatial grid
+//' @param is_initial specifies if the condition is final of initial
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas

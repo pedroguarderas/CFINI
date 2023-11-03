@@ -20,6 +20,8 @@ cf_diff_solv_cns(theta, alpha, u0, u1, u2, t, x, is_initial)
 \item{t}{vector with discretization of the time grid}
 
 \item{x}{vector with discretization of the spatial grid}
+
+\item{is_initial}{specifies if the condition is final of initial}
 }
 \value{
 List with solution parameters
