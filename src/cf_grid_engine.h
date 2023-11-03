@@ -21,7 +21,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 Eigen::VectorXd cf_uniform_grid( const double& a, 
                                  const double& b, 
-                                 const double& N );
+                                 const double& n );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Exponential grid
@@ -39,7 +39,7 @@ Eigen::VectorXd cf_uniform_grid( const double& a,
 Eigen::VectorXd cf_adapt_grid( const double& l, 
                                const double& a,
                                const double& b,
-                               const double& N,
+                               const double& n,
                                const double& E );
 
 

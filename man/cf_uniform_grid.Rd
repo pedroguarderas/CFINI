@@ -4,7 +4,7 @@
 \alias{cf_uniform_grid}
 \title{Uniform grid}
 \usage{
-cf_uniform_grid(a, b, N)
+cf_uniform_grid(a, b, n)
 }
 \arguments{
 \item{a}{inferior value for the grid}

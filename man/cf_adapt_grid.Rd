@@ -4,7 +4,7 @@
 \alias{cf_adapt_grid}
 \title{Exponential grid}
 \usage{
-cf_adapt_grid(l, a, b, N, E)
+cf_adapt_grid(l, a, b, n, E)
 }
 \arguments{
 \item{l}{adaptation points}
@@ -13,9 +13,9 @@ cf_adapt_grid(l, a, b, N, E)
 
 \item{b}{superior value for the grid}
 
-\item{E}{refinement parameter}
-
 \item{n}{number of points in the grid}
+
+\item{E}{refinement parameter}
 }
 \value{
 A vector with the adaptive grid points.
