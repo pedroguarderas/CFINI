@@ -65,30 +65,30 @@ BEGIN_RCPP
 END_RCPP
 }
 // cf_uniform_grid
-Eigen::VectorXd cf_uniform_grid(const double& a, const double& b, const double& N);
-RcppExport SEXP _CFINI_cf_uniform_grid(SEXP aSEXP, SEXP bSEXP, SEXP NSEXP) {
+Eigen::VectorXd cf_uniform_grid(const double& a, const double& b, const double& n);
+RcppExport SEXP _CFINI_cf_uniform_grid(SEXP aSEXP, SEXP bSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
-    Rcpp::traits::input_parameter< const double& >::type N(NSEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_uniform_grid(a, b, N));
+    Rcpp::traits::input_parameter< const double& >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(cf_uniform_grid(a, b, n));
     return rcpp_result_gen;
 END_RCPP
 }
 // cf_adapt_grid
-Eigen::VectorXd cf_adapt_grid(const double& l, const double& a, const double& b, const double& N, const double& E);
-RcppExport SEXP _CFINI_cf_adapt_grid(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP NSEXP, SEXP ESEXP) {
+Eigen::VectorXd cf_adapt_grid(const double& l, const double& a, const double& b, const double& n, const double& E);
+RcppExport SEXP _CFINI_cf_adapt_grid(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP nSEXP, SEXP ESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type l(lSEXP);
     Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
-    Rcpp::traits::input_parameter< const double& >::type N(NSEXP);
+    Rcpp::traits::input_parameter< const double& >::type n(nSEXP);
     Rcpp::traits::input_parameter< const double& >::type E(ESEXP);
-    rcpp_result_gen = Rcpp::wrap(cf_adapt_grid(l, a, b, N, E));
+    rcpp_result_gen = Rcpp::wrap(cf_adapt_grid(l, a, b, n, E));
     return rcpp_result_gen;
 END_RCPP
 }

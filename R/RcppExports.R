@@ -9,6 +9,7 @@
 #' @param u2 vector with discretization of the superior boundary condition
 #' @param t vector with discretization of the time grid
 #' @param x vector with discretization of the spatial grid
+#' @param is_initial
 #' @return List with solution parameters
 #' @note Diffusion solver for pricing options
 #' @author Pedro Guarderas
@@ -65,8 +66,8 @@ cf_black_scholes_solv_cns <- function(sigma, rate, theta, u0, u1, u2, t, x) {
 #' @author Pedro Guarderas
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
-cf_uniform_grid <- function(a, b, N) {
-    .Call(`_CFINI_cf_uniform_grid`, a, b, N)
+cf_uniform_grid <- function(a, b, n) {
+    .Call(`_CFINI_cf_uniform_grid`, a, b, n)
 }
 
 #' @title Exponential grid
@@ -80,8 +81,8 @@ cf_uniform_grid <- function(a, b, N) {
 #' @author Pedro Guarderas
 #' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
-cf_adapt_grid <- function(l, a, b, N, E) {
-    .Call(`_CFINI_cf_adapt_grid`, l, a, b, N, E)
+cf_adapt_grid <- function(l, a, b, n, E) {
+    .Call(`_CFINI_cf_adapt_grid`, l, a, b, n, E)
 }
 
 #' @title Ordinary differenatial equation solver
