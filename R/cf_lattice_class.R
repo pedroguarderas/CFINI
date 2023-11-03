@@ -20,8 +20,9 @@ setGeneric(
   "order", 
   valueClass = "numeric", 
   function( x ) {
-  standardGeneric( "order" )
-})
+    standardGeneric( "order" )
+  }
+)
 
 setMethod( 
   "order", 
