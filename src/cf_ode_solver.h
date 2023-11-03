@@ -15,6 +15,8 @@ using namespace Rcpp;
 //' @param t time grid, could be adapted
 //' @param v0 initial value
 //' @param f dynamic function
+//' @param m number of iterations
+//' @param err tolerance error
 //' @return Return the numerical solution to the ODE.
 //' @note The solver is implemented to compute the solution forwards in time.
 //' @author Pedro Guarderas

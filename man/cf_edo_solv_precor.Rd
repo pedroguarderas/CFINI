@@ -12,6 +12,10 @@ cf_edo_solv_precor(t, v0, f, m = 2L, err = 0.01)
 \item{v0}{initial value}
 
 \item{f}{dynamic function}
+
+\item{m}{number of iterations}
+
+\item{err}{tolerance error}
 }
 \value{
 Return the numerical solution to the ODE.
