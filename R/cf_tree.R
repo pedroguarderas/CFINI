@@ -14,32 +14,33 @@ cf_tree <- function( n, u, S0 ) {
   m <- length( u )
   
   tree <- list( S0, S0 * u )
-  for ( k in 2:n ) {
-    
-    # Generator of combinations with replacement
-    c <- rep( 1, k )
-    j <- k
-    p <- prod( u[ c ] ) * S0
-    while ( j > 0 ) {
-      l <- k
-      while ( l >= j ) {
-        while ( c[ l ] < m ) {
-          c[ l ] <- c[ l ] + 1
-          p <- c( p, prod( u[ c ] ) * S0 )
-        }
-        l <- l - 1
-        if ( l > 0 ) {
-          if ( c[l] < m ) {
-            c[ l:k ] <- c[ l ] + 1
+  if ( n >= 2 ) {
+    for ( k in 2:n ) {
+      # Generator of combinations with replacement
+      c <- rep( 1, k )
+      j <- k
+      p <- prod( u[ c ] ) * S0
+      while ( j > 0 ) {
+        l <- k
+        while ( l >= j ) {
+          while ( c[ l ] < m ) {
+            c[ l ] <- c[ l ] + 1
             p <- c( p, prod( u[ c ] ) * S0 )
-            l <- k
           }
-        }
-      } 
-      j <- j - 1 
+          l <- l - 1
+          if ( l > 0 ) {
+            if ( c[l] < m ) {
+              c[ l:k ] <- c[ l ] + 1
+              p <- c( p, prod( u[ c ] ) * S0 )
+              l <- k
+            }
+          }
+        } 
+        j <- j - 1 
+      }
+      
+      tree[[ k + 1 ]] <- p
     }
-    
-    tree[[ k + 1 ]] <- p
   }
   return( new( 'cflattice', lattice = tree ) )
 }
