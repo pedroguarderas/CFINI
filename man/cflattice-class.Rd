@@ -3,10 +3,8 @@
 \docType{class}
 \name{cflattice-class}
 \alias{cflattice-class}
-\title{Lattice class for multinomial valuation}
-\value{
-A class of name cflattice
-}
+\alias{cflattice}
+\title{cflattice class}
 \description{
 Lattice employed for multinomial valuation
 }
@@ -20,4 +18,5 @@ Lattice employed for multinomial valuation
 
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }

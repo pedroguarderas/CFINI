@@ -2,19 +2,26 @@
 % Please edit documentation in R/cf_lattice_class.R
 \name{order}
 \alias{order}
-\title{Generic order method}
+\title{order generic}
 \usage{
 order(x)
+
+\S4method{order}{cflattice}(x)
 }
 \arguments{
 \item{x}{object of class cflattice}
 }
 \value{
 Numeric value
+
+Numeric value
 }
 \description{
+Extract the order of cflattice
+
 Extract the order of cflattice
 }
 \author{
 Pedro Guarderas
+\email{pedro.felipe.guarderas@gmail.com}
 }

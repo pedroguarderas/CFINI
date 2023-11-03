@@ -1,24 +1,27 @@
 # Lattice class ------------------------------------------------------------------------------------
-#' @title Lattice class for multinomial valuation
-#' @description Lattice employed for multinomial valuation
-#' @return A class of name cflattice
-#' @author Pedro Guarderas
-#' @importFrom methods .valueClassTest new
-#' @slot lattice lattice of values
-#' @slot order order of the lattice
+#' @title cflattice class
 #' @name cflattice-class
 #' @rdname cflattice-class
 #' @aliases cflattice
+#' @description Lattice employed for multinomial valuation
+#' @slot lattice lattice of values
+#' @slot order order of the lattice
+#' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
+#' @importFrom methods .valueClassTest new
 #' @export
 setClass( 'cflattice', slots = representation( lattice = 'list', order = 'numeric' ) )
 
 # Extraction method --------------------------------------------------------------------------------
-#' @title Extraction method
+#' @title [ extraction operator
+#' @name [
+#' @aliases [
 #' @description Extract method for cflattice
 #' @param x object of class cflattice
 #' @param i index
 #' @return Numeric vector with the respective values
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 setMethod( 
   "[", 
@@ -29,11 +32,14 @@ setMethod(
 )
 
 # Length method ------------------------------------------------------------------------------------
-#' @title Length method
+#' @title length
+#' @name length
+#' @aliases length
 #' @description Extract the length of the cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 setMethod( 
   "length", 
@@ -44,11 +50,14 @@ setMethod(
 )
 
 # Generic order method -----------------------------------------------------------------------------
-#' @title Generic order method
+#' @title order generic
+#' @name order
+#' @aliases order
 #' @description Extract the order of cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 setGeneric( 
   "order", 
@@ -59,11 +68,14 @@ setGeneric(
 )
 
 # Order method -------------------------------------------------------------------------------------
-#' @title Order method
+#' @title order
+#' @name order
+#' @aliases order
 #' @description Extract the order of cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
 #' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
 #' @export
 setMethod( 
   "order", 
