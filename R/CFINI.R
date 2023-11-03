@@ -14,4 +14,6 @@
 #' }
 #' @useDynLib CFINI, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
+#' @references
+#' \insertRef{stoch_calc_fin_1}{CFINI}
 "_PACKAGE"

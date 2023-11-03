@@ -19,6 +19,9 @@ are coded with C++ by employing the packages Rcpp and RcppEigen.
 \item Diffusion solver with Crank-Nicolson scheme.
 }
 }
+\references{
+\insertRef{stoch_calc_fin_1}{CFINI}
+}
 \seealso{
 Useful links:
 \itemize{
