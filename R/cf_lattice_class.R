@@ -4,6 +4,11 @@
 #' @return A class of name cflattice
 #' @author Pedro Guarderas
 #' @importFrom methods .valueClassTest new
+#' @slot lattice lattice of values
+#' @slot order order of the lattice
+#' @name cflattice-class
+#' @rdname cflattice-class
+#' @aliases cflattice
 #' @export
 setClass( 'cflattice', slots = representation( lattice = 'list', order = 'numeric' ) )
 

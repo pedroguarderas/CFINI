@@ -10,6 +10,14 @@ A class of name cflattice
 \description{
 Lattice employed for multinomial valuation
 }
+\section{Slots}{
+
+\describe{
+\item{\code{lattice}}{lattice of values}
+
+\item{\code{order}}{order of the lattice}
+}}
+
 \author{
 Pedro Guarderas
 }
