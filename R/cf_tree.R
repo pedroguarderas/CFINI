@@ -42,5 +42,5 @@ cf_tree <- function( n, u, S0 ) {
       tree[[ k + 1 ]] <- p
     }
   }
-  return( new( 'cflattice', lattice = tree ) )
+  return( new( 'cflattice', lattice = tree, order = m ) )
 }
