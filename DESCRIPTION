@@ -16,10 +16,8 @@ Depends:
     R (>= 4.0)
 LinkingTo: Rcpp, RcppEigen
 RoxygenNote: 7.2.3
-Imports: Rcpp, Rdpack
-Suggests: data.table,
-    Matrix,
-    gtools,
+Imports: Rcpp, Rdpack, data.table, gtools
+Suggests: Matrix,
     colorRamps,
     plotly,
     knitr, 
