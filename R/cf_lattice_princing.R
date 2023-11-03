@@ -10,7 +10,7 @@
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
-#' @seealso \code{\link{cflattice-class}}
+#' @seealso \code{\link{cflattice}}
 #' @examples
 #' s <- 0.3
 #' T <- 0.25

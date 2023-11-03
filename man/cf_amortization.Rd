@@ -22,11 +22,11 @@ A data.table with amortization information
 Function to compute the amortization tables
 }
 \examples{
-r<-0.16
-y<-10
-p<-12
-M<-10000
-A<-cf_amortization( r, y, p, M )
+r <- 0.16
+y <- 10
+p <- 12
+M <- 10000
+A <- cf_amortization( r, y, p, M )
 sum( A$c )
 sum( A$i )
 }
