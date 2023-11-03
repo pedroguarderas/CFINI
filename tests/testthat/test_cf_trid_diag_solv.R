@@ -10,7 +10,7 @@ for ( i in 1:( d - 1 ) ) {
 b <- rep( 1, d )
 c <- rep( -1e4, d )
 u0 <- runif( d )
-n <- 1000
+n <- 100
 w <- 0.9
 e <- 1e-6
 
