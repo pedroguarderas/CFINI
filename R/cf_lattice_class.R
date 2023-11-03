@@ -3,6 +3,7 @@
 #' @description Lattice employed for multinomial valuation
 #' @return A class of name cflattice
 #' @author Pedro Guarderas
+#' @importFrom methods .valueClassTest new
 #' @export
 setClass( 'cflattice', slots = representation( lattice = 'list', order = 'numeric' ) )
 
