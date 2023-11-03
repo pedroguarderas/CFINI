@@ -4,14 +4,15 @@ Title: Computational finance routines
 Version: 0.1.0
 Encoding: UTF-8
 Date: 2018-01-27
-License: LGPL-3
 Description: Computational finance routines. Pricing with multinomial trees.
 Authors@R: c(
-    person("Pedro", "Guarderas", email = "pedro.felipe.guarderas@gmail.com", role = c("aut","cre") ),
-    person("Andrés", "Lopez", role="ctb")
+    person( "Pedro", "Guarderas", email = "pedro.felipe.guarderas@gmail.com", role = c("aut","cre") ),
+    person( "Andrés", "Lopez", role="ctb" )
     )
 URL: https://github.com/pedroguarderas/CFINI
 BugReports: https://github.com/pedroguarderas/CFINI/issues
+Maintainer: Pedro Guarderas <pedro.felipe.guarderas@gmail.com>
+License: LGPL-3
 Depends:
     R (>= 4.0)
 LinkingTo: Rcpp, RcppEigen
