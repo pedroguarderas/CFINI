@@ -123,7 +123,7 @@ d_i & = & u_{n,i}
 \end{eqnarray}
 
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x )
+Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x, FALSE )
 ```
 
 6. Solving with Crank-Nicolson implicit method
@@ -142,7 +142,7 @@ d_i & = & u_{n,i} + ( 1 - \theta ) (  \lambda^2_{n,i} \Delta_x u_{n,i+1} -  \lam
 \end{eqnarray}
 
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
-Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x )
+Ucn <- cf_diff_solv_cns( theta, alpha, I, A, B, t, x, FALSE )
 ```
 
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
