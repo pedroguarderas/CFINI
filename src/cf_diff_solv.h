@@ -19,6 +19,7 @@ using namespace Rcpp;
 //' @param u2 vector with discretization of the superior boundary condition
 //' @param t vector with discretization of the time grid
 //' @param x vector with discretization of the spatial grid
+//' @param is_initial
 //' @return List with solution parameters
 //' @note Diffusion solver for pricing options
 //' @author Pedro Guarderas
