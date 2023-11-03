@@ -15,7 +15,7 @@
 #' A<-cf_amortization( r, y, p, M )
 #' sum( A$c )
 #' sum( A$i )
-#' @importFrom data.table data.table
+#' @importFrom data.table := data.table
 #' @export
 cf_amortization<-function( r, y, p, M ) {
   
