@@ -139,7 +139,7 @@ d_i & = & u_{n,i} + ( 1 - \theta ) (  \lambda^2_{n,i} \Delta_x u_{n,i+1} -  \lam
 
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 theta <- 0.25
-Ucn <- cf_diff_solv_cns( theta, alpha, u0, v1, v2, t, x )
+Ucn <- cf_diff_solv_cns( theta, alpha, u0, v1, v2, t, x, TRUE )
 ```
 plot
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
