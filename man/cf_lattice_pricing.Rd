@@ -67,7 +67,7 @@ Ca <- cf_lattice_pricing( Q, EQ, R, S, call, type = 'A' )
 Pa <- cf_lattice_pricing( Q, EQ, R, S, put, type = 'A' )
 }
 \seealso{
-\code{\link{cflattice}}
+\code{\link{cflattice-class}}
 }
 \author{
 Pedro Guarderas

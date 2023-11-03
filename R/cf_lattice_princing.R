@@ -10,7 +10,7 @@
 #' option, 'A' american option, 'F' futures option, 'S' swap option, 'P' ...
 #' @return A list with a tree structure of the asset evolution
 #' @author Pedro Guarderas
-#' @seealso \code{\link{cflattice}}
+#' @seealso \code{\link{cflattice-class}}
 #' @examples
 #' s <- 0.3
 #' T <- 0.25
@@ -73,7 +73,7 @@ cf_lattice_pricing <- function( Q, EQ, R, S, option, type = 'E' ) {
     C@lattice[[ N ]] <- sapply( C@lattice[[ N ]], FUN = option )
     for ( t in (N-1):1 ) {
       M <- n + (t-2)*(n-1)
-      C@l[[ t ]] <- sapply( 
+      C@lattice[[ t ]] <- sapply( 
         1:M, 
         FUN = function(k) EQ( 1/R, Q, C@lattice[[ t + 1 ]][k:(k+n-1)] )  )
     }

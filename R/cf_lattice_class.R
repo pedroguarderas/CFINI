@@ -1,7 +1,6 @@
 # Lattice class ------------------------------------------------------------------------------------
-#' @title cflattice
-#' @name cflattice
-#' @rdname cflattice
+#' An S4 class for lattice
+#' @rdname cflattice_class
 #' @aliases cflattice, cflattice-class
 #' @description Lattice employed for multinomial valuation
 #' @slot lattice lattice of values
@@ -13,10 +12,10 @@
 setClass( 'cflattice', slots = representation( lattice = 'list', order = 'numeric' ) )
 
 # Extraction method --------------------------------------------------------------------------------
-#' @name [
-#' @aliases [, cflattice-methods
+#' Extraction method for cflattice
+#' @rdname cflattice_class
+#' @aliases [, ANY, ANY-method
 #' @docType methods
-#' @rdname cflattice
 #' @description Extract method for cflattice
 #' @param x object of class cflattice
 #' @param i index
@@ -36,10 +35,10 @@ setMethod(
 )
 
 # Length method ------------------------------------------------------------------------------------
-#' @name length
-#' @aliases length, cflattice-methods
+#' Get length of cflattice
+#' @rdname cflattice_class
+#' @aliases length, numeric, ANY-method
 #' @docType methods
-#' @rdname cflattice
 #' @description Extract the length of the cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
@@ -55,10 +54,10 @@ setMethod(
 )
 
 # Generic order method -----------------------------------------------------------------------------
-#' @name order-generic
-#' @aliases order, cflattice-methods
+#' Generic method for order of the cflattice
+#' @rdname cflattice_class
+#' @aliases order, numeric, ANY-method
 #' @docType methods
-#' @rdname cflattice
 #' @description Extract the order of cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
@@ -74,10 +73,10 @@ setGeneric(
 )
 
 # Order method -------------------------------------------------------------------------------------
-#' @name order
-#' @aliases order, cflattice-methods
+#' Method for order of the cflattice
+#' @rdname cflattice_class
+#' @aliases order, numeric, ANY-method
 #' @docType methods
-#' @rdname cflattice
 #' @description Extract the order of cflattice
 #' @param x object of class cflattice
 #' @return Numeric value
