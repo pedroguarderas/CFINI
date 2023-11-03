@@ -50,7 +50,7 @@
 #' 
 #' # Pricing american put
 #' Pa <- cf_lattice_pricing( Q, EQ, R, S, put, type = 'A' )
-#' #' @export
+#' @export
 cf_lattice_pricing <- function( Q, EQ, R, S, option, type = 'E' ) {
   C <- S
   N <- length(S)
