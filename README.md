@@ -43,8 +43,8 @@ information:
 
 ## Installation
 
-To install **mau** you can proceed in the following way making use of
-the devtools library
+To install the package **CFINI** directly from github, you can proceed
+in the following way making use of the devtools library
 
 ``` r
 library( devtools )

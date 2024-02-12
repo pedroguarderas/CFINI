@@ -43,7 +43,8 @@ on+Approach-p-9781118856482) of Daniel J. Duffy.
 provided by EPFL.
 
 ## Installation
-To install **mau** you can proceed in the following way making use of the devtools library
+To install the package **CFINI** directly from github, you can proceed in the following way making 
+use of the devtools library
 ```{r, eval=FALSE}
 library( devtools )
 install_github( "pedroguarderas/CFINI" )
