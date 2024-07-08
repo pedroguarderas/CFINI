@@ -10,43 +10,58 @@
 
 ## Introduction
 
-This package was created with implement different computational routines
-that can be applied to solve pricing problems, that are usually
-presented in Finance and Actuarial Science.
+The CFINI package implements routines for the solution of pricing problems usually encountered in
+Financial and Actuarial Science.
 
-Here a list of the main numerical methods implemented inside CFINI. Many
-of this functions are coded with C++ by employing the packages Rcpp and
-RcppEigen.
+<!-- ?? include? are there more? -->
+The numerical methods implemented in CFINI include: 
 
-- Pricing with trees
-- Pricing with multinomial trees
-- Ordinary differential equation solver implemented with the
-  predictor-corrector method
-- Diffusion solver with Euler implicit scheme
-- Diffusion solver with Crank-Nicolson scheme
+<!-- ?? Check names of methods below -->
+* Pricing with trees
 
-The different methods in the CFINI package are implemented based on the
-concepts and algorithms introduced in the following sources of
-information:
+* Pricing with multinomial trees
 
-- The two volume book [Stochastic Calculus for Finance I and
-  II](https://doi.org/10.1007/978-0-387-22527-2) of Steven E. Shreve.
-- The book [Finite difference methods in financial
-  engineering](https://www.wiley.com/en-us/Finite+Difference+Methods+in+Financial+Engineering:+A+Partial+Differential+Equati%20on+Approach-p-9781118856482)
-  of Daniel J. Duffy.
-- The specialization of coursera [Financial Engineering and Risk
-  Management](https://www.coursera.org/specializations/financialengineering)
-  a MOOC provided by Columbia University.
-- The MOOC of coursera [Interest Rate
-  Models](https://www.coursera.org/learn/interest-rate-models) provided
-  by EPFL.
+* Ordinary differential equation solver implemented with the predictor-corrector method
+
+* Diffusion solver with implicit Euler method
+
+* Diffusion solver with Crank-Nicolson method
+
+Many functions are coded with C++ by employing the [Rcpp][] and [RcppEigen][] packages.
+
+[Rcpp]: https://cran.r-project.org/web/packages/Rcpp/index.html
+
+[RcppEigen]: https://cran.r-project.org/web/packages/RcppEigen/index.html
+
+### References
+
+* Shreve, Steven E., *Stochastic Calculus for Finance I: The Binomial Asset Pricing Model*
+  (1st. edn, [Springer][springer_1]).
+
+* Duffy, Daniel J., *Finite Difference Methods in Financial Engineering: A Partial Differential
+  Equation Approach* (2013, [Wiley][wiley_1]).
+
+* Haugh, Hirsa, Iyengar, *Columbia University MOOC: Financial Engineering and Risk Management
+  Specialization* (2024,[Coursera][coursera_1]).
+
+* Filipović D., *École Polytechnique Fédérale de Lausanne MOOC: Interest Rate Models* (2024,
+  [Coursera][coursera_2]).
+
+[springer_1]: https://doi.org/10.1007/978-0-387-22527-2
+
+[wiley_1]: https://www.wiley.com/en-us/Finite+Difference+Methods+in+Financial+Engineering:+A+Partial+Differential+Equati%20on+Approach-p-9781118856482
+
+[coursera_1]: https://www.coursera.org/specializations/financialengineering
+
+[coursera_2]: https://www.coursera.org/learn/interest-rate-models
 
 ## Installation
 
-To install the package **CFINI** directly from github, you can proceed
-in the following way making use of the devtools library
+To install **CFINI** directly from GitHub use `devtools`:
 
-``` r
+```R
+
 library( devtools )
 install_github( "pedroguarderas/CFINI" )
+
 ```
