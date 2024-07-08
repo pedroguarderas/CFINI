@@ -11,13 +11,10 @@ vignette: >
 
 ## Introduction
 
-1. Loading packages
-```{r,eval=TRUE,message=FALSE, warning=FALSE}
-library( CFINI )
-library( plotly )
-```
+<!-- move to a theory appendix? -->
 
-A general representation of the equation related to the Black-Scholes models.
+A general representation of the equation related to the Black-Scholes model:
+
 \begin{equation}
 \left\{
 \begin{array}{ll}
@@ -34,21 +31,29 @@ V( t, S_h ) = v_2( t ) & \forall t \in [ 0, T ]
 \right.
 \end{equation}
 
-the particular case of Black-Scholes is given by the following parameters 
+<!-- ?? the particular ...? -->
+the particular case of Black-Scholes is given by 
 $\alpha( t, S ) = \frac{1}{2}\sigma^2 S^2$, $\beta( t, S ) = r S$ and $\gamma( t, S ) = -r$
 where $\sigma, r$ are constants. 
 
-It is important to observe that this model considers a final condition FC, that usually represents 
-the value of the option at the end of the contract. 
+Note that this model considers a final condition (*FC*) which usually represents the value of the
+option at the end of the contract. 
 
-The idea of being able to produce a differential model that will be capable to produce a consistent
-pricing model that will hedge the final option is supported by the the second fundamental theorem 
-of asset pricing, which precisely relates the ability to hedge arbitrary claims, to the uniqueness 
-of martingale measures.
+<!-- second? -->
+<!-- relates? -->
+<!-- See pages 83 and 88 of  -->
+<!-- Capiński, Zastawniak, *Mathematics for ﬁnance : an introduction to ﬁnancial engineering* (ISBN 1-85233-330-8) -->
+The idea of being able to produce a differential model that will be capable of producing a
+consistent pricing model to hedge the final option is supported by the the second fundamental
+theorem of asset pricing. This theorem precisely relates the ability to hedge arbitrary claims to
+the uniqueness of martingale measures.
 
-## Transformation of the particular case of Black-Scholes
-The previous model can be transformed in the classical diffusion problem, related to the heat
-equation, by the right change of variables.
+**Transformation of the particular case of Black-Scholes**
+
+<!-- ?? right change -->
+The previous model can be transformed to the *classical diffusion* problem by the right change of
+variables:
+
 \begin{equation}
 V( t, S ) = e^{\alpha x + \beta \tau} u( x, t )\\
 \alpha = -\frac{1}{2}\left( \frac{2r}{\sigma^2}  - 1 \right) \\
@@ -57,6 +62,15 @@ S = e^x \\
 t = T - \frac{2 \tau}{\sigma^2}
 \end{equation}
 
+
+## Example
+
+1. Load required packages
+
+```{r,eval=TRUE,message=FALSE, warning=FALSE}
+library( CFINI )
+library( plotly )
+```
 
 2. Related coefficients
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
@@ -93,6 +107,9 @@ I <- sapply( x, FUN = If )
 A <- rep( 0, Nt )
 B <- rep( 0, Nt )
 ```
+
+<!-- ?? This is theory? move to another section? restart numbering? -->
+
 \begin{equation}
 A = \begin{bmatrix}
 b_1 & a_1 & 0 & 0 & \cdots & 0 \\
@@ -104,15 +121,19 @@ c_1 & b_2 & a_2 & 0 & \cdots & 0 \\
 \end{bmatrix}
 \end{equation}
 
-5. Euler implicit scheme has the following form for the equation
+<!-- ?? provides an equation of form -->
+5. The implicit Euler method has the following form for the equation
 \begin{equation}
 u_{n+1,i} - u_{n,i} = \lambda_{n, i} ( u_{n+1,i+1} - 2 u_{n+1,i} + u_{n+1,i-1} ) +
 \rho_{n,i} ( u_{n+1,i+1/2} - u_{n+1,i-1/2} ) + 
 \gamma_{n,i} u_{n+1,i}
 \end{equation}
 
-From previous scheme at every time step $n$ we formulate a tridiagonal problem $A u_n = d$, with 
-the folowing definitions.
+<!-- ?? -->
+<!-- From this equation, -->
+From the previous scheme, at every time step $n$ we formulate a tridiagonal problem $A u_n = d$,
+with the folowing definitions:
+
 \begin{eqnarray}
 \lambda_{n, i} & = & \alpha_{n, i} \frac{\Delta t_n}{\Delta x_{i}\ \Delta x_{i+1}} \\
 \rho_{n, i} & = & \beta_{n, i} \frac{\Delta t_n}{2(x_{i+1} - x_{i})} \\
@@ -126,7 +147,8 @@ d_i & = & u_{n,i}
 Ueu <- cf_diff_solv_euls( alpha, I, A, B, t, x, FALSE )
 ```
 
-6. Solving with Crank-Nicolson implicit method
+6. Solving with Crank-Nicolson method
+
 \begin{equation}
 u_{n+1,i} + \theta (  \lambda^2_{n,i} \Delta_x u_{n+1,i+1} -  \lambda^1_{n,i} \Delta_x u_{n+1,i} ) =
 u_{n,i} + ( 1 - \theta ) (  \lambda^2_{n,i} \Delta_x u_{n,i+1} -  \lambda^1_{n,i} \Delta_x u_{n,i} )
