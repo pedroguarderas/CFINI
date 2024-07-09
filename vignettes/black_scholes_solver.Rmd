@@ -72,6 +72,7 @@ library( CFINI )
 library( plotly )
 ```
 
+<!-- ?? Define related(?) coefficients-->
 2. Related coefficients
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 # Diffusion parameter constant
@@ -81,6 +82,7 @@ alpha <- matrix( 10^(-2.3), Nt, Nx )
 theta <- 0.25
 ```
 
+<!-- ??Create time grid [timeline?]-->
 3. Time grid
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 t0 <- 0
@@ -88,6 +90,7 @@ t1 <- 1
 t <- cf_uniform_grid( t0, t1, Nt )
 ```
 
+<!-- ?? create value grid -->
 4. Value grid
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 x0 <- -0.5
@@ -95,6 +98,7 @@ x1 <- 0.5
 x <- cf_uniform_grid( x0, x1, Nx )
 ```
 
+<!-- ?? Define initial conditions [further describe "initial"]-->
 5. Initial conditions
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 If <- function( x ) if ( abs(x) <= 0.1 ) return( 1 ) else return( 0 )
@@ -102,6 +106,7 @@ If <- Vectorize( If )
 I <- sapply( x, FUN = If )
 ```
 
+<!-- ?? Set boundary conditions -->
 6. Boundary conditions
 ```{r,eval=TRUE,message=FALSE, warning=FALSE}
 A <- rep( 0, Nt )
@@ -177,7 +182,7 @@ ecn <- matrix( Ucn$u[Nt,] - s, Nx, 1 )
 
 ```
 
-7. Plotting results
+7. Plot results
 ```{r,eval=TRUE,fig.show='hold', fig.show='hold', fig.align="center", fig.width=7, fig.height=4}
 plot_ly( x = Ucn$t, y = Ucn$x, z = Ueu$u, alpha = 0.8 ) %>% 
   layout( scene = list( xaxis = list(title = "t"),
