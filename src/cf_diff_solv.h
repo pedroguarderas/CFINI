@@ -26,13 +26,14 @@ using namespace Rcpp;
 //' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
-                        const Eigen::VectorXd& u0,
-                        const Eigen::VectorXd& u1,
-                        const Eigen::VectorXd& u2,
-                        const Eigen::VectorXd& t,
-                        const Eigen::VectorXd& x,
-                        const bool is_initial );
+List cf_diff_solv_euls( 
+    const Eigen::MatrixXd& alpha,
+    const Eigen::VectorXd& u0,
+    const Eigen::VectorXd& u1,
+    const Eigen::VectorXd& u2,
+    const Eigen::VectorXd& t,
+    const Eigen::VectorXd& x,
+    const bool is_initial );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Diffusion solver with Crank-Nicolson scheme
@@ -51,14 +52,15 @@ List cf_diff_solv_euls( const Eigen::MatrixXd& alpha,
 //' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
-List cf_diff_solv_cns( const double& theta,
-                       const Eigen::MatrixXd& alpha,
-                       const Eigen::VectorXd& u0,
-                       const Eigen::VectorXd& u1,
-                       const Eigen::VectorXd& u2,
-                       const Eigen::VectorXd& t,
-                       const Eigen::VectorXd& x,
-                       const bool is_initial );
+List cf_diff_solv_cns( 
+    const double& theta,
+    const Eigen::MatrixXd& alpha,
+    const Eigen::VectorXd& u0,
+    const Eigen::VectorXd& u1,
+    const Eigen::VectorXd& u2,
+    const Eigen::VectorXd& t,
+    const Eigen::VectorXd& x,
+    const bool is_initial );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Black-Scholes solver
@@ -78,13 +80,14 @@ List cf_diff_solv_cns( const double& theta,
 //' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
-List cf_black_scholes_solv_cns( const double& sigma,
-                                const double& rate,
-                                const double& theta,
-                                const Eigen::VectorXd& u0,
-                                const Eigen::VectorXd& u1,
-                                const Eigen::VectorXd& u2,
-                                const Eigen::VectorXd& t,
-                                const Eigen::VectorXd& x );
+List cf_black_scholes_solv_cns( 
+    const double& sigma,
+    const double& rate,
+    const double& theta,
+    const Eigen::VectorXd& u0,
+    const Eigen::VectorXd& u1,
+    const Eigen::VectorXd& u2,
+    const Eigen::VectorXd& t,
+    const Eigen::VectorXd& x );
 
 #endif

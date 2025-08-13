@@ -1,12 +1,14 @@
 #ifndef __CF_GRID_ENGINE__
 #define __CF_GRID_ENGINE__
 
+#include <thread>
 #include <RcppEigen.h>
 
 // [[Rcpp::plugins(cpp20)]]
 // [[Rcpp::depends(RcppEigen)]]
 
 using namespace Rcpp;
+using namespace std;
 
 //--------------------------------------------------------------------------------------------------
 //' @title Uniform grid
@@ -21,7 +23,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 Eigen::VectorXd cf_uniform_grid( const double& a, 
                                  const double& b, 
-                                 const double& n );
+                                 const unsigned int& n );
 
 //--------------------------------------------------------------------------------------------------
 //' @title Exponential grid
@@ -39,7 +41,7 @@ Eigen::VectorXd cf_uniform_grid( const double& a,
 Eigen::VectorXd cf_adapt_grid( const double& l, 
                                const double& a,
                                const double& b,
-                               const double& n,
+                               const unsigned int& n,
                                const double& E );
 
 

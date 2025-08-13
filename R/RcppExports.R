@@ -116,6 +116,19 @@ cf_tri_diag_solv <- function(a, b, c, d) {
     invisible(.Call(`_CFINI_cf_tri_diag_solv`, a, b, c, d))
 }
 
+#' @title Tridiagonal solver
+#' @description Solver tridiagonal matrices.
+#' @param a lower diagonal
+#' @param b diagonal
+#' @param c upper diagonal
+#' @param d image of the solution vector, which over written with the solution
+#' @author Pedro Guarderas
+#' \email{pedro.felipe.guarderas@@gmail.com}
+#' @export
+cf_tri_diag_solv_ret <- function(a, b, c, d) {
+    .Call(`_CFINI_cf_tri_diag_solv_ret`, a, b, c, d)
+}
+
 #' @title PSOR algorithm
 #' @description Projected successive over-relaxation
 #' @param u0 initial guest of the solution

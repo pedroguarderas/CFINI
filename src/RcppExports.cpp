@@ -65,20 +65,20 @@ BEGIN_RCPP
 END_RCPP
 }
 // cf_uniform_grid
-Eigen::VectorXd cf_uniform_grid(const double& a, const double& b, const double& n);
+Eigen::VectorXd cf_uniform_grid(const double& a, const double& b, const unsigned int& n);
 RcppExport SEXP _CFINI_cf_uniform_grid(SEXP aSEXP, SEXP bSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
-    Rcpp::traits::input_parameter< const double& >::type n(nSEXP);
+    Rcpp::traits::input_parameter< const unsigned int& >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(cf_uniform_grid(a, b, n));
     return rcpp_result_gen;
 END_RCPP
 }
 // cf_adapt_grid
-Eigen::VectorXd cf_adapt_grid(const double& l, const double& a, const double& b, const double& n, const double& E);
+Eigen::VectorXd cf_adapt_grid(const double& l, const double& a, const double& b, const unsigned int& n, const double& E);
 RcppExport SEXP _CFINI_cf_adapt_grid(SEXP lSEXP, SEXP aSEXP, SEXP bSEXP, SEXP nSEXP, SEXP ESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -86,7 +86,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double& >::type l(lSEXP);
     Rcpp::traits::input_parameter< const double& >::type a(aSEXP);
     Rcpp::traits::input_parameter< const double& >::type b(bSEXP);
-    Rcpp::traits::input_parameter< const double& >::type n(nSEXP);
+    Rcpp::traits::input_parameter< const unsigned int& >::type n(nSEXP);
     Rcpp::traits::input_parameter< const double& >::type E(ESEXP);
     rcpp_result_gen = Rcpp::wrap(cf_adapt_grid(l, a, b, n, E));
     return rcpp_result_gen;
@@ -118,6 +118,20 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< Eigen::VectorXd& >::type d(dSEXP);
     cf_tri_diag_solv(a, b, c, d);
     return R_NilValue;
+END_RCPP
+}
+// cf_tri_diag_solv_ret
+Eigen::VectorXd cf_tri_diag_solv_ret(Eigen::VectorXd& a, Eigen::VectorXd& b, Eigen::VectorXd& c, Eigen::VectorXd& d);
+RcppExport SEXP _CFINI_cf_tri_diag_solv_ret(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP, SEXP dSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Eigen::VectorXd& >::type a(aSEXP);
+    Rcpp::traits::input_parameter< Eigen::VectorXd& >::type b(bSEXP);
+    Rcpp::traits::input_parameter< Eigen::VectorXd& >::type c(cSEXP);
+    Rcpp::traits::input_parameter< Eigen::VectorXd& >::type d(dSEXP);
+    rcpp_result_gen = Rcpp::wrap(cf_tri_diag_solv_ret(a, b, c, d));
+    return rcpp_result_gen;
 END_RCPP
 }
 // cf_psor_solv
@@ -158,6 +172,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_CFINI_cf_adapt_grid", (DL_FUNC) &_CFINI_cf_adapt_grid, 5},
     {"_CFINI_cf_edo_solv_precor", (DL_FUNC) &_CFINI_cf_edo_solv_precor, 5},
     {"_CFINI_cf_tri_diag_solv", (DL_FUNC) &_CFINI_cf_tri_diag_solv, 4},
+    {"_CFINI_cf_tri_diag_solv_ret", (DL_FUNC) &_CFINI_cf_tri_diag_solv_ret, 4},
     {"_CFINI_cf_psor_solv", (DL_FUNC) &_CFINI_cf_psor_solv, 7},
     {"_CFINI_cf_wiener", (DL_FUNC) &_CFINI_cf_wiener, 2},
     {NULL, NULL, 0}

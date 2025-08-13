@@ -19,10 +19,28 @@ using namespace Rcpp;
 //' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
-void cf_tri_diag_solv( Eigen::VectorXd& a,
-                       Eigen::VectorXd& b,
-                       Eigen::VectorXd& c,
-                       Eigen::VectorXd& d );
+void cf_tri_diag_solv( 
+    Eigen::VectorXd& a,
+    Eigen::VectorXd& b,
+    Eigen::VectorXd& c,
+    Eigen::VectorXd& d );
+
+//--------------------------------------------------------------------------------------------------
+//' @title Tridiagonal solver
+//' @description Solver tridiagonal matrices.
+//' @param a lower diagonal
+//' @param b diagonal
+//' @param c upper diagonal
+//' @param d image of the solution vector, which over written with the solution
+//' @author Pedro Guarderas
+//' \email{pedro.felipe.guarderas@@gmail.com}
+//' @export
+// [[Rcpp::export]]
+Eigen::VectorXd cf_tri_diag_solv_ret( 
+    Eigen::VectorXd& a, 
+    Eigen::VectorXd& b,
+    Eigen::VectorXd& c,
+    Eigen::VectorXd& d );
 
 //--------------------------------------------------------------------------------------------------
 //' @title PSOR algorithm
@@ -38,13 +56,13 @@ void cf_tri_diag_solv( Eigen::VectorXd& a,
 //' \email{pedro.felipe.guarderas@@gmail.com}
 //' @export
 // [[Rcpp::export]]
-List cf_psor_solv( const Eigen::VectorXd& u0,
-                   const Eigen::MatrixXd& A, 
-                   const Eigen::VectorXd& b,
-                   const Eigen::VectorXd& c,
-                   const double& w,
-                   const int& n,
-                   const double& e );
+List cf_psor_solv( 
+    const Eigen::VectorXd& u0,
+    const Eigen::MatrixXd& A, 
+    const Eigen::VectorXd& b,
+    const Eigen::VectorXd& c,
+    const double& w,
+    const int& n,
+    const double& e );
 
 #endif
-
